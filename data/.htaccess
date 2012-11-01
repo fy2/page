@@ -1,6 +1,0 @@
-AuthUserFile /Applications/MAMP/authen/passwords 
-AuthGroupFile /dev/null
-AuthType Basic
-AuthName EnterPassword
-
-Require user fy2
