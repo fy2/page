@@ -49,15 +49,21 @@
 <p><strong>Launch ACT directly from your web browser</strong></p>
 
 <p>We have prepared a set of ACT instances which can be launched directly via your web browser.</p>
-<p>Select the two genomes from the boxes below and then press "Launch" to start ACT.</p>
+<p>Select the two (or more) genomes from the boxes below and then press "Launch" to start ACT.</p>
 
 
-<form action="/pg/act" name="actform" id="actform">
+<form action="/cgi-bin/handle-act.pl" name="actform" id="actform">
   <dl class="twocol">
     <dt>Genome 1:</dt>
-    <dd><select name="ga" id="act_ga"><option value="">== select ==</option><option value="6851_2_73">Genome 1 (6851_2_73)</option><option value="6851_2_85">Genome 2 (6851_2_85)</option></select></dd>
+    <dd><select name="ga" id="act_1"><option value="">== select ==</option><option value="6851_2_73">Genome 1 (6851_2_73)</option><option value="6851_2_85">Genome 2 (6851_2_85)</option></select></dd>
     <dt>Genome 2:</dt>
-    <dd><select name="gb" id="act_gb"><option value="">== select ==</option><option value="6851_2_73">Genome 1 (6851_2_73)</option><option value="6851_2_85">Genome 2 (6851_2_85)</option></select></dd>
+    <dd><select name="gb" id="act_2"><option value="">== select ==</option><option value="6851_2_73">Genome 1 (6851_2_73)</option><option value="6851_2_85">Genome 2 (6851_2_85)</option></select></dd>
+    <dt>Genome 3:</dt>
+    <dd><select name="gb" id="act_3"><option value="">== select ==</option><option value="6851_2_73">Genome 1 (6851_2_73)</option><option value="6851_2_85">Genome 2 (6851_2_85)</option></select></dd>
+    <dt>Genome 4:</dt>
+    <dd><select name="gb" id="act_4"><option value="">== select ==</option><option value="6851_2_73">Genome 1 (6851_2_73)</option><option value="6851_2_85">Genome 2 (6851_2_85)</option></select></dd>
+    <dt>Genome 5:</dt>
+    <dd><select name="gb" id="act_5"><option value="">== select ==</option><option value="6851_2_73">Genome 1 (6851_2_73)</option><option value="6851_2_85">Genome 2 (6851_2_85)</option></select></dd>
   </dl>
   <div id="msg_box"></div>
   <div class="c"><input type="submit" value="Launch ACT" ></div>
@@ -84,11 +90,6 @@
     </span>
     This site is hosted by the <a href="http://www.sanger.ac.uk/">Wellcome Trust Sanger Institute</a>.
   </p>
-  <script type="text/javascript" src="/core/js/non-jquery/externals.js"></script>
-<script type="text/javascript" src="/core/js/non-jquery/stripes.js"></script>
-
-<script type="text/javascript" src="/core/js/trackers/piwik.js"></script>
-<script type="text/javascript" src="/core/js/trackers/piwik-run2.js"></script>
 
 <script type="text/javascript" src="/page/js/act.js"></script></body>
 </html>
