@@ -97,7 +97,7 @@ sub get_crunch_argument {
     my ( $alphabetically_second, $alphabetically_first ) = @_;
 
     return
-        '<argument>/Applications/MAMP/page-genome-data/crunch/everett_crunch/'
+        '<argument>/Applications/MAMP/page/genome-data/crunch/everett_crunch/'
       . "$alphabetically_first.$alphabetically_second.crunch.gz"
       . '</argument>';
 
@@ -107,7 +107,7 @@ sub get_embl_argument {
     my ($file) = @_;
 
     return
-        '<argument>/Applications/MAMP/page-genome-data/embl/everett_embl/'
+        '<argument>/Applications/MAMP/page/genome-data/embl/everett_embl/'
       . "$file.automated_annotation.embl.gz"
       . '</argument>';
 

@@ -56,7 +56,7 @@ sub get_embl_argument {
     my ($file) = @_;
 
     return
-        '<argument>/Applications/MAMP/page-genome-data/embl/everett_embl/'
+        '<argument>/Applications/MAMP/page/genome-data/embl/everett_embl/'
       . "$file.automated_annotation.embl.gz"
       . '</argument>';
 
