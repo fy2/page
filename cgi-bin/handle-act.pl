@@ -65,8 +65,7 @@ sub get_file_arguments {
     }
 
     my @all_arguments;
-    my $next_should_be_crunch_file = 0;
-    my $first_file                 = 1;
+    my $first_file = 1;
     my $previous_file;
 
     foreach my $file ( sort { $a cmp $b } @genome_selection )

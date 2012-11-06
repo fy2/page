@@ -45,8 +45,8 @@ sub generate_art_jnlp {
 
 END
 
-    exit 1 if !print "Content-Type: application/x-java-jnlp-file \n\n";
-    exit 1 if !print $JNLP_STRING;
+    print "Content-Type: application/x-java-jnlp-file \n\n";
+    print $JNLP_STRING;
 
     return 1;
 }
