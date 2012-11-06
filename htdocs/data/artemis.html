@@ -50,11 +50,24 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 
 <p>Select a genome from the box below and then press "Launch Artemis" to start Artemis.</p>
 
-<form action="/pg/artemis" name="artemisform" id="artemisform">
+<form action="/cgi-bin/handle-art.pl" name="artemisform" id="artemisform">
   <dl class="twocol">
+
     <dt>Genome:</dt>
-    <dd><select name="g" id="artemis"><option value="">== select ==</option><option value="6851_2_73">Genome 1 (6851_2_73)</option><option value="6851_2_85">Genome 2 (6851_2_85)</option></select></dd>
-  </dl>
+    <dd>
+	    <select name="genome1" id="act_1">
+	    	<option value="">== select ==</option>
+	    	<option value="3850_1#1">Genome 1 (3850_1#1)</option>
+	    	<option value="4350_6#3">Genome 2 (4350_6#3)</option>
+	    	<option value="4880_1#1">Genome 3 (4880_1#1)</option>
+	    	<option value="5390_6#5">Genome 4 (5390_6#5)</option>
+	    	<option value="5390_8#3">Genome 5 (5390_8#3)</option>
+	    </select>
+    </dd>
+    
+ </dl>
+  
+  
   <div id="msg_box"></div>
   <div class="c"><input type="submit" value="Launch Artemis" ></div>
 </form>
