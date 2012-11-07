@@ -78,7 +78,7 @@
 <p>Select the two (or more) genomes from the boxes below and then press "Launch" to start ACT.</p>
 
 
-<form action="/cgi-bin/handle-act.pl" name="actform" id="actform">
+<form action="/cgi-bin/process_act.pl" name="actform" id="actform">
   <dl class="twocol">
 
     <dt>Genome 1:</dt>

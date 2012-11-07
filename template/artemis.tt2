@@ -76,7 +76,7 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 
 <p>Select a genome from the box below and then press "Launch Artemis" to start Artemis.</p>
 
-<form action="/cgi-bin/handle-art.pl" name="artemisform" id="artemisform">
+<form action="/cgi-bin/process_art.pl" name="artemisform" id="artemisform">
   <dl class="twocol">
 
     <dt>Genome:</dt>
@@ -111,10 +111,9 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
       <ul>
         <li><a href="/">Home</a></li>
 
-        <li<a href=
-        "/consortium.html">Consortium</a></li>
+        <li><a href="/consortium.html">Consortium</a></li>
 
-        <li class="active">><a href="/data/data.html">Data</a></li>
+        <li class="active"><a href="/data/data.html">Data</a></li>
 
         <li><a href="/contact.html">Contact</a></li>
       </ul>
