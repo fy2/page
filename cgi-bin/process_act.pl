@@ -8,6 +8,8 @@ use CGI::Carp qw(fatalsToBrowser);
 use Readonly;
 
 Readonly::Scalar my $NUMBER_OF_OPTIONS => 5;
+Readonly::Scalar my $LOGGED_IN_USER => 'everett';
+Readonly::Scalar my $DATA_ROOT_DIR => '/Applications/MAMP/page/genome-data';
 
 my $q = CGI->new;
 
@@ -97,7 +99,7 @@ sub get_crunch_argument {
     my ( $alphabetically_second, $alphabetically_first ) = @_;
 
     return
-        '<argument>/Applications/MAMP/page/genome-data/crunch/everett_crunch/'
+        "<argument>$DATA_ROOT_DIR/crunch/$LOGGED_IN_USER/"
       . "$alphabetically_first.$alphabetically_second.crunch.gz"
       . '</argument>';
 
@@ -107,7 +109,7 @@ sub get_embl_argument {
     my ($file) = @_;
 
     return
-        '<argument>/Applications/MAMP/page/genome-data/embl/everett_embl/'
+        "<argument>$DATA_ROOT_DIR/embl/$LOGGED_IN_USER/"
       . "$file.automated_annotation.embl.gz"
       . '</argument>';
 

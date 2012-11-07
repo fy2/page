@@ -8,6 +8,10 @@ use CGI::Carp qw(fatalsToBrowser);
 use Readonly;
 
 Readonly::Scalar my $NUMBER_OF_OPTIONS => 5;
+Readonly::Scalar my $LOGGED_IN_USER => 'everett';
+Readonly::Scalar my $DATA_ROOT_DIR => '/Applications/MAMP/page/genome-data';
+
+
 
 my $q = CGI->new;
 
@@ -56,7 +60,7 @@ sub get_embl_argument {
     my ($file) = @_;
 
     return
-        '<argument>/Applications/MAMP/page/genome-data/embl/everett_embl/'
+        "<argument>$DATA_ROOT_DIR/embl/$LOGGED_IN_USER/"
       . "$file.automated_annotation.embl.gz"
       . '</argument>';
 
