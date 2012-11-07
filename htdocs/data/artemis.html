@@ -76,12 +76,13 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 
 <p>Select a genome from the box below and then press "Launch Artemis" to start Artemis.</p>
 
-<form action="/cgi-bin/process_art.pl" name="artemisform" id="artemisform">
+<!-- appending "/artemis.JNLP" to the URL in order to control the default filename when downloading a file via CGI -->
+<form action="/cgi-bin/process_art.pl/artemis.JNLP" name="artemisform" id="artemisform">
   <dl class="twocol">
 
     <dt>Genome:</dt>
     <dd>
-	    <select name="genome1" id="act_1">
+	    <select name="genome1" id="artemis_1">
 	    	<option value="">== select ==</option>
                 
                    <option value="3850_1#1"> Genome 1 (3850_1#1)</option>
@@ -285,6 +286,9 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
   <p id="inst"><span><a href="/cookiespolicy.html">Cookies policy</a> |
   <a href="/s-inst/legal.html">Terms &amp; Conditions</a></span> This
   site is hosted by the <a href="http://www.sanger.ac.uk/">Wellcome
-  Trust Sanger Institute</a>.</p>
+      Trust Sanger Institute</a>.</p>
+
+  <script type="text/javascript" src="/page/js/formcheck.js"></script>
+
 </body>
 </html>

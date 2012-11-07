@@ -78,7 +78,8 @@
 <p>Select the two (or more) genomes from the boxes below and then press "Launch" to start ACT.</p>
 
 
-<form action="/cgi-bin/process_act.pl" name="actform" id="actform">
+<!-- appending "/act.JNLP" to the URL in order to control the default filename when downloading a file via CGI -->
+<form action="/cgi-bin/process_act.pl/act.JNLP" name="actform" id="actform">
   <dl class="twocol">
 
     <dt>Genome 1:</dt>
@@ -169,5 +170,8 @@
   <a href="/s-inst/legal.html">Terms &amp; Conditions</a></span> This
   site is hosted by the <a href="http://www.sanger.ac.uk/">Wellcome
   Trust Sanger Institute</a>.</p>
+  
+  <script type="text/javascript" src="/page/js/formcheck.js"></script>
+
 </body>
 </html>
