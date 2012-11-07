@@ -89,8 +89,9 @@ sub get_file_arguments {
 
         $previous_file = $file;
     }
-
-    return \@all_arguments;
+    
+    my @reversed_arguments = reverse @all_arguments; #in order to avoid, artemis, giving the flipping genome warning.
+    return \@reversed_arguments;
 
 }
 
