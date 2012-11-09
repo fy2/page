@@ -16,7 +16,7 @@ PageApp::Controller::Root - Root Controller for PageApp
 
 =head1 DESCRIPTION
 
-[enter your description here]
+Demo. web application for the Gates' foundations PAGe project.
 
 =head1 METHODS
 
@@ -29,8 +29,16 @@ The root page (/)
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
-    # Hello World
-    $c->response->body( $c->welcome_message );
+    #we stash a variable called "active action", which is inspected
+    #by our wrapper template toolkit "wrapper.tt2". Template toolkit
+    #looks which menu item in our pageapp.yaml has the same value as 
+    #our "active_action", and when found, it highlights the title of 
+    #that menu in our website.
+    $c->stash( active_action => 'index' );
+    
+    #index.tt2 will be wrapped automatically by "wrapper.tt2" file
+    #because we set this up PageApp::View::HTML.
+    $c->stash->{template} = 'index.tt2';
 }
 
 =head2 default

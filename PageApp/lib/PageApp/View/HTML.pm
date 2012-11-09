@@ -5,8 +5,18 @@ use namespace::autoclean;
 extends 'Catalyst::View::TT';
 
 __PACKAGE__->config(
-    TEMPLATE_EXTENSION => '.tt',
+    # Change default TT extension
+    TEMPLATE_EXTENSION => '.tt2',
     render_die => 1,
+    INCLUDE_PATH => [
+        PageApp->path_to('root', 'src'),
+    ],
+    # Set to 1 for detailed timer stats in your HTML as comments
+    TIMER => 0,
+
+    # This is your wrapper template located in the 'root/src'
+    WRAPPER => 'wrapper.tt2',
+
 );
 
 =head1 NAME

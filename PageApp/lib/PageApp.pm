@@ -15,11 +15,15 @@ use Catalyst::Runtime 5.80;
 #                 application's home directory
 # Static::Simple: will serve static files from the application's root
 #                 directory
+# StackTrace:     You will want to disable StackTrace before you put your application
+#                 into production, but it can be helpful during development
 
 use Catalyst qw/
     -Debug
     ConfigLoader
     Static::Simple
+
+    StackTrace
 /;
 
 extends 'Catalyst';
@@ -40,6 +44,14 @@ __PACKAGE__->config(
     # Disable deprecated behavior needed by old applications
     disable_component_resolution_regex_fallback => 1,
     enable_catalyst_header => 1, # Send X-Catalyst header
+);
+
+__PACKAGE__->config(
+    'View::HTML' => {
+        INCLUDE_PATH => [
+            __PACKAGE__->path_to('root', 'src'),
+        ],
+    },
 );
 
 # Start the application
