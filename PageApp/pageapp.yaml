@@ -6,7 +6,7 @@ name: PageApp
 #currently, we only support one-level (primary) menus
 navigation:
     primary:
-        - action: index
+        - action: /
           title: HOME
         - action: consortium
           title: CONSORTIUM

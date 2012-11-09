@@ -34,7 +34,7 @@ sub index :Path :Args(0) {
     #looks which menu item in our pageapp.yaml has the same value as 
     #our "active_action", and when found, it highlights the title of 
     #that menu in our website.
-    $c->stash( active_action => 'index' );
+    $c->stash( active_action => '/' );
     
     #index.tt2 will be wrapped automatically by "wrapper.tt2" file
     #because we set this up PageApp::View::HTML.
