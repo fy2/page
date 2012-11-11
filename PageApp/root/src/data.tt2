@@ -1,0 +1,37 @@
+<h2><span class="page">Data</span></h2>
+    <p>
+      PAGe datasets can be downloaded and viewed locally or directly from your browser.
+    </p>
+
+    <div class="thumb">
+      <a href="[% c.uri_for('/data/artemis') %]"><img src="[% c.uri_for('/static/page/gfx/artemis_230_bw.png') %]" style="width:150px;height:105px" alt="[photo]" ></a>
+      <h3><a href="[% c.uri_for('/data/artemis') %]">Genome Viewer</a></h3>
+      <p class="affiliation">
+        Use Artemis to browse or annotate genomes
+      </p>Artemis is a genome browser and annotation tool that allows visualisation of sequence features within the context of
+      the sequence, and also its six-frame translation.
+    </div>
+    <div class="thumb">
+      <a href="[% c.uri_for('/data/act') %]"><img src="[% c.uri_for('/static/page/gfx/act_230_bw.png') %]" style="width:150px;height:105px" alt="[photo]" ></a>
+      <h3><a href="[% c.uri_for('/data/act') %]">Genome Comparison</a></h3>
+      <p class="affiliation">
+        Use Artemis Comparison Tool (ACT)
+      </p>ACT is a tool for displaying pairwise comparisons between two or more DNA sequences.
+    </div>
+    <div class="thumb">
+      <a href="http://www.spatialepidemiology.net/snp/stephano.html?dataSet=spn1"><img src="[% c.uri_for('/static/page/gfx/spatial_bw.png') %]" style=
+      "width:150px;height:105px" alt="[photo]" ></a>
+      <h3><a href="http://www.spatialepidemiology.net/snp/stephano.html?dataSet=spn1">Phylogeography</a></h3>
+      <p class="affiliation">
+        Visualise differences within the context of geographical location
+      </p>Spatial Viewer was developed by the London Imperial College. It displays variations between genomes in a geographical
+      context along with the relevant SNP information.
+    </div>
+
+    <div class="thumb">
+      <a href="[% c.uri_for('/data/download') %]"><img src="[% c.uri_for('/static/page/gfx/enter_on_key_board_bw.jpg') %]" style="width:150px;height:105px" alt="[photo]" ></a>
+      <h3><a href="[% c.uri_for('/data/download') %]">Download Analysis</a></h3>
+      <p class="affiliation">
+        Download analysis results to your local machine
+      </p> Follow this link for instructions in order to get a local copy of your PAGe analysis data. 
+    </div>

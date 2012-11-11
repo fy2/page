@@ -27,6 +27,29 @@ sub index :Path :Args(0) {
     $c->response->body('Matched PageApp::Controller::Page in Page.');
 }
 
+=head2 consortium
+
+=cut
+
+sub consortium :Path('consortium') {
+    my ( $self, $c ) = @_;
+    
+    $c->stash( active_action => '/page/consortium' );
+    
+    $c->stash->{template} = 'consortium.tt2';
+}
+
+=head2 contact
+
+=cut
+
+sub contact :Path('contact') {
+    my ( $self, $c ) = @_;
+    
+    $c->stash( active_action => '/page/contact' );
+    
+    $c->stash->{template} = 'contact.tt2';
+}
 
 =head1 AUTHOR
 
