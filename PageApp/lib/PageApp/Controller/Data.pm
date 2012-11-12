@@ -24,8 +24,11 @@ Catalyst Controller.
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     
+    #$c->response->redirect($c->uri_for(
+     #           $c->controller('Login')->action_for('data')));
+                
     $c->stash( active_action => '/data' );
-    
+
     $c->stash->{template} = 'data.tt2';
 }
 
@@ -75,21 +78,6 @@ sub resources :Path('resources'){
     $c->stash( active_action => '/data/resources' );
     
     $c->stash->{template} = 'resources.tt2';
-}
-
-=head2 resources
-
-=cut
-
-sub authenticate :Path('authenticate'){
-    my ( $self, $c ) = @_;
-    
-    #Depending on the second argument decide which of the 
-    #two menu items below to highlight:
-    #$c->stash( active_action => '/data/authenticate/resources' );
-    #$c->stash( active_action => '/data/authenticate/data' );
-    
-    $c->stash->{template} = 'authenticate.tt2';
 }
 
 =head1 AUTHOR

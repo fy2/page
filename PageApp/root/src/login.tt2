@@ -6,7 +6,7 @@
    Please use your PAGe access password to enter this section.  
  </p>
     
-  <form name="loginform" method="post" action="/page/authenticate" id="loginform">
+  <form method="post" action="[% c.uri_for('/login') %]">
     <table border="1">
       <tr>
         <td class="pageloginlabel"><label>Username:</label></td>
@@ -22,12 +22,16 @@
 
       <tr>
         <td></td>
-
-        <td><input class="pagelogin" id="loginButton" name="login" type="submit" value="Log In" /></td>
+        <td><input type="submit" class="pagelogin" id="submit" name="submit"  value="Submit" /></td>
       </tr>
     </table>
   </form>
-  
+ 
+ [% IF error_msg %]
+   
+    <div id="msg_box"><div class="msg">[% error_msg %]</div></div> 
+ [% END %]
+    
  <p><strong>Forgot your password?</strong><br>
     Please <a href="[% c.uri_for('/page/contact') %]">contact</a> your PAGe representative if you have lost or not received a password.  
  </p>
