@@ -9,9 +9,9 @@ navigation:
           title: HOME
         - action: /page/consortium
           title: CONSORTIUM
-        - action: /data
+        - action: /data/authenticate/data
           title: DATA
-        - action: /data/resources
+        - action: /data/authenticate/resources
           title : RESOURCES
         - action: /page/contact
           title : CONTACT

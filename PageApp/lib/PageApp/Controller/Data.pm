@@ -77,6 +77,21 @@ sub resources :Path('resources'){
     $c->stash->{template} = 'resources.tt2';
 }
 
+=head2 resources
+
+=cut
+
+sub authenticate :Path('authenticate'){
+    my ( $self, $c ) = @_;
+    
+    #Depending on the second argument decide which of the 
+    #two menu items below to highlight:
+    #$c->stash( active_action => '/data/authenticate/resources' );
+    #$c->stash( active_action => '/data/authenticate/data' );
+    
+    $c->stash->{template} = 'authenticate.tt2';
+}
+
 =head1 AUTHOR
 
 Feyruz Yalcin

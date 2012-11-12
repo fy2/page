@@ -21,3 +21,22 @@ h2,h3,h4 { background: #fff; clear: both }
 #nav li.active a, #nav li a:hover { border: 0; background-color: #467aa7; color: #fff }
 
 #msg_box div { background-color: #fcc; padding: 1em; margin: 1em; font-weight:bold; color:#900}
+
+.pageloginlabel
+{
+/*text-align:left;
+width: 10px;
+*/
+display: block;
+width: 20px;
+float: left;
+text-align: right;
+
+}
+
+.pagelogin {   border: 1px solid #088DCC; }
+
+.pagelogin:hover {
+    border: 1px solid #088DCC;
+    background: #088DCC;
+}
