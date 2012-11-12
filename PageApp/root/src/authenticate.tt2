@@ -28,7 +28,6 @@
     </table>
   </form>
   
-  <p><strong>Forgot your password?</strong><br>
-
-    <a href="[% c.uri_for('/page/contact') %]">Contact</a> your PAGe representative if you have lost or not received a password.  
-    </p>
+ <p><strong>Forgot your password?</strong><br>
+    Please <a href="[% c.uri_for('/page/contact') %]">contact</a> your PAGe representative if you have lost or not received a password.  
+ </p>
