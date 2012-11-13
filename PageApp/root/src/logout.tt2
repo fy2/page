@@ -1,0 +1,4 @@
+[%- # Provide a title to the wrapper.tt2 -%]
+[% META title = 'PAGe Logout' -%]
+
+ <div id="msg_box"><div class="msg">You have been signed out successfully. Thanks for visiting us.</div></div>

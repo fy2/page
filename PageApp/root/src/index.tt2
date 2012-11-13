@@ -1,3 +1,6 @@
+[%- # Provide a title to the wrapper.tt2 -%]
+[% META title = 'PAGe Home' -%]
+
     <h2>PAGe</h2>
     <p>
 The Pneumococcal African Genome project (PAGe) is a consortium funded by the Bill and Melinda Gates Foundation 

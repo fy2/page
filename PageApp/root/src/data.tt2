@@ -1,3 +1,6 @@
+[%- # Provide a title to the wrapper.tt2 -%]
+[% META title = 'PAGe Data' -%]
+
 <h2><span class="page">Data</span></h2>
     <p>
       PAGe datasets can be downloaded and viewed locally or directly from your browser.

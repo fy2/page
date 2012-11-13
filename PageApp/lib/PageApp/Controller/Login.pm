@@ -40,6 +40,10 @@ sub index :Path :Args(0) {
         if ($c->authenticate({ username => $username,
                                password => $password  } )) {
             # If successful, then let them use the application
+            
+            
+            $c->session->{active_user} = $username;
+               
             $c->response->redirect($c->uri_for(
                 $c->controller('Data')->action_for('index')));
             return;
