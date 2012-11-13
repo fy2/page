@@ -29,13 +29,18 @@ h2,h3,h4 { background: #fff; clear: both }
 	color: #020202;
 	position: relative;
 	text-decoration: underline;
-	right: -500px;
+	/*right: -500px;
 	top: 128px;
-	
 	height: 5px;
-	width: 135px; 
+	width: 135px;*/ 
+	right: -446px;
+	top: 127px;
+	height: 5px;
+	width: 191px;
+
 	margin: 0 auto;
 	text-align: right;
+	
 }
 
 .pageloginstatus a {

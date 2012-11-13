@@ -44,10 +44,10 @@
       <a href="/"><img src="[% c.uri_for('/static/page/gfx/page-logo.png') %]" alt="Page Logo" ></a>
 
       [% IF c.user_exists %]
-      	<div class="pageloginstatus"> <a href="[% c.uri_for('/logout') %]">([% c.session.active_user %]) Logout</a>  </div>
+      	<div class="pageloginstatus"> <a href="[% c.uri_for('/logout') %]">[% c.session.active_user %] [Logout]</a>  </div>
       [% ELSE %]
       	[% IF template.title != 'PAGe Login' %]
-	      	<div class="pageloginstatus"> <a href="[% c.uri_for('/login') %]">Login</a>  </div>
+	      	<div class="pageloginstatus"> <a href="[% c.uri_for('/login') %]">[Login]</a>  </div>
       	[% END %]
       [% END %]
       
