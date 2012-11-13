@@ -7,7 +7,7 @@ function getDDValue( id ) {
 //check the value completeness at /login action
 function notEmpty( username, password ) {
 
-	if (!username.value.length && 
+	if (!username.value.length || 
 		!password.value.length) 
 	{
 		
