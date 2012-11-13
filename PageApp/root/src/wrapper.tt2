@@ -46,7 +46,9 @@
       [% IF c.user_exists %]
       	<div class="pageloginstatus"> <a href="[% c.uri_for('/logout') %]">([% c.session.active_user %]) Logout</a>  </div>
       [% ELSE %]
-      	<div class="pageloginstatus"> <a href="[% c.uri_for('/login') %]">Login</a>  </div>
+      	[% IF template.title != 'PAGe Login' %]
+	      	<div class="pageloginstatus"> <a href="[% c.uri_for('/login') %]">Login</a>  </div>
+      	[% END %]
       [% END %]
       
       <div class="x">&nbsp;</div>

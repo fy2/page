@@ -5,22 +5,22 @@
  <h3>PAGe consortium members zone</h3>
  
  <p>
-    The selected section contains various views to the PAGe consortium member data. The access to these materials is restricted. 
+   The selected section contains various views for the PAGe consortium member data. The access to these materials is restricted. 
    Please use your PAGe access password to enter this section.  
  </p>
     
   <form method="post" action="[% c.uri_for('/login') %]">
-    <table border="1">
+    <table id="logintable" border="1">
       <tr>
-        <td class="pageloginlabel"><label>Username:</label></td>
+        <td class="pageloginlabel"><label>Username</label></td>
 
-        <td><input  size="40" type="text" name="username" id="username" /></td>
+        <td><input  size="25" type="text" name="username" id="username" /></td>
       </tr>
 
       <tr>
-        <td class="pageloginlabel"><label>Password:</label></td>
+        <td class="pageloginlabel"><label>Password</label></td>
 
-        <td><input " size="40" type="password" name="password" id="password" /></td>
+        <td><input " size="25" type="password" name="password" id="password" /></td>
       </tr>
 
       <tr>
