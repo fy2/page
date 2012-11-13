@@ -25,14 +25,15 @@
 
       <tr>
         <td></td>
-        <td><input type="submit" class="pagelogin" id="submit" name="submit"  value="Submit" /></td>
+        <td><input onclick="return(notEmpty(document.getElementById('username'), document.getElementById('password')));" type="submit" class="pagelogin" id="submit" name="submit"  value="Submit" /></td>
       </tr>
     </table>
   </form>
  
- [% IF error_msg %]
-   
-    <div id="msg_box"><div class="msg">[% error_msg %]</div></div> 
+ [% IF error_msg %]   
+    <div id="msg_box"><div class="msg">[% error_msg %]</div></div>
+ [% ELSE %]
+ 	<div id="msg_box"></div>    
  [% END %]
     
  <p><strong>Forgot your password?</strong><br>

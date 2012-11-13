@@ -85,6 +85,10 @@ template toolkit.
         </ul>
     </div>
   </div>
-
 </body>
+	[% IF c.stash.add_js_files %]
+		[% FOREACH jsfile IN c.stash.add_js_files %]
+			<script type="text/javascript" src="[% c.uri_for(jsfile) %]"></script></body>
+		[% END %]
+	[% END %]
 </html>
