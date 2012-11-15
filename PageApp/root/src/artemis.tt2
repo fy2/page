@@ -27,7 +27,7 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 	    <select name="genome1" id="artemis_1">
 	    	<option value="">== select ==</option>
                 [% FOREACH genome IN c.stash.genome_list %]
-                   <option value="[% genome.sanger_lane_id %]"> Genome [% genome.sanger_lane_id %] ([% genome.strain_id %])</option>
+                   <option value="[% genome.sanger_lane_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_lane_id %])</option>
                 [% END %]
             </select>
     </dd>

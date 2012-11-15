@@ -101,8 +101,22 @@ sub stash_genome_list_for_user {
                                     ->search_related('role')
                                     ->search_related('genome_roles')
                                     ->search_related('genome');
-
-    $c->stash->{genome_list} = \@dbix_class_result_set_genome;
+                                    
+    
+    
+    my @genomes;
+    my $i = 1;
+    {
+        no warnings;
+        foreach my $genome ( sort { $b->sanger_lane_id cmp $a->sanger_lane_id } @dbix_class_result_set_genome ) {
+            
+            push @genomes, {  sanger_lane_id => $genome->sanger_lane_id
+                            , counter        => $i++
+                            , strain_id      => $genome->strain_id  
+                           };
+        }
+    }  
+    $c->stash->{genome_list} = \@genomes;
     
     return 1;
 }
