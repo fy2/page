@@ -137,8 +137,9 @@ Composing rels: L</user_roles> -> role
 __PACKAGE__->many_to_many("roles", "user_roles", "role");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2012-11-13 14:16:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:L4W3oFmtN1UeEfPs5QFs0w
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2012-11-15 12:00:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:oPQkp8rmyT1Prj+hMvDsQg
+
 
 # Have the 'password' column use a SHA-1 hash and 20-byte salt
 # with RFC 2307 encoding; Generate the 'check_password" method

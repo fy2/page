@@ -34,11 +34,11 @@ extends 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "PassphraseColumn");
 
-=head1 TABLE: C<role>
+=head1 TABLE: C<roles>
 
 =cut
 
-__PACKAGE__->table("role");
+__PACKAGE__->table("roles");
 
 =head1 ACCESSORS
 
@@ -76,6 +76,21 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
+=head2 genome_roles
+
+Type: has_many
+
+Related object: L<PageApp::Schema::Result::GenomeRole>
+
+=cut
+
+__PACKAGE__->has_many(
+  "genome_roles",
+  "PageApp::Schema::Result::GenomeRole",
+  { "foreign.role_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 user_roles
 
 Type: has_many
@@ -91,6 +106,16 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 genomes
+
+Type: many_to_many
+
+Composing rels: L</genome_roles> -> genome
+
+=cut
+
+__PACKAGE__->many_to_many("genomes", "genome_roles", "genome");
+
 =head2 users
 
 Type: many_to_many
@@ -102,8 +127,8 @@ Composing rels: L</user_roles> -> user
 __PACKAGE__->many_to_many("users", "user_roles", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2012-11-13 14:16:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Nmj9viy/5XkwQb2fOhn/pA
+# Created by DBIx::Class::Schema::Loader v0.07033 @ 2012-11-15 12:00:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:y2nTpf9m1nqbaFT+NnFIrQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

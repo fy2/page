@@ -3,7 +3,7 @@
 --
 PRAGMA foreign_keys = ON;
 
-CREATE TABLE user (
+CREATE TABLE users (
         id            INTEGER PRIMARY KEY,
         username      TEXT,
         password      TEXT,
@@ -12,40 +12,40 @@ CREATE TABLE user (
         last_name     TEXT,
         active        INTEGER
 );
-CREATE TABLE role (
+CREATE TABLE roles (
         id   INTEGER PRIMARY KEY,
         role TEXT
 );
-CREATE TABLE user_role (
-        user_id INTEGER REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE,
-        role_id INTEGER REFERENCES role(id) ON DELETE CASCADE ON UPDATE CASCADE,
+CREATE TABLE user_roles (
+        user_id INTEGER REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+        role_id INTEGER REFERENCES roles(id) ON DELETE CASCADE ON UPDATE CASCADE,
         PRIMARY KEY (user_id, role_id)
 );
 
 --
 -- Load up some initial test data
 --
-INSERT INTO user VALUES (1, 'everett',  'test',  't02@na.com', 'Jane', 'Doe',  1);
-INSERT INTO user VALUES (2, 'gottberg', 'test',  't01@na.com', 'Joe',  'Blow', 1);
-INSERT INTO user VALUES (3, 'antonio',  'test',  't03@na.com', 'No',   'Go',   0);
-INSERT INTO user VALUES (4, 'collard',  'test',  't03@na.com', 'No',   'Go',   0);
+INSERT INTO users VALUES (1, 'everett',  'test',  't02@na.com', 'Jane', 'Doe',  1);
+INSERT INTO users VALUES (2, 'gottberg', 'test',  't01@na.com', 'Joe',  'Blow', 1);
+INSERT INTO users VALUES (3, 'antonio',  'test',  't03@na.com', 'No',   'Go',   0);
+INSERT INTO users VALUES (4, 'collard',  'test',  't03@na.com', 'No',   'Go',   0);
 
-INSERT INTO role VALUES (1, 'everett');
-INSERT INTO role VALUES (2, 'gottberg');
-INSERT INTO role VALUES (3, 'antonio');
-INSERT INTO role VALUES (4, 'collard');
+INSERT INTO roles VALUES (1, 'everett');
+INSERT INTO roles VALUES (2, 'gottberg');
+INSERT INTO roles VALUES (3, 'antonio');
+INSERT INTO roles VALUES (4, 'collard');
 
-INSERT INTO user_role VALUES (1, 1); --user id, role id
-INSERT INTO user_role VALUES (2, 2);
-INSERT INTO user_role VALUES (3, 3);
-INSERT INTO user_role VALUES (4, 4);
+INSERT INTO user_roles VALUES (1, 1); --users id, role id
+INSERT INTO user_roles VALUES (2, 2);
+INSERT INTO user_roles VALUES (3, 3);
+INSERT INTO user_roles VALUES (4, 4);
 
 
 
 --
 --Note The genome metadata field:
 --
-CREATE TABLE genome (
+CREATE TABLE genomes (
         id                  INTEGER PRIMARY KEY AUTOINCREMENT,
         sanger_lane_id      TEXT UNIQUE,  --e.g. 1234_5#6
         sanger_study_id     INTEGER,
@@ -117,8 +117,8 @@ CREATE TABLE genome (
 --
 -- Which roles are allowed to see which genomes?
 --
-CREATE TABLE genome_role (
-        genome_id INTEGER REFERENCES genome(id) ON DELETE CASCADE ON UPDATE CASCADE,
-        role_id role_id INTEGER REFERENCES role(id) ON DELETE CASCADE ON UPDATE CASCADE,
+CREATE TABLE genome_roles (
+        genome_id INTEGER REFERENCES genomes(id) ON DELETE CASCADE ON UPDATE CASCADE,
+        role_id role_id INTEGER REFERENCES roles(id) ON DELETE CASCADE ON UPDATE CASCADE,
         PRIMARY KEY (genome_id, role_id)
 );
