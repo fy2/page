@@ -19,10 +19,14 @@ my $RAW_DATA_DIR = '/Applications/MAMP/page/PageApp/root/rawdata';
 #    ├── annotation
 #    └── crunch
 
-my $DBH = DBI->connect("dbi:SQLite:dbname=test.db","","");
+
+my $db_name = $ARGV[0];
+my $meta_tab_file = $ARGV[1];
+
+my $DBH = DBI->connect("dbi:SQLite:dbname=$db_name","","");
 
 #insert the meta_data
-my $seen_lane_id_href = insert_meta_data( $ARGV[0] );
+my $seen_lane_id_href = insert_meta_data( $meta_tab_file );
 
 print Dumper $seen_lane_id_href;
 
@@ -37,7 +41,7 @@ sub insert_meta_data {
     
     my $file_to_load = shift;
     #65 fields...
-    my $sth = $DBH->prepare("INSERT INTO genomes(
+    my $sth = $DBH->prepare("INSERT INTO genome(
         sanger_lane_id, sanger_study_id, site, country_contact, mta_agreement, strain_id, strain_id_sanger, top_serotype, top_serotype_perc, second_seotype, second_seotype_perc, mlst, analysis_status, analysis_comment, jusficitation, gender, age_in_years, age_in_months, body_source, meningitis_outbreak_isolate, hiv, date_of_isolation, context, country_of_origin, region, city, hospital, latitude, longitude, location_country, location_city, cd4_count, age_category, no, lab_no, country_st, country, date_received, culture_received, sa_st, sa_penz, sa_eryz, sa_cliz, sa_tetz, sa_chlz, sa_rifz, sa_optz, sa_penmic, sa_amomic, sa_furmic, sa_cromic, sa_taxmic, sa_mermic, sa_vanmic, sa_erymic, sa_telmic, sa_climic, sa_tetmic, sa_cotmic, sa_chlmic, sa_cipmic, sa_levmic, sa_rifmic, sa_linmic, sa_synmic) 
         VALUES (
         ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
