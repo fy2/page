@@ -22,6 +22,7 @@ requires 'Catalyst::Plugin::Authorization::Roles';
 requires 'Catalyst::Plugin::Session';
 requires 'Catalyst::Plugin::Session::Store::File';
 requires 'Catalyst::Plugin::Session::State::Cookie';
+requites 'Catalyst::Plugin::StackTrace';
 requires 'DBIx::Class::PassphraseColumn';
 requires 'DBIx::Class::TimeStamp';
 requires 'Template';
