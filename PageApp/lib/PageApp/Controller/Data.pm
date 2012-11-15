@@ -23,9 +23,16 @@ Catalyst Controller.
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
-       
+
     $c->stash( active_action => '/data' );
 
+    #warn $dbix_class_result_set_genome;  
+    #while( my $genome = $dbix_class_result_set_genome->next) {
+    #    warn $genome->sanger_lane_id;
+    #}
+    
+
+    
     $c->stash->{template} = 'data.tt2';
 }
 
@@ -35,6 +42,9 @@ sub index :Path :Args(0) {
 
 sub artemis :Path('artemis') {
     my ( $self, $c ) = @_;
+    
+    #will stash a list of genomes to "genome_list" in context obj
+    $self->stash_genome_list_for_user($c);
     
     $c->stash( active_action => '/data' );
     
@@ -47,6 +57,9 @@ sub artemis :Path('artemis') {
 
 sub act :Path('act'){
     my ( $self, $c ) = @_;
+    
+    #will stash a list of genomes to "genome_list" in context obj
+    $self->stash_genome_list_for_user($c);
     
     $c->stash( active_action => '/data' );
     
@@ -77,6 +90,22 @@ sub resources :Path('resources'){
     $c->stash->{template} = 'resources.tt2';
 }
 
+=head2 stash_genome_list_for_user 
+
+=cut
+
+sub stash_genome_list_for_user {
+    
+    my ($self, $c) = @_;
+    my @dbix_class_result_set_genome = $c->user->user_roles
+                                    ->search_related('role')
+                                    ->search_related('genome_roles')
+                                    ->search_related('genome');
+
+    $c->stash->{genome_list} = \@dbix_class_result_set_genome;
+    
+    return 1;
+}
 
 =head2 auto
 

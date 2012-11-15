@@ -15,3 +15,10 @@ navigation:
           title : RESOURCES
         - action: /page/contact
           title : CONTACT
+
+#this is where we store the datasets specific to each "role" in
+#role table. the user role directories must have the same name 
+#as the role name. The subdirs of these have a sytematic name hierarchy
+#Currently, "annotation" and "crunch" sub dirs are available
+data:
+    root: /Applications/MAMP/page/PageApp/root/rawdata
