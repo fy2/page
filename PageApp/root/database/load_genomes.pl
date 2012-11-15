@@ -19,7 +19,6 @@ my $RAW_DATA_DIR = '/Applications/MAMP/page/PageApp/root/rawdata';
 #    ├── annotation
 #    └── crunch
 
-
 my $db_name = $ARGV[0];
 my $meta_tab_file = $ARGV[1];
 
@@ -28,20 +27,15 @@ my $DBH = DBI->connect("dbi:SQLite:dbname=$db_name","","");
 #insert the meta_data
 my $seen_lane_id_href = insert_meta_data( $meta_tab_file );
 
-print Dumper $seen_lane_id_href;
-
 #read the directories contents in each role dir and create
 #a database link
 create_genome_and_role_links_in_db($seen_lane_id_href);
-
-
-
 
 sub insert_meta_data {
     
     my $file_to_load = shift;
     #65 fields...
-    my $sth = $DBH->prepare("INSERT INTO genome(
+    my $sth = $DBH->prepare("INSERT INTO genomes(
         sanger_lane_id, sanger_study_id, site, country_contact, mta_agreement, strain_id, strain_id_sanger, top_serotype, top_serotype_perc, second_seotype, second_seotype_perc, mlst, analysis_status, analysis_comment, jusficitation, gender, age_in_years, age_in_months, body_source, meningitis_outbreak_isolate, hiv, date_of_isolation, context, country_of_origin, region, city, hospital, latitude, longitude, location_country, location_city, cd4_count, age_category, no, lab_no, country_st, country, date_received, culture_received, sa_st, sa_penz, sa_eryz, sa_cliz, sa_tetz, sa_chlz, sa_rifz, sa_optz, sa_penmic, sa_amomic, sa_furmic, sa_cromic, sa_taxmic, sa_mermic, sa_vanmic, sa_erymic, sa_telmic, sa_climic, sa_tetmic, sa_cotmic, sa_chlmic, sa_cipmic, sa_levmic, sa_rifmic, sa_linmic, sa_synmic) 
         VALUES (
         ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
@@ -49,7 +43,6 @@ sub insert_meta_data {
 
     open IN, $file_to_load or die $!;
 
-    my $i =1;
     my %lane_ids;
     while(<IN>) {
 
@@ -57,8 +50,7 @@ sub insert_meta_data {
         die "expected 65 fields, but got: " . scalar @fields if scalar @fields != 65;
         $sth->execute(@fields);
         $lane_ids{$fields[0]}= $DBH->sqlite_last_insert_rowid();
-        print "inserted: $i rows\n";
-        $i++;
+        print "inserted", ",", $lane_ids{$fields[0]}, " into genomes\n";
 
     }
 
@@ -85,12 +77,12 @@ sub create_genome_and_role_links_in_db {
 
     my $lane_ids_to_inspect = shift;
 
-    my $sth = $DBH->prepare("SELECT id, role FROM role");
+    my $sth = $DBH->prepare("SELECT id, role FROM roles");
     $sth->execute;
     
     my @new_lane_ids;
  
-    my $sth2 = $DBH->prepare("INSERT INTO genome_role (genome_id, role_id) values (?, ?)" );
+    my $sth2 = $DBH->prepare("INSERT INTO genome_roles (genome_id, role_id) values (?, ?)" );
     
    #for each role:
     while (my $role = $sth->fetchrow_hashref) {
@@ -106,13 +98,10 @@ sub create_genome_and_role_links_in_db {
             if ( exists $lane_ids_to_inspect->{$prefix} ) {
                                #primary id of genome,                 #primary id of role
                 $sth2->execute($lane_ids_to_inspect->{$prefix}, $role->{id});
+                print "inserted", ",", $lane_ids_to_inspect->{$prefix}, ",", $role->{id}, " into genome_roles\n";
             }
         }
     }
 }
 
 $DBH->disconnect;  # or call $dbh->rollback; to undo changes
-
-
-
-
