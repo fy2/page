@@ -18,7 +18,7 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 <p>Select a genome from the box below and then press "Launch Artemis" to start Artemis.</p>
 
 <!-- appending "/artemis.JNLP" to the URL in order to control the default filename when downloading a file via CGI -->
-<form action="/cgi-bin/process_art.pl/artemis.JNLP" name="artemisform" id="artemisform">
+<form action="[% c.uri_for('/data/artemisjnlp') %]" method="post" name="artemisform" id="artemisform">
 
    <dl class="twocol">
 

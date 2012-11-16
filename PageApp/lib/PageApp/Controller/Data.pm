@@ -51,6 +51,39 @@ sub artemis :Path('artemis') {
     $c->stash->{template} = 'artemis.tt2';
 }
 
+=head2 artemisjnlp
+
+=cut
+
+sub artemisjnlp :Path('artemisjnlp'){
+    my ( $self, $c ) = @_;
+    
+      
+    # Get the param argument for the selected genome and stash it so that 
+    #artemis_jnlp.tt2 can access it and render a JNLP
+    $c->stash->{selected_genome} = 
+                join '/', (  
+                           $c->config->{data}->{root}
+                           
+                           #This does not take into account that a user might have 
+                           #more than one role! (see the "ToDo" file in the main app dir)
+                         , $c->user->user_roles->search_related('role')->next->role
+                         
+                         , $c->config->{data}->{dir_name_of_annotation}
+                         
+                           #field is defined as "genome1" in the artemis.tt2 template
+                         , $c->request->param('genome1') . $c->config->{data}->{file_extension_of_annotation}
+                         );
+    
+    $c->stash( active_action => '/data' );
+        
+    $c->res->content_type('application/x-java-jnlp-file'); 
+   
+    $c->stash->{template} = 'artemis_jnlp.tt2';
+    
+    $c->forward( $c->view('JNLP') );
+}
+
 =head2 act
 
 =cut
@@ -65,6 +98,105 @@ sub act :Path('act'){
     
     $c->stash->{template} = 'act.tt2';
 }
+
+=head2 actjnlp
+
+=cut
+
+sub actjnlp :Path('actjnlp'){
+    my ( $self, $c ) = @_;
+      
+
+    my @genome_selection;
+    foreach my $param_name ( $c->request->param ) {
+        my $value = $c->request->param($param_name);
+        push @genome_selection, $value if ($value);
+    }
+    #use Data::Dumper;
+    #die Dumper @genome_selection;
+    my $rearranged_list = rearrange_act_arguments(  
+                              \@genome_selection
+                            , $c->config->{data}->{root}
+                            
+                              #wont make sense if user has more than one role. See "ToDo"file in main dir.                            
+                            , $c->user->user_roles->search_related('role')->next->role
+                            
+                            , $c->config->{data}->{dir_name_of_crunch}
+                            , $c->config->{data}->{file_extension_of_crunch}
+                            
+                            , $c->config->{data}->{dir_name_of_annotation}
+                            , $c->config->{data}->{file_extension_of_annotation}
+                          );
+       
+    $c->stash->{act_arguments} = $rearranged_list;
+    
+    
+    
+    $c->stash( active_action => '/data' );
+        
+    $c->res->content_type('application/x-java-jnlp-file'); 
+   
+    $c->stash->{template} = 'act_jnlp.tt2';
+    
+    $c->forward( $c->view('JNLP') );
+}
+
+=head2 rearrange_act_arguments
+
+=cut
+
+sub rearrange_act_arguments{
+    my (  
+          $genome_selection
+        , $data_root
+        , $role
+        , $dir_name_of_crunch
+        , $file_extension_of_crunch
+        , $dir_name_of_annotation
+        , $file_extension_of_annotation
+        ) = @_;
+    
+    my @jnlp_compatible_arguments;
+    my $is_first_genome = 1;
+    my $previous_genome;
+    foreach my $genome ( sort { $b cmp $a } @{$genome_selection} ) 
+    {
+        if ($is_first_genome) {
+
+            push @jnlp_compatible_arguments, join '/', (  
+                                                          $data_root
+                                                        , $role
+                                                        , $dir_name_of_annotation
+                                                        , $genome . $file_extension_of_annotation
+                                                       );
+            $is_first_genome = 0;
+
+        }
+        else {
+            
+            push @jnlp_compatible_arguments, join '/', (  $data_root
+                                                        , $role
+                                                        , $dir_name_of_crunch
+                                                        , "$genome.$previous_genome" . $file_extension_of_crunch
+                                                       );
+            
+            push @jnlp_compatible_arguments, join '/', ( 
+                                                          $data_root
+                                                        , $role
+                                                        , $dir_name_of_annotation
+                                                        , $genome . $file_extension_of_annotation
+                                                       );
+               
+        }
+        $previous_genome = $genome;
+    }
+    
+    return \@jnlp_compatible_arguments;
+}
+
+=head2 resources
+
+=cut
 
 =head2 download
 
@@ -101,9 +233,6 @@ sub stash_genome_list_for_user {
                                     ->search_related('role')
                                     ->search_related('genome_roles')
                                     ->search_related('genome');
-                                    
-    
-    
     my @genomes;
     my $i = 1;
     {

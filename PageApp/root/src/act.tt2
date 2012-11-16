@@ -18,7 +18,7 @@
 
 
 <!-- appending "/act.JNLP" to the URL in order to control the default filename when downloading a file via CGI -->
-<form action="/cgi-bin/process_act.pl/act.JNLP" name="actform" id="actform">
+<form action="[% c.uri_for('/data/actjnlp') %]" method="post" name="actform" id="actform">
  
    <dl class="twocol">
 

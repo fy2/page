@@ -1,0 +1,23 @@
+<jnlp spec="1.0+" codebase="http://www.sanger.ac.uk/resources/software/artemis/java/">
+    <information>
+        <title>Artemis</title>
+        <vendor>Sanger Institute</vendor>
+        <homepage href="http://www.sanger.ac.uk/Software/Artemis/" />
+        <description>Artemis</description>
+        <description kind="short">DNA sequence viewer and annotation tool.</description>
+        <offline-allowed />
+    </information>
+    <security>
+        <all-permissions />
+    </security>
+    <resources>
+        <j2se version="1.5+" initial-heap-size="32m" max-heap-size="512m" />
+        <jar href="sartemis.jar" />
+        <property name="com.apple.mrj.application.apple.menu.about.name" value="Artemis" />
+        <property name="artemis.environment" value="UNIX" />
+        <property name="apple.laf.useScreenMenuBar" value="true" />
+    </resources>
+    <application-desc main-class="uk.ac.sanger.artemis.components.ArtemisMain">
+    [%- #the stashed EMBL file path -%]
+    <argument>[% c.stash.selected_genome %]</argument></application-desc>
+</jnlp>

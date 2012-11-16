@@ -1,0 +1,13 @@
+    -add a column to the role table to associate each role with a directory name
+     this will make sure that role names are not exposed in the JNLP argument string
+
+    -develop a method to associate non-analysed lane_ids with the user roles.
+
+    -make sure role based directories are not accessible to people not assigned to the role
+
+    -create javascript form check on artemis/act genome selection pages
+
+    -in current version, we make the assumption that each user can have a single role. 
+     If a user gets multiple roles, the current app will not work as expected (directory hierarchy
+     is based on single roles). 
+     If users request more than one role in future, this will need to be fixed!

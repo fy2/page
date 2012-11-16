@@ -74,6 +74,10 @@ __PACKAGE__->config(
     },
 );
 
+# Set the default View. HTML matches the name of the TT view 
+# that we created for this PageApp (HTML.pm)
+__PACKAGE__->config(default_view => 'HTML');
+
 # Start the application
 __PACKAGE__->setup();
 
