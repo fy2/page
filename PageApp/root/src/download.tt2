@@ -11,12 +11,12 @@
     
     <p><strong>Download instructions</strong><br> 
     Access the PAGe assembly and annotation data locally on your computer by following the download instructions outlined here 
-    <a href="/page/assets/download_instruction_sftp.pdf">PDF</a>
+    <a href="[% c.uri_for('/static/assets/download/download_instruction_sftp.pdf') %]">PDF</a>
     </p>
   
     <p><strong>The delivered files</strong><br> 
     Find a brief description of the delivered files and the analysis here 
-    <a href="/page/assets/deliverables.pdf">PDF</a>
+    <a href="[% c.uri_for('/static/assets/download/deliverables.pdf') %]">PDF</a>
     </p>
   
     <p><strong>View your PAGe data locally</strong><br> 
@@ -27,5 +27,5 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
    <br><br>
    Artemis needs a recent version of Java v1.5 or higher.
 
-For installation instructions please see the Artemis manual here <a href="/page/assets/artemis.pdf">PDF</a>
+For installation instructions please see the Artemis manual here <a href="[% c.uri_for('/static/assets/download/artemis.pdf') %]">PDF</a>
 </p>

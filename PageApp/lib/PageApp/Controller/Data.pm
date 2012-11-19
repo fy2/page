@@ -222,6 +222,27 @@ sub resources :Path('resources'){
     $c->stash->{template} = 'resources.tt2';
 }
 
+=head2 fetchfile
+
+=cut
+
+sub fetchfile :Path('fetchfile'){
+    my ( $self, $c, $file_name ) = @_;
+     
+    $c->stash( active_action => '/data/resources' );
+     
+    my ($file) = $c->model('DB::PageFile')->search({ name => $file_name });
+    
+    
+    if (!$file) {
+        #forward to an error page, about non existing file
+        $c->res->redirect($c->uri_for('/notfound'));
+    } else {
+        $c->res->content_type($file->content_type);
+        $c->response->body($file->file_blob);
+    }
+}
+
 =head2 stash_genome_list_for_user 
 
 =cut
