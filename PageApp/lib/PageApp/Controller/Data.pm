@@ -281,7 +281,8 @@ Check if there is a user and, if not, forward to login page
 # 'auto' "chain" (all from application path to most specific class are run)
 sub auto : Private {
     my ($self, $c) = @_;
-
+    
+    
     # Allow unauthenticated users to reach the login page
     if ($c->request->path =~ /login/) {
         return 1;

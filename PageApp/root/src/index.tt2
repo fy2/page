@@ -13,17 +13,21 @@ focused on genomic analysis of the pneumococcus across Africa. Its goals include
             <li>Identifying new opportunities for disease control with current vaccines </li>
             <li>Delivering knowledge to create the next generation of pneumococcal vaccines</li>
         </ol>
-   </p>
+   
       <div class="image right">
-      <img style="width:100px;height:71px" src="[% c.uri_for('/static/page/gfx/fm_doctor_child.jpg') %]" >
-      <p style="font-size: 0.6em; margin: 0 padding: 0; text-align: center; width: 100px;" >Wellcome Library, London</p>
+      <img style="width:100px;height:71px" src="[% c.uri_for('/static/page/gfx/fm_doctor_child.jpg') %]" alt="[photo]"  >
+      <p style="font-size: 0.6em; margin: 0 padding: 0; text-align: center; width: 100px;" >Wellcome Library, London </p>
     </div>
 <p>
 The project is lead by Dr Dean Everett at the Malawi-Liverpool-Wellcome Trust Clinical Research Programme (MLW) in Malawi and includes primary partners in Niger, The Gambia, South Africa, UK and USA.    </p>
     <h3>Research Overview</h3>
-    <h4>PAGe 1</h6>
+    <h4>PAGe 1</h4>
     <p>
-As a first project, the Page Consortium has focused on Streptococcus pneumoniae serotype 1 because it is one of the major causes of life-threatening pneumococcal disease in sub-Saharan Africa and is an important vaccine target. It exhibits a strong association with invasive disease and may occur in outbreaks or epidemics. Understanding the genetic traits that underpin this association and contribute towards its epidemic potential will help to refine vaccine target discovery and guide the development process. This African based consortium will address the following specific questions:
+As a first project, the Page Consortium has focused on Streptococcus pneumoniae serotype 1 because it is one of the
+ major causes of life-threatening pneumococcal disease in sub-Saharan Africa and is an important vaccine target.
+  It exhibits a strong association with invasive disease and may occur in outbreaks or epidemics. Understanding the 
+  genetic traits that underpin this association and contribute towards its epidemic potential will help to refine vaccine 
+  target discovery and guide the development process. This African based consortium will address the following specific questions:
         <ol style="list-style-type: upper-alpha; padding-left: 0; margin-left: 1em;">
             <li>Define the genomic diversity of serotype 1 strains and establish the relative contributions of sequence
             variation, gene content, and genome organization to this diversity
@@ -37,7 +41,7 @@ As a first project, the Page Consortium has focused on Streptococcus pneumoniae 
             (PCV) in the future. </li>
         </ol>
 
-    </p>
+    
 
     <h3> Capacity Building</h3>
     <p>Four postgraduate students from consortium member countries have been funded to complete MSc bioinformatics training at the University of Manchester including project work at the Wellcome Trust Sanger Institute. </p>
@@ -45,17 +49,17 @@ As a first project, the Page Consortium has focused on Streptococcus pneumoniae 
       <tr>
         <td>
           <div class="img">
-            <img src="[% c.uri_for('/static/page/gfx/gates_logo.png') %]" >
+            <img src="[% c.uri_for('/static/page/gfx/gates_logo.png') %]" alt="[photo]">
           </div>
         </td>
         <td>
           <div class="img">
-            <img src="[% c.uri_for('/static/page/gfx/logo_liverpool.jpg') %]" >
+            <img src="[% c.uri_for('/static/page/gfx/logo_liverpool.jpg') %]" alt="[photo]">
           </div>
         </td>
         <td>
           <div class="img">
-            <img src="[% c.uri_for('/static/page/gfx/logo_wellcome.jpg') %]" >
+            <img src="[% c.uri_for('/static/page/gfx/logo_wellcome.jpg') %]" alt="[photo]">
           </div>
         </td>
       </tr>

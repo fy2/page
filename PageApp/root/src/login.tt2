@@ -14,18 +14,18 @@
       <tr>
         <td class="pageloginlabel"><label>Username</label></td>
 
-        <td><input  size="25" type="text" name="username" id="username" /></td>
+        <td><input name="username"  size="25" type="text" id="username" ></td>
       </tr>
 
       <tr>
         <td class="pageloginlabel"><label>Password</label></td>
 
-        <td><input " size="25" type="password" name="password" id="password" /></td>
+        <td><input name="password" size="25" type="password" id="password" ></td>
       </tr>
 
       <tr>
         <td></td>
-        <td><input onclick="return(notEmpty(document.getElementById('username'), document.getElementById('password')));" type="submit" class="pagelogin" id="submit" name="submit"  value="Submit" /></td>
+        <td><input name="submit"  onclick="return(notEmpty(document.getElementById('username'), document.getElementById('password')));" type="submit" class="pagelogin" id="submit"  value="Submit" ></td>
       </tr>
     </table>
   </form>
