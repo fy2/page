@@ -21,7 +21,7 @@ navigation:
 #as the role name. The subdirs of these have a sytematic name hierarchy
 #Currently, "annotation" and "crunch" sub dirs are available
 data:
-    root: /Applications/MAMP/page/PageApp/root/rawdata
+    root: /Users/fy2/PageApplication/rawdata
 
     #where do the embl files for artemis reside?
     dir_name_of_annotation: annotation
