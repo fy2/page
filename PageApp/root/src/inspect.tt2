@@ -10,17 +10,23 @@
 		<thead>
 
 			<tr> 
-			    <th>sanger_lane_id</th> 
+			    
 			    <th>strain_id</th> 
 			    <th>hospital</th> 
+			    <th>region</th>
+			    <th>city</th>
+			    <th>sanger_lane_id</th> 
 			</tr> 
 		</thead>
 		<tbody>	
 		[% FOREACH genome IN c.stash.genomes %]
 	        <tr>
-			    <td>[% genome.sanger_lane_id %]</td> 
+			    
 			    <td>[% genome.strain_id %]</td> 
-			    <td>[% genome.hospital %]</td> 
+			    <td>[% genome.hospital %]</td>
+			    <td>[% genome.region %]</td> 
+			    <td>[% genome.city %]</td> 
+			    <td>[% genome.sanger_lane_id %]</td>  
 			</tr>
 		[% END %]
 		</tbody> 

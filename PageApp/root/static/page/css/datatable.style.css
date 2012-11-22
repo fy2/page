@@ -90,6 +90,12 @@ table.pretty {
 	clear: both;
 }
 
+
+
+table.pretty tbody tr:hover {
+	background-color: #D2BCBC;
+	}
+
 table.pretty td,
 table.pretty th {
 	padding: 5px;
@@ -116,6 +122,11 @@ table.pretty tbody td {
 table.pretty tbody tr.odd td { 
 	background: #C9D3DB;
 }
+
+#myTable  tr.even:hover{
+    background-color: #cccccc;
+}
+
 
 /* Footer cells */	
 table.pretty tfoot th {
@@ -168,13 +179,13 @@ div.dataTables_paginate span>a {
  * Sorting
  */
 table.pretty thead th.sorting_asc {
-	background: #879CAE url('images/sort_asc.png') no-repeat right center;
+	background: #879CAE url('sort_asc.png') no-repeat right center;
 }
 
 table.pretty thead th.sorting_desc {
-	background: #879CAE url('images/sort_desc.png') no-repeat right center;
+	background: #879CAE url('sort_desc.png') no-repeat right center;
 }
 
 table.pretty thead th.sorting {
-	background: #879CAE url('images/sort_both.png') no-repeat right center;
+	background: #879CAE url('sort_both.png') no-repeat right center;
 }
