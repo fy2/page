@@ -271,6 +271,25 @@ sub stash_genome_list_for_user {
     return 1;
 }
 
+sub inspect :Path('inspect'){
+    my ($self, $c) = @_;
+    
+ 
+    push @{$c->stash->{add_js_files}}, '/static/core/js/jquery.js';
+    push @{$c->stash->{add_js_files}}, '/static/core/js/jquery.dataTables.min.js';
+
+
+    my @dbix_class_result_set_genome = $c->user->user_roles
+                                ->search_related('role')
+                                ->search_related('genome_roles')
+                                ->search_related('genome');
+    
+    $c->stash->{genomes} = \@dbix_class_result_set_genome;
+    $c->stash( active_action => '/data' );
+    $c->stash->{template} = 'inspect.tt2';
+    
+}
+
 =head2 auto
 
 Check if there is a user and, if not, forward to login page

@@ -49,3 +49,7 @@ a:hover { text-decoration: underline }
 
 #skip { display: none;}
 
+#myDiv {
+    position: relative;
+    top: 15px;
+}

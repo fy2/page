@@ -5,18 +5,83 @@
 
 <title>[% template.title or 'PAGe' %]</title>
 
+
+
 <link rel="Shortcut Icon"              href="[% c.uri_for('/static/page/gfx/page-ico.png') %]" type="image/png">
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/css-reset.css') %]">
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/tables.css') %]">
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/two-col-lists.css') %]">
+
+
+[% IF c.stash.add_js_files %]
+	[% FOREACH jsfile IN c.stash.add_js_files %]
+		<script type="text/javascript" src="[% c.uri_for(jsfile) %]"></script>
+	[% END %]
+[% END %] 
+
+
+[% IF template.title == 'PAGe Meta data'  %]
+	
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/page/css/yahoo.reset.css') %]">
 <link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/general.css') %]">
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/page-frame.css') %]">
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/width-960.css') %]">
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/side/width-960.css') %]">
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/side/nav-content.css') %]">
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/thumbnails.css') %]">
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/references.css') %]">
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/page/css/page.css') %]">
+
+
+
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/page/css/datatable.style.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/two-col-lists.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/page-frame.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/width-960.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/side/width-960.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/side/nav-content.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/thumbnails.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/references.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/page/css/page.css') %]">		
+	
+	
+	<style type="text/css">
+	/* keeps the menu structure in tact,  normally done via general.css */
+		p, li, dd, dt, blockquote {
+	    line-height: 1.25em;
+	}
+  
+    
+    /* keep the div that hold the table below login status */	
+	#myDiv {
+    position: relative;
+    top: 15px;
+	}
+	</style>
+	
+
+	
+	<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        $('#myTable').dataTable( {
+            "sPaginationType": "full_numbers"
+        } );
+    } );
+	</script>
+
+	
+[% ELSE %]
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/css-reset.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/tables.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/general.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/two-col-lists.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/page-frame.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/width-960.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/side/width-960.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/side/nav-content.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/thumbnails.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/references.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/page/css/page.css') %]">
+	
+[% END %]
+
+
+
+
+
+
+
+
  <!--[if lt IE 9]>
 <link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/ieall.css') %]">
 <link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/side/ie.css') %]">
@@ -54,42 +119,29 @@
       <div class="x">&nbsp;</div>
     </div>
 
-    <div id="content">
+  <div id="content">
 
-[%# This is where TT will stick all of other template's 
-contents, i.e. this whole template will serve a wrapper 
-to other templates -%]        
-[% content %]
-    </div>
-
-
-[%# Navigation menu section -%]        
-    <div id="nav">
-        <ul>
-            
-            
-[%# c.uri_for('action name') will construct an 
-absolute URI object based on the application root.
-'c' is the catalyst context object, which calls the
-template toolkit.
--%]
-
-[% FOREACH menu IN c.config.navigation.primary %]
-    [% IF menu.action == c.stash.active_action %]
-        <li class="active"><a href="[% c.uri_for(menu.action) %]">[% menu.title %]</a></li>
-    [% ELSE %]
-         <li><a href="[% c.uri_for(menu.action) %]">[% menu.title %]</a></li>
-    [% END %]
-[% END %]
-
-        </ul>
-    </div>
+	[%# This is where TT will stick all of other template's contents -%]
+	   
+	[% content %]
+ 
   </div>
-	[% IF c.stash.add_js_files %]
-		[% FOREACH jsfile IN c.stash.add_js_files %]
-			<script type="text/javascript" src="[% c.uri_for(jsfile) %]"></script>
+
+   
+<div id="nav">
+ 	<ul>      
+		[% FOREACH menu IN c.config.navigation.primary %]
+		    [% IF menu.action == c.stash.active_action %]
+		        <li class="active"><a href="[% c.uri_for(menu.action) %]">[% menu.title %]</a></li>
+		    [% ELSE %]
+		         <li><a href="[% c.uri_for(menu.action) %]">[% menu.title %]</a></li>
+		    [% END %]
 		[% END %]
-	[% END %]  
+
+     </ul>
+
+  </div>
+ 
 </body>
 
 </html>
