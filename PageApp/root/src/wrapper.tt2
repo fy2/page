@@ -108,6 +108,12 @@
     <div id="head">
       <a href="/"><img src="[% c.uri_for('/static/page/gfx/page-logo.png') %]" alt="Page Logo" ></a>
 
+
+      
+      <div class="x">&nbsp;</div>
+    </div>
+
+  <div id="content">
       [% IF c.user_exists %]
       	<div class="pageloginstatus"> <a href="[% c.uri_for('/logout') %]">[% c.session.active_user %] [Logout]</a>  </div>
       [% ELSE %]
@@ -115,11 +121,6 @@
 	      	<div class="pageloginstatus"> <a href="[% c.uri_for('/login') %]">[Login]</a>  </div>
       	[% END %]
       [% END %]
-      
-      <div class="x">&nbsp;</div>
-    </div>
-
-  <div id="content">
 
 	[%# This is where TT will stick all of other template's contents -%]
 	   

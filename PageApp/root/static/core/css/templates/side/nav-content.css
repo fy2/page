@@ -8,7 +8,7 @@
 
 /* Template for content */
 
-#content { float: right; width: 70%; padding: 5px 0; margin: 0; }
+#content { float: right; width: 70%; padding: 5px 0; margin: 0; position: relative;}
 
 @media print {
   #nav { display: none }

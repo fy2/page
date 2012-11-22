@@ -23,32 +23,18 @@ h2,h3,h4 { background: #fff; clear: both }
 
 #msg_box div { background-color: #fcc; padding: 1em; margin: 1em; font-weight:bold; color:#900}
 
-.pageloginstatus  
-{ 
-	padding: 1em;
-	color: #020202;
-	position: relative;
-	text-decoration: underline;
-	/*right: -500px;
-	top: 128px;
-	height: 5px;
-	width: 135px;*/ 
-	right: -446px;
-	top: 127px;
-	height: 5px;
-	width: 190px;
 
-	margin: 0 auto;
-	text-align: right;
+.pageloginstatus {
+	position: absolute;
+	right:0;
+	top:0;
+	width:150px;
+	text-align:right;
 	
 }
 
 .pageloginstatus a {
-
-	color: #000000;
-	text-align: right;
-	font-weight: normal;
-	font-size: 12px
+	
 }
 
 .logintable table.td {
