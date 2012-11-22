@@ -7,6 +7,14 @@
     </p>
 
     <div class="thumb">
+      <a href="[% c.uri_for('/data/inspect') %]"><img src="[% c.uri_for('/static/page/gfx/colony_bw.png') %]" style="width:150px;height:105px" alt="[photo]" ></a>
+      <h3><a href="[% c.uri_for('/data/inspect') %]">Inspect meta data</a></h3>
+      <p class="affiliation">
+        View your isolate meta data
+      </p>Meta data viewer provides quick access to your isolates' meta data and the analysis progress.
+    </div>
+
+    <div class="thumb">
       <a href="[% c.uri_for('/data/artemis') %]"><img src="[% c.uri_for('/static/page/gfx/artemis_230_bw.png') %]" style="width:150px;height:105px" alt="[photo]" ></a>
       <h3><a href="[% c.uri_for('/data/artemis') %]">Genome Viewer</a></h3>
       <p class="affiliation">
@@ -14,6 +22,8 @@
       </p>Artemis is a genome browser and annotation tool that allows visualisation of sequence features within the context of
       the sequence, and also its six-frame translation.
     </div>
+    
+    
     <div class="thumb">
       <a href="[% c.uri_for('/data/act') %]"><img src="[% c.uri_for('/static/page/gfx/act_230_bw.png') %]" style="width:150px;height:105px" alt="[photo]" ></a>
       <h3><a href="[% c.uri_for('/data/act') %]">Genome Comparison</a></h3>

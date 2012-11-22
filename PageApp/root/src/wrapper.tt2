@@ -20,7 +20,7 @@
 [% IF template.title == 'PAGe Meta data'  %]
 	
 	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/page/css/yahoo.reset.css') %]">
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/general.css') %]">
+	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/general.css') %]">
 
 
 
@@ -45,7 +45,8 @@
     /* keep the div that hold the table below login status */	
 	#myDiv {
     position: relative;
-    top: 15px;
+    top: 10px;
+
 	}
 	</style>
 	
