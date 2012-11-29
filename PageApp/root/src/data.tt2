@@ -8,10 +8,10 @@
 
     <div class="thumb">
       <a href="[% c.uri_for('/data/inspect') %]"><img src="[% c.uri_for('/static/page/gfx/colony_bw.png') %]" style="width:150px;height:105px" alt="[photo]" ></a>
-      <h3><a href="[% c.uri_for('/data/inspect') %]">Inspect meta data</a></h3>
+      <h3><a href="[% c.uri_for('/data/inspect') %]">Inspect metadata</a></h3>
       <p class="affiliation">
-        View your isolate meta data
-      </p>Meta data viewer provides quick access to your isolates' meta data and the analysis progress.
+        View your isolate metadata
+      </p>Meta data viewer provides quick access to your isolates' metadata and the analysis progress.
     </div>
 
     <div class="thumb">
