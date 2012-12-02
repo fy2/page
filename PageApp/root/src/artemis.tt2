@@ -9,7 +9,7 @@
 <p>
 Artemis is a free genome browser and annotation tool that allows visualisation of sequence features, next generation data and the results of analyses within the context of the sequence, and also its six-frame translation.
 Artemis is written in Java, and is available for UNIX, Macintosh and Windows systems. It can read EMBL and GENBANK database entries or sequence in FASTA, indexed FASTA or raw format. Other sequence features can be in EMBL, GENBANK or GFF format.
- For more details on what Artemis can do for you, please refer to the Artemis manual here  <a href="/page/assets/artemis.pdf">PDF</a> 
+ For more details on what Artemis can do for you, please refer to the Artemis manual here  <a href="[% c.uri_for('/static/assets/download/artemis.pdf') %]">PDF</a> 
 </p>
 
 <p><strong>Launch Artemis directly from your web browser</strong></p>

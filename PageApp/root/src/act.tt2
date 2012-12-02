@@ -8,7 +8,7 @@
 <p>
  ACT is a free tool for displaying pairwise comparisons between two or more DNA sequences. It can be used to identify and analyse regions of similarity and difference between genomes and to explore conservation of synteny, in the context of the entire sequences and their annotation.
  ACT runs on UNIX, GNU/Linux, Macintosh and MS Windows systems. It can read complete EMBL and GENBANK entries or sequences in FASTA or raw format. Other sequence features can be in EMBL, GENBANK or GFF format.
- For more details on what ACT can do for you, please refer to the ACT manual here  <a href="/page/assets/act.pdf">PDF</a> 
+ For more details on what ACT can do for you, please refer to the ACT manual here  <a href="[% c.uri_for('/static/assets/download/act.pdf') %]">PDF</a> 
  </p>
 
 <p><strong>Launch ACT directly from your web browser</strong></p>
