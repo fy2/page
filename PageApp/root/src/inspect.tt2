@@ -1,7 +1,7 @@
 [%- # Provide a title to the wrapper.tt2 -%]
-[% META title = 'PAGe Meta data' -%]
+[% META title = 'PAGe Metadata' -%]
 
-<h2>Inspect PAGe meta data</h2>
+<h2>Inspect metadata</h2>
 
 <p>The currently available isolates are shown in the table below.</p>
 

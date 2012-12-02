@@ -17,7 +17,7 @@
 [% END %] 
 
 
-[% IF template.title == 'PAGe Meta data'  %]
+[% IF template.title == 'PAGe Metadata'  %]
 	
 	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/page/css/yahoo.reset.css') %]">
 	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/general.css') %]">
