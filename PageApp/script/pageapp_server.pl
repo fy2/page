@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 
 BEGIN {
+    use lib '/www/perllib/lib/perl5';
     $ENV{CATALYST_SCRIPT_GEN} = 40;
 }
 
