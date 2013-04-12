@@ -32,9 +32,11 @@
       </p>ACT is a tool for displaying pairwise comparisons between two or more DNA sequences.
     </div>
     <div class="thumb">
-      <a href="http://www.spatialepidemiology.net/snp/stephano.html?dataSet=spn1"><img src="[% c.uri_for('/static/page/gfx/spatial_bw.png') %]" style=
+      <a href="http://test1.mlst.net/page"><img src="[% c.uri_for('/static/page/gfx/spatial_bw.png') %]" style=
       "width:150px;height:105px" alt="[photo]" ></a>
-      <h3><a href="http://www.spatialepidemiology.net/snp/stephano.html?dataSet=spn1">Phylogeography</a></h3>
+     
+      <h3><a href="http://test1.mlst.net/page">Phylogeography</a></h3>
+      
       <p class="affiliation">
         Visualise differences within the context of geographical location
       </p>Spatial Viewer was developed by the London Imperial College. It displays variations between genomes in a geographical

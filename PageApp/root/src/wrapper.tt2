@@ -145,5 +145,9 @@
   </div>
  
 </body>
-
+[% IF c.stash.add_js_end %]
+	[% FOREACH jsfile IN c.stash.add_js_end %]
+		<script type="text/javascript" src="[% c.uri_for(jsfile) %]"></script>
+	[% END %]
+[% END %] 
 </html>

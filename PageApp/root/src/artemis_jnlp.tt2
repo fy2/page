@@ -19,5 +19,6 @@
     </resources>
     <application-desc main-class="uk.ac.sanger.artemis.components.ArtemisMain">
     [%- #the stashed EMBL file path -%]
-    <argument>[% c.stash.selected_genome %]</argument></application-desc>
+    <argument>[% c.stash.selected_genome %]</argument>
+    </application-desc>
 </jnlp>
