@@ -32,7 +32,7 @@ h4 { font-size: 1em; }
 .clear  { clear:both; }
 
 /* slightly nicer blue! */
-a { color:#105A94; text-decoration: none; font-weight: bold }
+a { color:rgb(18, 114, 151); text-decoration: none; font-weight: bold }
 a:hover { text-decoration: underline }
 
 /* Styles to show/hide content for printing */
