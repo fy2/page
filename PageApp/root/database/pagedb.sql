@@ -122,3 +122,16 @@ CREATE TABLE genome_roles (
         role_id role_id INTEGER REFERENCES roles(id) ON DELETE CASCADE ON UPDATE CASCADE,
         PRIMARY KEY (genome_id, role_id)
 );
+
+
+--
+-- Save password protected files in this table. See 'insert_pdf.pl' as insertion example.
+-- Retrieval example is shown in 'fetchfile' subroutine of the 'Data.pm' model.
+--
+create table page_files (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT UNIQUE,
+    content_type TEXT,
+    size_in_bytes INTEGER,
+    file_blob BLOB
+);
