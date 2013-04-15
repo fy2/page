@@ -144,6 +144,11 @@
 
   </div>
  
+     <div id="foot">
+      &copy; 2010-2013 Pneumococcal African Genomics Consortium
+    </div>
+  </div>
+ 
 </body>
 [% IF c.stash.add_js_end %]
 	[% FOREACH jsfile IN c.stash.add_js_end %]

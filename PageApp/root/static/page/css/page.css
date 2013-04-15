@@ -2,10 +2,12 @@ body { background: #ededed; font-family: verdana, tahoma, sans-serif }
 #wrap { border-color: #777; color: #323232 }
 
 /* make a linear gradient of green in header */
-#foot, #head  { background: rgb(23, 102, 122); border:1px solid #467aa7; } /*for non css browsers */
-#foot, #head  { background-image: linear-gradient(to left, rgb(23, 102, 122), white);  border:1px solid rgb(23, 102, 122); }
-#foot, #head  { background-image: -webkit-linear-gradient(right, rgb(23, 102, 122), white); } /*for safari*/
-#foot, #head  { background-image: -moz-linear-gradient(left, white, rgb(23, 102, 122)); } /* for firefox 3.6+ */
+#head  { background: rgb(23, 102, 122); border:1px solid #467aa7; } /*for non css browsers */
+#head  { background-image: linear-gradient(to left, rgb(23, 102, 122), white);  border:1px solid rgb(23, 102, 122); }
+#head  { background-image: -webkit-linear-gradient(right, rgb(23, 102, 122), white); } /*for safari*/
+#head  { background-image: -moz-linear-gradient(left, white, rgb(23, 102, 122)); } /* for firefox 3.6+ */
+
+#foot  { background: rgb(23, 102, 122); }
 
 
 h1 { background:rgb(23, 102, 122); padding-top: 0; margin: 0 }
