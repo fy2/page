@@ -134,9 +134,9 @@
  	<ul>      
 		[% FOREACH menu IN c.config.navigation.primary %]
 		    [% IF menu.action == c.stash.active_action %]
-		        <li class="active"><a href="[% c.uri_for(menu.action) %]">[% menu.title %]</a></li>
+		        <li class="active"><a href="[% menu.action %]">[% menu.title %]</a></li>
 		    [% ELSE %]
-		         <li><a href="[% c.uri_for(menu.action) %]">[% menu.title %]</a></li>
+		         <li><a href="[% menu.action %]">[% menu.title %]</a></li>
 		    [% END %]
 		[% END %]
 
