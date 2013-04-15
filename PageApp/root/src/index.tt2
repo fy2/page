@@ -15,7 +15,7 @@ focused on genomic analysis of the pneumococcus across Africa. Its goals include
         </ol>
    
       <div class="image right">
-      <img style="width:100px;height:71px" src="[% c.uri_for('/static/page/gfx/fm_doctor_child.jpg') %]" alt="[photo]"  >
+      <img style="width:100px;height:71px" src="/static/page/gfx/fm_doctor_child.jpg" alt="[photo]"  >
       <p style="font-size: 0.6em; margin: 0 padding: 0; text-align: center; width: 100px;" >Wellcome Library, London </p>
     </div>
 <p>
@@ -49,17 +49,17 @@ As a first project, the Page Consortium has focused on Streptococcus pneumoniae 
       <tr>
         <td>
           <div class="img">
-            <img src="[% c.uri_for('/static/page/gfx/gates_logo.png') %]" alt="[photo]">
+            <img src="/static/page/gfx/gates_logo.png" alt="[photo]">
           </div>
         </td>
         <td>
           <div class="img">
-            <img src="[% c.uri_for('/static/page/gfx/logo_liverpool.jpg') %]" alt="[photo]">
+            <img src="/static/page/gfx/logo_liverpool.jpg" alt="[photo]">
           </div>
         </td>
         <td>
           <div class="img">
-            <img src="[% c.uri_for('/static/page/gfx/logo_wellcome.jpg') %]" alt="[photo]">
+            <img src="/static/page/gfx/logo_wellcome.jpg" alt="[photo]">
           </div>
         </td>
       </tr>

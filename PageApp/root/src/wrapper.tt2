@@ -7,7 +7,7 @@
 
 
 
-<link rel="Shortcut Icon"              href="[% c.uri_for('/static/page/gfx/page-ico.png') %]" type="image/png">
+<link rel="Shortcut Icon"              href="/static/page/gfx/page-ico.png" type="image/png">
 
 
 [% IF c.stash.add_js_files %]
@@ -19,20 +19,20 @@
 
 [% IF template.title == 'PAGe Metadata'  %]
 	
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/page/css/yahoo.reset.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/general.css') %]">
+	<link rel="stylesheet" type="text/css" href="/static/page/css/yahoo.reset.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/general.css">
 
 
 
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/page/css/datatable.style.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/two-col-lists.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/page-frame.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/width-960.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/side/width-960.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/side/nav-content.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/thumbnails.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/references.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/page/css/page.css') %]">		
+	<link rel="stylesheet" type="text/css" href="/static/page/css/datatable.style.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/pagesmith/two-col-lists.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/page-frame.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/width-960.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/side/width-960.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/side/nav-content.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/thumbnails.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/references.css">
+	<link rel="stylesheet" type="text/css" href="/static/page/css/page.css">		
 	
 	
 	<style type="text/css">
@@ -62,17 +62,17 @@
 
 	
 [% ELSE %]
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/css-reset.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/tables.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/general.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/two-col-lists.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/page-frame.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/width-960.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/side/width-960.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/side/nav-content.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/thumbnails.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/references.css') %]">
-	<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/page/css/page.css') %]">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/pagesmith/css-reset.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/pagesmith/tables.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/general.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/pagesmith/two-col-lists.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/page-frame.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/width-960.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/side/width-960.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/side/nav-content.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/thumbnails.css">
+	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/references.css">
+	<link rel="stylesheet" type="text/css" href="/static/page/css/page.css">
 	
 [% END %]
 
@@ -84,12 +84,12 @@
 
 
  <!--[if lt IE 9]>
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/ieall.css') %]">
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/side/ie.css') %]">
-<link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/templates/side/ie-nav.css') %]">
+<link rel="stylesheet" type="text/css" href="/static/core/css/pagesmith/ieall.css">
+<link rel="stylesheet" type="text/css" href="/static/core/css/templates/side/ie.css">
+<link rel="stylesheet" type="text/css" href="/static/core/css/templates/side/ie-nav.css">
 <![endif]-->
 <!--[if lt IE 8]>
-  <link rel="stylesheet" type="text/css" href="[% c.uri_for('/static/core/css/pagesmith/ie.css') %]">
+  <link rel="stylesheet" type="text/css" href="/static/core/css/pagesmith/ie.css">
 <![endif]-->
 <style type="text/css">
 /*<![CDATA[*/
@@ -107,7 +107,7 @@
 <body>
   <div id="wrap">
     <div id="head">
-      <a href="/"><img src="[% c.uri_for('/static/page/gfx/page-logo.png') %]" alt="Page Logo" ></a>
+      <a href="/"><img src="/static/page/gfx/page-logo.png" alt="Page Logo" ></a>
 
 
       
