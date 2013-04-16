@@ -21,7 +21,7 @@ navigation:
 #as the role name. The subdirs of these have a sytematic name hierarchy
 #Currently, "annotation" and "crunch" sub dirs are available
 data:
-    root: /Users/fy2/PageApplication/rawdata
+    root: /static/page/genomes
 
     #where do the embl files for artemis reside?
     dir_name_of_annotation: annotation
@@ -29,7 +29,7 @@ data:
     #This is just the suffix after the file name
     #we assume files are named with sanger lane ID (e.g. "1234_5#6.embl") 
     #and EMBL suffix  (e.g. "1234_5#6.embl")
-    file_extension_of_annotation: .embl
+    file_extension_of_annotation: .embl.gz
     
     #Crunch file handling is similar to EMBL, but now we deal with file names,
     #made up of two parts (crunch is a pairwise comparison file for two organims).

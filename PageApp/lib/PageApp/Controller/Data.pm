@@ -26,13 +26,6 @@ sub index :Path :Args(0) {
 
     $c->stash( active_action => '/data' );
 
-    #warn $dbix_class_result_set_genome;  
-    #while( my $genome = $dbix_class_result_set_genome->next) {
-    #    warn $genome->sanger_lane_id;
-    #}
-    
-
-    
     $c->stash->{template} = 'data.tt2';
 }
 
@@ -63,7 +56,7 @@ sub artemisjnlp :Path('artemisjnlp'){
       
     # Get the param argument for the selected genome and stash it so that 
     #artemis_jnlp.tt2 can access it and render a JNLP
-    $c->stash->{selected_genome} = 
+    my $file_argument = 
                 join '/', (  
                            $c->config->{data}->{root}
                            
@@ -76,6 +69,13 @@ sub artemisjnlp :Path('artemisjnlp'){
                            #field is defined as "genome1" in the artemis.tt2 template
                          , $c->request->param('genome1') . $c->config->{data}->{file_extension_of_annotation}
                          );
+    
+    # Non-alphanumeric char '#' in sanger lane ids are replaced with underscore.
+    # They cause problems in JNLP files' http links arguments.
+    # Make sure that the files in the data dir (.embl etc have '_' instead of '#').
+    $file_argument =~ s/#/_/g;
+     
+    $c->stash->{selected_genome} = $c->uri_for($file_argument); 
     
     $c->stash( active_action => '/data' );
         
@@ -118,8 +118,12 @@ sub actjnlp :Path('actjnlp'){
     }
     #use Data::Dumper;
     #die Dumper @genome_selection;
-    my $rearranged_list = rearrange_act_arguments(  
-                              \@genome_selection
+    my $rearranged_list = rearrange_act_arguments(
+    
+                             $c,
+                                
+                             \@genome_selection
+                            
                             , $c->config->{data}->{root}
                             
                               #wont make sense if user has more than one role. See "ToDo"file in main dir.                            
@@ -131,6 +135,7 @@ sub actjnlp :Path('actjnlp'){
                             , $c->config->{data}->{dir_name_of_annotation}
                             , $c->config->{data}->{file_extension_of_annotation}
                           );
+    
        
     $c->stash->{act_arguments} = $rearranged_list;
     
@@ -150,52 +155,45 @@ sub actjnlp :Path('actjnlp'){
 =cut
 
 sub rearrange_act_arguments{
-    my (  
-          $genome_selection
+    my ( 
+          $c
+        , $genome_selection
         , $data_root
         , $role
         , $dir_name_of_crunch
-        , $file_extension_of_crunch
-        , $dir_name_of_annotation
-        , $file_extension_of_annotation
+        , $crunch_file_extension
+        , $embl_dir
+        , $embl_file_extension
         ) = @_;
     
-    my @jnlp_compatible_arguments;
+    my @jnlp_args;
     my $is_first_genome = 1;
-    my $previous_genome;
+    my $prev;
     foreach my $genome ( sort { $b cmp $a } @{$genome_selection} ) 
     {
+        
+        # Non-alphanumeric char '#' in sanger lane ids are replaced with underscore.
+        # They cause problems in JNLP files' http links arguments.
+        # Make sure that the files in the data dir (.embl etc have '_' instead of '#').
+        $genome =~ s/#/_/g;
+        
         if ($is_first_genome) {
 
-            push @jnlp_compatible_arguments, join '/', (  
-                                                          $data_root
-                                                        , $role
-                                                        , $dir_name_of_annotation
-                                                        , $genome . $file_extension_of_annotation
-                                                       );
+            push @jnlp_args, $c->uri_for( join '/', (  $data_root, $role, $embl_dir, $genome . $embl_file_extension) );
             $is_first_genome = 0;
 
         }
         else {
             
-            push @jnlp_compatible_arguments, join '/', (  $data_root
-                                                        , $role
-                                                        , $dir_name_of_crunch
-                                                        , "$genome.$previous_genome" . $file_extension_of_crunch
-                                                       );
-            
-            push @jnlp_compatible_arguments, join '/', ( 
-                                                          $data_root
-                                                        , $role
-                                                        , $dir_name_of_annotation
-                                                        , $genome . $file_extension_of_annotation
-                                                       );
+            push @jnlp_args, $c->uri_for( join '/', (  $data_root, $role, $dir_name_of_crunch, "$genome.$prev" . $crunch_file_extension) );
+
+            push @jnlp_args, $c->uri_for( join '/', ( $data_root, $role, $embl_dir, $genome . $embl_file_extension) );
                
         }
-        $previous_genome = $genome;
+        $prev = $genome;
     }
     
-    return \@jnlp_compatible_arguments;
+    return \@jnlp_args;
 }
 
 =head2 resources
