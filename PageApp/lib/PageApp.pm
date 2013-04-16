@@ -63,6 +63,15 @@ __PACKAGE__->config(
     },
 );
 
+#ignore static serving of any file with the following extensions
+#if they are in somewhere in the 'root' app directory
+__PACKAGE__->config(
+        static => {
+            ignore_extensions => [ qw/pl sql txt db/ ],
+            ignore_dirs => [ qw/database/ ],
+        }
+);
+
 # Configure SimpleDB Authentication
 __PACKAGE__->config(
     'Plugin::Authentication' => {
