@@ -1,40 +1,21 @@
-use utf8;
 package PageApp::Schema::Result::Genome;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
-
-=head1 NAME
-
-PageApp::Schema::Result::Genome
-
-=cut
 
 use strict;
 use warnings;
 
 use Moose;
 use MooseX::NonMoose;
-use MooseX::MarkAsMethods autoclean => 1;
+use namespace::autoclean;
 extends 'DBIx::Class::Core';
-
-=head1 COMPONENTS LOADED
-
-=over 4
-
-=item * L<DBIx::Class::InflateColumn::DateTime>
-
-=item * L<DBIx::Class::TimeStamp>
-
-=item * L<DBIx::Class::PassphraseColumn>
-
-=back
-
-=cut
 
 __PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "PassphraseColumn");
 
-=head1 TABLE: C<genomes>
+=head1 NAME
+
+PageApp::Schema::Result::Genome
 
 =cut
 
@@ -48,160 +29,199 @@ __PACKAGE__->table("genomes");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 sanger_lane_id
+=head2 remarks
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 200
+
+=head2 sanger_id
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 45
 
 =head2 sanger_study_id
 
-  data_type: 'integer'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
+
+=head2 species
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 45
+
+=head2 serotype
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 45
 
 =head2 site
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 country_contact
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 mta_agreement
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 strain_id
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 strain_id_sanger
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 top_serotype
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 top_serotype_perc
 
-  data_type: 'real'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 25
 
-=head2 second_seotype
+=head2 second_serotype
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
-=head2 second_seotype_perc
+=head2 second_serotype_perc
 
-  data_type: 'real'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 25
 
 =head2 mlst
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 analysis_status
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 analysis_comment
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
-
-=head2 jusficitation
-
-  data_type: 'text'
-  is_nullable: 1
+  size: 45
 
 =head2 gender
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 age_in_years
 
-  data_type: 'integer'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 age_in_months
 
-  data_type: 'integer'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 body_source
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 meningitis_outbreak_isolate
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 hiv
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 date_of_isolation
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 20
 
 =head2 context
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 country_of_origin
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 region
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 city
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 hospital
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 latitude
 
-  data_type: 'text'
+  data_type: 'float   '-1''
   is_nullable: 1
 
 =head2 longitude
 
-  data_type: 'text'
+  data_type: 'float   '-1''
   is_nullable: 1
 
 =head2 location_country
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 location_city
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 45
 
 =head2 cd4_count
 
@@ -245,132 +265,132 @@ __PACKAGE__->table("genomes");
 
 =head2 sa_st
 
-  data_type: 'number'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_penz
 
-  data_type: 'number'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_eryz
 
-  data_type: 'number'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_cliz
 
-  data_type: 'number'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_tetz
 
-  data_type: 'number'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_chlz
 
-  data_type: 'number'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_rifz
 
-  data_type: 'number'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_optz
 
-  data_type: 'number'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_penmic
 
-  data_type: 'real'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_amomic
 
-  data_type: 'real'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_furmic
 
-  data_type: 'real'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_cromic
 
-  data_type: 'real'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_taxmic
 
-  data_type: 'real'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_mermic
 
-  data_type: 'real'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_vanmic
 
-  data_type: 'real'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_erymic
 
-  data_type: 'real'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_telmic
 
-  data_type: 'real'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_climic
 
-  data_type: 'real'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_tetmic
 
-  data_type: 'integer'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_cotmic
 
-  data_type: 'integer'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_chlmic
 
-  data_type: 'integer'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_cipmic
 
-  data_type: 'integer'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_levmic
 
-  data_type: 'real'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_rifmic
 
-  data_type: 'integer'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_linmic
 
-  data_type: 'integer'
+  data_type: 'text'
   is_nullable: 1
 
 =head2 sa_synmic
 
-  data_type: 'integer'
+  data_type: 'text'
   is_nullable: 1
 
 =cut
@@ -378,68 +398,72 @@ __PACKAGE__->table("genomes");
 __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  "sanger_lane_id",
-  { data_type => "text", is_nullable => 1 },
+  "remarks",
+  { data_type => "varchar", is_nullable => 1, size => 200 },
+  "sanger_id",
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "sanger_study_id",
-  { data_type => "integer", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
+  "species",
+  { data_type => "varchar", is_nullable => 1, size => 45 },
+  "serotype",
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "site",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "country_contact",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "mta_agreement",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "strain_id",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "strain_id_sanger",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "top_serotype",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "top_serotype_perc",
-  { data_type => "real", is_nullable => 1 },
-  "second_seotype",
-  { data_type => "text", is_nullable => 1 },
-  "second_seotype_perc",
-  { data_type => "real", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 25 },
+  "second_serotype",
+  { data_type => "varchar", is_nullable => 1, size => 45 },
+  "second_serotype_perc",
+  { data_type => "varchar", is_nullable => 1, size => 25 },
   "mlst",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "analysis_status",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "analysis_comment",
-  { data_type => "text", is_nullable => 1 },
-  "jusficitation",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "gender",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "age_in_years",
-  { data_type => "integer", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "age_in_months",
-  { data_type => "integer", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "body_source",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "meningitis_outbreak_isolate",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "hiv",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "date_of_isolation",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 20 },
   "context",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "country_of_origin",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "region",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "city",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "hospital",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "latitude",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "float   '-1'", is_nullable => 1 },
   "longitude",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "float   '-1'", is_nullable => 1 },
   "location_country",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "location_city",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 45 },
   "cd4_count",
   { data_type => "text", is_nullable => 1 },
   "age_category",
@@ -457,84 +481,59 @@ __PACKAGE__->add_columns(
   "culture_received",
   { data_type => "text", is_nullable => 1 },
   "sa_st",
-  { data_type => "number", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_penz",
-  { data_type => "number", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_eryz",
-  { data_type => "number", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_cliz",
-  { data_type => "number", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_tetz",
-  { data_type => "number", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_chlz",
-  { data_type => "number", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_rifz",
-  { data_type => "number", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_optz",
-  { data_type => "number", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_penmic",
-  { data_type => "real", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_amomic",
-  { data_type => "real", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_furmic",
-  { data_type => "real", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_cromic",
-  { data_type => "real", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_taxmic",
-  { data_type => "real", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_mermic",
-  { data_type => "real", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_vanmic",
-  { data_type => "real", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_erymic",
-  { data_type => "real", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_telmic",
-  { data_type => "real", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_climic",
-  { data_type => "real", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_tetmic",
-  { data_type => "integer", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_cotmic",
-  { data_type => "integer", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_chlmic",
-  { data_type => "integer", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_cipmic",
-  { data_type => "integer", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_levmic",
-  { data_type => "real", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_rifmic",
-  { data_type => "integer", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_linmic",
-  { data_type => "integer", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
   "sa_synmic",
-  { data_type => "integer", is_nullable => 1 },
+  { data_type => "text", is_nullable => 1 },
 );
-
-=head1 PRIMARY KEY
-
-=over 4
-
-=item * L</id>
-
-=back
-
-=cut
-
 __PACKAGE__->set_primary_key("id");
-
-=head1 UNIQUE CONSTRAINTS
-
-=head2 C<sanger_lane_id_unique>
-
-=over 4
-
-=item * L</sanger_lane_id>
-
-=back
-
-=cut
-
-__PACKAGE__->add_unique_constraint("sanger_lane_id_unique", ["sanger_lane_id"]);
 
 =head1 RELATIONS
 
@@ -553,19 +552,9 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 roles
 
-Type: many_to_many
-
-Composing rels: L</genome_roles> -> role
-
-=cut
-
-__PACKAGE__->many_to_many("roles", "genome_roles", "role");
-
-
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2012-11-15 12:00:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+7mWTcUjP38LGEv0DSvBFg
+# Created by DBIx::Class::Schema::Loader v0.07010 @ 2013-04-17 12:08:45
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:lt4i1r9odX95bhHAqg4ndg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

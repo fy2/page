@@ -1,40 +1,21 @@
-use utf8;
 package PageApp::Schema::Result::Role;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
-
-=head1 NAME
-
-PageApp::Schema::Result::Role
-
-=cut
 
 use strict;
 use warnings;
 
 use Moose;
 use MooseX::NonMoose;
-use MooseX::MarkAsMethods autoclean => 1;
+use namespace::autoclean;
 extends 'DBIx::Class::Core';
-
-=head1 COMPONENTS LOADED
-
-=over 4
-
-=item * L<DBIx::Class::InflateColumn::DateTime>
-
-=item * L<DBIx::Class::TimeStamp>
-
-=item * L<DBIx::Class::PassphraseColumn>
-
-=back
-
-=cut
 
 __PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "PassphraseColumn");
 
-=head1 TABLE: C<roles>
+=head1 NAME
+
+PageApp::Schema::Result::Role
 
 =cut
 
@@ -61,35 +42,9 @@ __PACKAGE__->add_columns(
   "role",
   { data_type => "text", is_nullable => 1 },
 );
-
-=head1 PRIMARY KEY
-
-=over 4
-
-=item * L</id>
-
-=back
-
-=cut
-
 __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
-
-=head2 genome_roles
-
-Type: has_many
-
-Related object: L<PageApp::Schema::Result::GenomeRole>
-
-=cut
-
-__PACKAGE__->has_many(
-  "genome_roles",
-  "PageApp::Schema::Result::GenomeRole",
-  { "foreign.role_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
 
 =head2 user_roles
 
@@ -106,29 +61,24 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 genomes
+=head2 genome_roles
 
-Type: many_to_many
+Type: has_many
 
-Composing rels: L</genome_roles> -> genome
-
-=cut
-
-__PACKAGE__->many_to_many("genomes", "genome_roles", "genome");
-
-=head2 users
-
-Type: many_to_many
-
-Composing rels: L</user_roles> -> user
+Related object: L<PageApp::Schema::Result::GenomeRole>
 
 =cut
 
-__PACKAGE__->many_to_many("users", "user_roles", "user");
+__PACKAGE__->has_many(
+  "genome_roles",
+  "PageApp::Schema::Result::GenomeRole",
+  { "foreign.role_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
 
 
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2012-11-15 12:00:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:y2nTpf9m1nqbaFT+NnFIrQ
+# Created by DBIx::Class::Schema::Loader v0.07010 @ 2013-04-17 12:08:45
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5idJ4zdXeBbYd+X1stk8/g
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

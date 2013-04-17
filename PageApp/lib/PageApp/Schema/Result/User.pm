@@ -1,40 +1,21 @@
-use utf8;
 package PageApp::Schema::Result::User;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
-
-=head1 NAME
-
-PageApp::Schema::Result::User
-
-=cut
 
 use strict;
 use warnings;
 
 use Moose;
 use MooseX::NonMoose;
-use MooseX::MarkAsMethods autoclean => 1;
+use namespace::autoclean;
 extends 'DBIx::Class::Core';
-
-=head1 COMPONENTS LOADED
-
-=over 4
-
-=item * L<DBIx::Class::InflateColumn::DateTime>
-
-=item * L<DBIx::Class::TimeStamp>
-
-=item * L<DBIx::Class::PassphraseColumn>
-
-=back
-
-=cut
 
 __PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "PassphraseColumn");
 
-=head1 TABLE: C<users>
+=head1 NAME
+
+PageApp::Schema::Result::User
 
 =cut
 
@@ -96,17 +77,6 @@ __PACKAGE__->add_columns(
   "active",
   { data_type => "integer", is_nullable => 1 },
 );
-
-=head1 PRIMARY KEY
-
-=over 4
-
-=item * L</id>
-
-=back
-
-=cut
-
 __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
@@ -126,19 +96,9 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 roles
 
-Type: many_to_many
-
-Composing rels: L</user_roles> -> role
-
-=cut
-
-__PACKAGE__->many_to_many("roles", "user_roles", "role");
-
-
-# Created by DBIx::Class::Schema::Loader v0.07033 @ 2012-11-15 12:00:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:oPQkp8rmyT1Prj+hMvDsQg
+# Created by DBIx::Class::Schema::Loader v0.07010 @ 2013-04-17 12:08:45
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rWj7hxyf+Z3weNKfWSUq0w
 
 
 # Have the 'password' column use a SHA-1 hash and 20-byte salt

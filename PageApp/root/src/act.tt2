@@ -27,8 +27,8 @@
 	    <select name="genome1" id="act_1">
 	    	<option value="">== select ==</option>
                 
-                [% FOREACH genome IN c.stash.genome_list %]
-                   <option value="[% genome.sanger_lane_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_lane_id %])</option>
+                [% FOREACH genome IN c.stash.genome_list_inc %]
+                   <option value="[% genome.sanger_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_id %])</option>
                 [% END %]
 
 	    </select>
@@ -38,8 +38,8 @@
     <dd>
 	    <select name="genome2" id="act_2">
 	    	<option value="">== select ==</option>
-                [% FOREACH genome IN c.stash.genome_list %]
-                   <option value="[% genome.sanger_lane_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_lane_id %])</option>
+                [% FOREACH genome IN c.stash.genome_list_inc %]
+                   <option value="[% genome.sanger_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_id %])</option>
                 [% END %]
                 </select>
     </dd>
@@ -49,8 +49,8 @@
     <dd>
 	    <select name="genome3" id="act_3">
 	    	<option value="">== select ==</option>
-                [% FOREACH genome IN c.stash.genome_list %]
-                   <option value="[% genome.sanger_lane_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_lane_id %])</option>
+                [% FOREACH genome IN c.stash.genome_list_inc %]
+                   <option value="[% genome.sanger_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_id %])</option>
                 [% END %]
 	    </select>
     </dd>
@@ -59,8 +59,8 @@
     <dd>
 	    <select name="genome4" id="act_4">
 	    	<option value="">== select ==</option>
-                [% FOREACH genome IN c.stash.genome_list %]
-                   <option value="[% genome.sanger_lane_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_lane_id %])</option>
+                [% FOREACH genome IN c.stash.genome_list_inc %]
+                   <option value="[% genome.sanger_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_id %])</option>
                 [% END %]
 	    </select>
     </dd>
@@ -69,8 +69,8 @@
     <dd>
 	    <select name="genome5" id="act_5">
 	    	<option value="">== select ==</option>
-                [% FOREACH genome IN c.stash.genome_list %]
-                   <option value="[% genome.sanger_lane_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_lane_id %])</option>
+                [% FOREACH genome IN c.stash.genome_list_inc %]
+                   <option value="[% genome.sanger_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_id %])</option>
                 [% END %]
 	    </select>
     </dd>

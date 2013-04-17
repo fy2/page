@@ -15,7 +15,7 @@
 			    <th>hospital</th> 
 			    <th>region</th>
 			    <th>city</th>
-			    <th>sanger_lane_id</th> 
+			    <th>sanger_id</th> 
 			</tr> 
 		</thead>
 		<tbody>	
@@ -26,7 +26,7 @@
 			    <td>[% genome.hospital %]</td>
 			    <td>[% genome.region %]</td> 
 			    <td>[% genome.city %]</td> 
-			    <td>[% genome.sanger_lane_id %]</td>  
+			    <td>[% genome.sanger_id %]</td>  
 			</tr>
 		[% END %]
 		</tbody> 
