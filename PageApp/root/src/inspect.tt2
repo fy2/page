@@ -8,18 +8,16 @@
 <div id="myDiv">
 	<table id="myTable" border="0" cellpadding="0" cellspacing="0" class="pretty">
 		<thead>
-
 			<tr> 
-			    
 			    <th>strain_id</th> 
 			    <th>hospital</th> 
 			    <th>region</th>
 			    <th>city</th>
-			    <th>sanger_id</th> 
+			    <th>sanger_id</th>
 			</tr> 
 		</thead>
 		<tbody>	
-		[% FOREACH genome IN c.stash.genomes %]
+		[% FOREACH genome IN c.stash.genome_list_inc %]
 	        <tr>
 			    
 			    <td>[% genome.strain_id %]</td> 
@@ -31,7 +29,4 @@
 		[% END %]
 		</tbody> 
 	</table>
-
-		
-
 </div>

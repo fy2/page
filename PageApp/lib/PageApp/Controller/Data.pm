@@ -35,11 +35,16 @@ sub index :Path :Args(0) {
 
 sub artemis :Path('artemis') {
     my ( $self, $c ) = @_;
-    
-    #will stash a list of genomes to "genome_list" in context obj
+
+    push @{$c->stash->{add_js_files}}, '/static/core/js/jquery.js';
+    push @{$c->stash->{add_js_files}}, '/static/core/js/jquery.dataTables.min.js';
+        
+    #will stash a list of genomes to "genome_list_inc" in context obj
     $self->stash_inc_genomes_by_role($c);
     
-    push @{$c->stash->{add_js_end}}, '/static/page/js/formcheck.js'; 
+    
+    #push @{$c->stash->{add_js_end}}, '/static/page/js/formcheck.js'; 
+    push @{$c->stash->{add_js_end}}, '/static/page/js/deselect_checkbox.js'; 
     
     $c->stash( active_action => '/data' );
     
@@ -93,7 +98,10 @@ sub artemisjnlp :Path('artemisjnlp'){
 sub act :Path('act'){
     my ( $self, $c ) = @_;
     
-    #will stash a list of genomes to "genome_list" in context obj
+    push @{$c->stash->{add_js_files}}, '/static/core/js/jquery.js';
+    push @{$c->stash->{add_js_files}}, '/static/core/js/jquery.dataTables.min.js';
+    
+    #will stash a list of genomes to "genome_list_inc" in context obj
     $self->stash_inc_genomes_by_role($c);
     
     push @{$c->stash->{add_js_end}}, '/static/page/js/formcheck.js'; 
@@ -245,37 +253,10 @@ sub fetchfile :Path('fetchfile'){
     }
 }
 
-=head2 stash_genomes_by_role 
-
-=cut
-
-sub stash_genomes_by_role {
-    
-    my ($self, $c) = @_;
-    my @dbix_class_result_set_genome = $c->user->user_roles
-                                    ->search_related('role')
-                                    ->search_related('genome_roles')
-                                    ->search_related('genome');
-    my @genomes;
-    my $i = 1;
-    {
-        no warnings;
-        foreach my $genome ( sort { $b->sanger_id cmp $a->sanger_id } @dbix_class_result_set_genome ) {
-            
-            push @genomes, {  sanger_id => $genome->sanger_id
-                            , counter        => $i++
-                            , strain_id      => $genome->strain_id  
-                           };
-        }
-    }
-    $c->stash->{genome_list_all} = \@genomes;
-    
-    return 1;
-}
-
 =head2 stash_inc_genomes_by_role 
 
-Stash only included genomes, Some genomes are excluded from analysis.
+Stash only included genomes for the authourised user. 
+Some genomes can be excluded from analysis.
 
 =cut
 
@@ -294,12 +275,16 @@ sub stash_inc_genomes_by_role {
             
             if ( $genome->analysis_status eq 'inc' ) {
                 push @genomes, {  sanger_id => $genome->sanger_id
-                                , counter        => $i++
-                                , strain_id      => $genome->strain_id  
+                                , counter   => $i++
+                                , strain_id => $genome->strain_id
+                                , region    => $genome->region
+                                , city      => $genome->city
+                                , hospital  => $genome->hospital  
                                };
             }
         }
     }
+    			    
     $c->stash->{genome_list_inc} = \@genomes;
     
     return 1;
@@ -311,14 +296,10 @@ sub inspect :Path('inspect'){
  
     push @{$c->stash->{add_js_files}}, '/static/core/js/jquery.js';
     push @{$c->stash->{add_js_files}}, '/static/core/js/jquery.dataTables.min.js';
-
-
-    my @dbix_class_result_set_genome = $c->user->user_roles
-                                ->search_related('role')
-                                ->search_related('genome_roles')
-                                ->search_related('genome');
     
-    $c->stash->{genomes} = \@dbix_class_result_set_genome;
+    #will stash a list of genomes to "genome_list_inc" in context obj
+    $self->stash_inc_genomes_by_role($c);
+    
     $c->stash( active_action => '/data' );
     $c->stash->{template} = 'inspect.tt2';
     

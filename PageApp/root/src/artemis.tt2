@@ -17,26 +17,54 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 
 <p>Select a genome from the box below and then press "Launch Artemis" to start Artemis.</p>
 
-<!-- appending "/artemis.JNLP" to the URL in order to control the default filename when downloading a file via CGI -->
-<form action="[% c.uri_for('/data/artemisjnlp') %]" method="post" name="artemisform" id="artemisform">
 
-   <dl class="twocol">
 
-    <dt>Genome:</dt>
-    <dd>
-	    <select name="genome1" id="artemis_1">
-	    	<option value="">== select ==</option>
-                [% FOREACH genome IN c.stash.genome_list_inc %]
-                   <option value="[% genome.sanger_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_id %])</option>
-                [% END %]
-            </select>
-    </dd>
-    
- </dl>
 
-  <div id="msg_box"></div>
-  <div class="c"><input type="submit" value="Launch Artemis" ></div>
-</form>
+
+<div id="myDiv">
+
+	<!-- appending "/artemis.JNLP" to the URL in order to control the default filename when downloading a file via CGI -->
+	<form action="[% c.uri_for('/data/artemisjnlp') %]" method="post" name="artemisform" id="artemisform">
+	
+		<table id="myTable" border="0" cellpadding="0" cellspacing="0" class="pretty">
+			<thead>
+				<tr> 
+					<th>Select</th>  
+				    <th>Strain_id</th> 
+				    <th>Region</th>
+				    <th>City</th>
+				    <th>Sanger_id</th>
+			
+				</tr> 
+			</thead>
+			<tbody>
+			
+			[% FOREACH genome IN c.stash.genome_list_inc %]
+		        <tr>
+				    
+
+					<td></td> 				    
+				    <td>[% genome.strain_id %]</td> 
+				    <td>[% genome.region %]</td> 
+				    <td>[% genome.city %]</td> 
+				    <td>[% genome.sanger_id %]</td>
+
+	
+				</tr>
+			[% END %]
+			
+			</tbody> 
+		</table>
+	
+		
+		<div id="msg_box"></div>
+	
+		<div><input type="submit" value="Launch Artemis" ></div>
+	
+	</form>
+
+</div>
+
 <h4>Note:</h4>
 <p>
   To run Artemis in this way you will need to have <strong>Java Web Start</strong> installed. Java Web Start is included in the Java Runtime Environment (JRE).

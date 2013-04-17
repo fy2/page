@@ -17,11 +17,10 @@
 [% END %] 
 
 
-[% IF template.title == 'PAGe Metadata'  %]
+[% IF template.title == 'PAGe Artemis'  %]
 	
 	<link rel="stylesheet" type="text/css" href="/static/page/css/yahoo.reset.css">
 	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/general.css">
-
 
 
 	<link rel="stylesheet" type="text/css" href="/static/page/css/datatable.style.css">
@@ -55,8 +54,22 @@
 	<script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
         $('#myTable').dataTable( {
-            "sPaginationType": "full_numbers"
-        } );
+        
+            "sPaginationType": "full_numbers",
+            
+			  aoColumnDefs  : [
+			{
+			    aTargets: [0],    // Column number which needs to be modified
+			    fnRender: function (o, v) {   // o, v contains the object and value for the column
+			        return '<input type="checkbox" id="someCheckbox" name="someCheckbox" />';
+			    },
+			    sClass: 'tableCell'    // Optional - class to be applied to this table cell
+			}]          
+            
+         
+        } 
+        
+        );
     } );
 	</script>
 
