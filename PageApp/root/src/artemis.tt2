@@ -29,11 +29,12 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 		<table id="myTable" border="0" cellpadding="0" cellspacing="0" class="pretty">
 			<thead>
 				<tr> 
-					<th>Select</th>  
+					  
 				    <th>Strain_id</th> 
 				    <th>Region</th>
 				    <th>City</th>
 				    <th>Sanger_id</th>
+				    <th>Select</th>
 			
 				</tr> 
 			</thead>
@@ -43,11 +44,12 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 		        <tr>
 				    
 
-					<td></td> 				    
 				    <td>[% genome.strain_id %]</td> 
 				    <td>[% genome.region %]</td> 
 				    <td>[% genome.city %]</td> 
 				    <td>[% genome.sanger_id %]</td>
+				    <td><input type="checkbox" name="check2" value="[% genome.sanger_id %]"></td> 				    
+				    
 
 	
 				</tr>

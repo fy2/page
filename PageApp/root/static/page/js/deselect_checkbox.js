@@ -5,3 +5,4 @@ for (i = 0; i < field.length; i++)
 		field[i].checked = false ;
 	}
 }
+

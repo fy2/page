@@ -274,7 +274,9 @@ sub stash_inc_genomes_by_role {
         foreach my $genome ( sort { $b->sanger_id cmp $a->sanger_id } @dbix_class_result_set_genome ) {
             
             if ( $genome->analysis_status eq 'inc' ) {
-                push @genomes, {  sanger_id => $genome->sanger_id
+                my $sanger_id = $genome->sanger_id;
+                $sanger_id =~ s/#/_/g;
+                push @genomes, {  sanger_id => $sanger_id
                                 , counter   => $i++
                                 , strain_id => $genome->strain_id
                                 , region    => $genome->region

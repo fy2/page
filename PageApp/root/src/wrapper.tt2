@@ -49,28 +49,28 @@
 	}
 	</style>
 	
-
-	
 	<script type="text/javascript" charset="utf-8">
-    $(document).ready(function() {
-        $('#myTable').dataTable( {
+    $(document).ready( 
+        function() { $('#myTable').dataTable( 
+        {
         
             "sPaginationType": "full_numbers",
-            
-			  aoColumnDefs  : [
-			{
-			    aTargets: [0],    // Column number which needs to be modified
-			    fnRender: function (o, v) {   // o, v contains the object and value for the column
-			        return '<input type="checkbox" id="someCheckbox" name="someCheckbox" />';
-			    },
-			    sClass: 'tableCell'    // Optional - class to be applied to this table cell
-			}]          
-            
+                     
+         });
          
-        } 
-        
-        );
-    } );
+         var oTable;
+         
+         $('#artemisform').submit( function() {
+			var sData = oTable.$('input').serialize();
+			alert( "The following data would have been submitted to the server: \n\n"+sData );
+			return false;
+  		  } );
+     
+    	  oTable = $('#myTable').dataTable();	
+    
+     });
+    
+      
 	</script>
 
 	
