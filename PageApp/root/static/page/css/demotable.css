@@ -200,12 +200,13 @@ table.display td.center {
 
 .sorting_desc_disabled {
 	background: rgb(87, 160, 184) url('sort_desc.png') no-repeat center right;
-}
+
 
 .sorting_disabled {
 	background: rgb(87, 160, 184) no-repeat center right;
 	
 }
+ 
  
  
 table.display thead th:active,
