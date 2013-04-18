@@ -21,7 +21,7 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 <div id="myDiv">
 
 	<!-- appending "/artemis.JNLP" to the URL in order to control the default filename when downloading a file via CGI -->
-	<form action="[% c.uri_for('/data/artemisjnlp') %]" method="post" name="artemisform" id="artemisform">
+	<form action="[% c.uri_for('/data/artemisjnlp') %]" method="post" name="jnlpForm" id="jnlpForm">
 	
 		<table id="myTable" border="0" cellpadding="0" cellspacing="0" class="display">
 			<thead>

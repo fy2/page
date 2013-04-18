@@ -17,7 +17,7 @@
 [% END %] 
 
 
-[% IF template.title == 'PAGe Artemis'  %]
+[% IF template.title == 'PAGe Artemis' || template.title == 'PAGe Act'  %]
 	
 	<link rel="stylesheet" type="text/css" href="/static/page/css/yahoo.reset.css">
 	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/general.css">
@@ -77,7 +77,7 @@
          });
          
          var oTable;         
-         $('#artemisform').submit( function() {
+         $('#jnlpForm').submit( function() {
 			var sData = oTable.$('input').serialize();
 			alert( "The following data would have been submitted to the server: \n\n"+sData );
 			return false;

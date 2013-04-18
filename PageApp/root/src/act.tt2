@@ -17,69 +17,95 @@
 <p>Select the two (or more) genomes from the boxes below and then press "Launch" to start ACT.</p>
 
 
+<div id="myDiv">
+
 <!-- appending "/act.JNLP" to the URL in order to control the default filename when downloading a file via CGI -->
-<form action="[% c.uri_for('/data/actjnlp') %]" method="post" name="actform" id="actform">
+<form action="[% c.uri_for('/data/actjnlp') %]" method="post" name="jnlpForm" id="jnlpForm">
  
-   <dl class="twocol">
+		<table id="myTable" border="0" cellpadding="0" cellspacing="0" class="display">
+			<thead>
+				<tr> 
+					 
+				    <th align="center">Strain_id</th> 
+				     <th align="center">Country</th>
+				    <th align="center">Source</th>
+				    <th align="center"> Sanger_id</th>
+				    <th style="text-align:center">Select</th> 
+			
+				</tr> 
+			</thead>
+			<tbody>
+			
+			[% FOREACH genome IN c.stash.genome_list_inc %]
+			
+				[% IF genome.analysis_status == 'inc' %] 
+			        <tr title="
+			        		   Analysis status:	   [% genome.analysis_status %] <br>
+			        		   Sanger ID: 		   [% genome.sanger_id %] <br>
+			        		   Strain ID: 		   [% genome.strain_id %] <br>
+			        		   
+			        		   Analysis comment:   [% genome.analysis_comment %] <br>
+			        		   Top_serotype:       [% genome.top_serotype %] <br>
+			        		   Mlst:			   [% genome.mlst %] <br>
+			        		   Gender:             [% genome.gender %] <br>
+			                   Body source:        [% genome.body_source %] <br>
+			                   Menigitis isolate?: [% genome.meningitis_outbreak_isolate %] <br>
+			                   HIV:                [% genome.hiv %] <br>
+			                   Date of isolation:  [% genome.date_of_isolation %] <br>
+			                   Context:            [% genome.context %] <br>
+			                   Country of origin:  [% genome.country_of_origin %] <br>
+			                   Region:             [% genome.region %] <br>
+			                   Latitude:           [% genome.latitude %] <br> 
+			                   Longitude:          [% genome.longitude %] <br>   
+			        		  "  
+			        	class="gradeA">	    
+					    
+					    <td>[% genome.strain_id %]</td> 
+					    <td>[% genome.location_country %]</td> 
+					    <td>[% genome.body_source %]</td> 
+					    <td>[% genome.sanger_id %]</td>
+						<td  style="text-align:center"> <input type="checkbox" name="check2" value="[% genome.sanger_id %]"> </td> 				    
+					</tr>
+				[% ELSE %]
+			        <tr title="
+			        		
+			        		   Analysis status:	   [% genome.analysis_status %] <br>
+			        		   Sanger ID: 		   [% genome.sanger_id %] <br>
+			        		   Strain ID: 		   [% genome.strain_id %] <br>
+			        		   
+			        		   Analysis comment:   [% genome.analysis_comment %] <br>
+			        		   Top_serotype:       [% genome.top_serotype %] <br>
+			        		   Mlst:			   [% genome.mlst %] <br>
+			        		   Gender:             [% genome.gender %] <br>
+			                   Body source:        [% genome.body_source %] <br>
+			                   Menigitis isolate?: [% genome.meningitis_outbreak_isolate %] <br>
+			                   HIV:                [% genome.hiv %] <br>
+			                   Date of isolation:  [% genome.date_of_isolation %] <br>
+			                   Context:            [% genome.context %] <br>
+			                   Country of origin:  [% genome.country_of_origin %] <br>
+			                   Region:             [% genome.region %] <br>  
+			                   Latitude:           [% genome.latitude %] <br> 
+			                   Longitude:          [% genome.longitude %] <br>   
+			        		  "  
+			        	class="gradeX">						
 
-    <dt>Genome 1:</dt>
-    <dd>
-	    <select name="genome1" id="act_1">
-	    	<option value="">== select ==</option>
-                
-                [% FOREACH genome IN c.stash.genome_list_inc %]
-                   <option value="[% genome.sanger_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_id %])</option>
-                [% END %]
-
-	    </select>
-    </dd>
-
-    <dt>Genome 2:</dt>
-    <dd>
-	    <select name="genome2" id="act_2">
-	    	<option value="">== select ==</option>
-                [% FOREACH genome IN c.stash.genome_list_inc %]
-                   <option value="[% genome.sanger_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_id %])</option>
-                [% END %]
-                </select>
-    </dd>
-    
-
-    <dt>Genome 3:</dt>
-    <dd>
-	    <select name="genome3" id="act_3">
-	    	<option value="">== select ==</option>
-                [% FOREACH genome IN c.stash.genome_list_inc %]
-                   <option value="[% genome.sanger_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_id %])</option>
-                [% END %]
-	    </select>
-    </dd>
-    
-    <dt>Genome 4:</dt>
-    <dd>
-	    <select name="genome4" id="act_4">
-	    	<option value="">== select ==</option>
-                [% FOREACH genome IN c.stash.genome_list_inc %]
-                   <option value="[% genome.sanger_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_id %])</option>
-                [% END %]
-	    </select>
-    </dd>
-  
-    <dt>Genome 5:</dt>
-    <dd>
-	    <select name="genome5" id="act_5">
-	    	<option value="">== select ==</option>
-                [% FOREACH genome IN c.stash.genome_list_inc %]
-                   <option value="[% genome.sanger_id %]">Genome [% genome.counter %] - [% genome.strain_id %] ([% genome.sanger_id %])</option>
-                [% END %]
-	    </select>
-    </dd>
-      
-  </dl>
+					    <td>[% genome.strain_id %]</td> 
+					    <td>[% genome.location_country %]</td> 
+					    <td>[% genome.body_source %]</td> 
+					    <td>[% genome.sanger_id %]</td>
+						<td></td> 				    
+					</tr>					
+				[% END %]
+			[% END %]
+			
+			</tbody> 
+		</table>
   
   <div id="msg_box"></div>
   <div class="c"><input type="submit" value="Launch ACT" ></div>
 </form>
+
+</div>
 <h4>Note:</h4>
 <p>
   To run ACT in this way you will need to have <strong>Java Web Start</strong> installed. Java Web Start is included in the Java Runtime Environment (JRE).
