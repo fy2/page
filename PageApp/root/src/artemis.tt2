@@ -28,8 +28,8 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 				<tr> 
 					 
 				    <th align="center">Strain_id</th> 
-				    <th align="center">Region</th>
-				    <th align="center">City</th>
+				     <th align="center">Country</th>
+				    <th align="center">Source</th>
 				    <th align="center"> Sanger_id</th>
 				    <th style="text-align:center">Select</th> 
 			
@@ -40,18 +40,59 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 			[% FOREACH genome IN c.stash.genome_list_inc %]
 			
 				[% IF genome.analysis_status == 'inc' %] 
-			        <tr title="[% genome.sanger_id %] [% genome.city %]<br>[% genome.sanger_id %]<br>[% genome.city %]" class="gradeA">	    
+			        <tr title="
+			        		   Analysis status:	   [% genome.analysis_status %] <br>
+			        		   Sanger ID: 		   [% genome.sanger_id %] <br>
+			        		   Strain ID: 		   [% genome.strain_id %] <br>
+			        		   
+			        		   Analysis comment:   [% genome.analysis_comment %] <br>
+			        		   Top_serotype:       [% genome.top_serotype %] <br>
+			        		   Mlst:			   [% genome.mlst %] <br>
+			        		   Gender:             [% genome.gender %] <br>
+			                   Body source:        [% genome.body_source %] <br>
+			                   Menigitis isolate?: [% genome.meningitis_outbreak_isolate %] <br>
+			                   HIV:                [% genome.hiv %] <br>
+			                   Date of isolation:  [% genome.date_of_isolation %] <br>
+			                   Context:            [% genome.context %] <br>
+			                   Country of origin:  [% genome.country_of_origin %] <br>
+			                   Region:             [% genome.region %] <br>
+			                   Latitude:           [% genome.latitude %] <br> 
+			                   Longitude:          [% genome.longitude %] <br>   
+			        		  "  
+			        	class="gradeA">	    
+					    
 					    <td>[% genome.strain_id %]</td> 
-					    <td>[% genome.region %]</td> 
-					    <td>[% genome.city %]</td> 
+					    <td>[% genome.location_country %]</td> 
+					    <td>[% genome.body_source %]</td> 
 					    <td>[% genome.sanger_id %]</td>
 						<td  style="text-align:center"> <input type="checkbox" name="check2" value="[% genome.sanger_id %]"> </td> 				    
 					</tr>
 				[% ELSE %]
-			        <tr title="[% genome.sanger_id %] [% genome.city %]<br>[% genome.sanger_id %]<br>[% genome.city %]" class="gradeX">	    
+			        <tr title="
+			        		
+			        		   Analysis status:	   [% genome.analysis_status %] <br>
+			        		   Sanger ID: 		   [% genome.sanger_id %] <br>
+			        		   Strain ID: 		   [% genome.strain_id %] <br>
+			        		   
+			        		   Analysis comment:   [% genome.analysis_comment %] <br>
+			        		   Top_serotype:       [% genome.top_serotype %] <br>
+			        		   Mlst:			   [% genome.mlst %] <br>
+			        		   Gender:             [% genome.gender %] <br>
+			                   Body source:        [% genome.body_source %] <br>
+			                   Menigitis isolate?: [% genome.meningitis_outbreak_isolate %] <br>
+			                   HIV:                [% genome.hiv %] <br>
+			                   Date of isolation:  [% genome.date_of_isolation %] <br>
+			                   Context:            [% genome.context %] <br>
+			                   Country of origin:  [% genome.country_of_origin %] <br>
+			                   Region:             [% genome.region %] <br>  
+			                   Latitude:           [% genome.latitude %] <br> 
+			                   Longitude:          [% genome.longitude %] <br>   
+			        		  "  
+			        	class="gradeX">						
+
 					    <td>[% genome.strain_id %]</td> 
-					    <td>[% genome.region %]</td> 
-					    <td>[% genome.city %]</td> 
+					    <td>[% genome.location_country %]</td> 
+					    <td>[% genome.body_source %]</td> 
 					    <td>[% genome.sanger_id %]</td>
 						<td></td> 				    
 					</tr>					
