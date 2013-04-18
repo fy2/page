@@ -182,24 +182,31 @@ table.display td.center {
  */
 
 .sorting_asc {
-	background: url('../images/sort_asc.png') no-repeat center right;
+	background: rgb(87, 160, 184) url('sort_asc.png') no-repeat center right;
+	
 }
 
 .sorting_desc {
-	background: url('../images/sort_desc.png') no-repeat center right;
+	background: rgb(87, 160, 184) url('sort_desc.png') no-repeat center right;
 }
 
 .sorting {
-	background: url('../images/sort_both.png') no-repeat center right;
+	background: rgb(87, 160, 184) url('sort_both.png') no-repeat center right;
 }
 
 .sorting_asc_disabled {
-	background: url('../images/sort_asc_disabled.png') no-repeat center right;
+	background: rgb(87, 160, 184) url('sort_asc.png') no-repeat center right;
 }
 
 .sorting_desc_disabled {
-	background: url('../images/sort_desc_disabled.png') no-repeat center right;
+	background: rgb(87, 160, 184) url('sort_desc.png') no-repeat center right;
 }
+
+.sorting_disabled {
+	background: rgb(87, 160, 184) no-repeat center right;
+	
+}
+ 
  
 table.display thead th:active,
 table.display thead td:active {
@@ -349,7 +356,7 @@ td.details {
 }
 
 .paging_full_numbers a.paginate_active {
-	background-color: #99B3FF;
+	background-color: rgb(87, 160, 184);
 }
 
 table.display tr.even.row_selected td {
@@ -400,6 +407,8 @@ tr.even td.sorting_3 {
 	  dd > d1
 	  ee > e2
  */
+ 
+ 
 tr.odd.gradeA td.sorting_1 {
 	background-color: #c4ffc4;
 }
@@ -423,11 +432,11 @@ tr.even.gradeA td.sorting_2 {
 tr.even.gradeA td.sorting_3 {
 	background-color: #e2ffe2;
 }
-
+/*
 tr.odd.gradeC td.sorting_1 {
 	background-color: #c4c4ff;
 }
-
+*/
 tr.odd.gradeC td.sorting_2 {
 	background-color: #d1d1ff;
 }

@@ -123,10 +123,9 @@ table.pretty tbody tr.odd td {
 	background: #C9D3DB;
 }
 
-#myTable  tr.even:hover{
+#myTable tr:hover{
     background-color: #cccccc;
 }
-
 
 /* Footer cells */	
 table.pretty tfoot th {

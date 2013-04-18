@@ -69,11 +69,12 @@
         
             "sPaginationType": "full_numbers",
 			 "aoColumns": [
+			      
+			      null,
+			      null,
+			      null,
+			      null,
 			      { "bSortable": false },
-			      null,
-			      null,
-			      null,
-			      null
 			 ]
 			                     
          });
