@@ -40,7 +40,7 @@ sub artemis :Path('artemis') {
     push @{$c->stash->{add_js_files}}, '/static/core/js/jquery.dataTables.min.js';
         
     #will stash a list of genomes to "genome_list_inc" in context obj
-    $self->stash_inc_genomes_by_role($c);
+    $self->stash_genomes_by_role($c);
     
     
     #push @{$c->stash->{add_js_end}}, '/static/page/js/formcheck.js'; 
@@ -101,7 +101,7 @@ sub act :Path('act'){
     push @{$c->stash->{add_js_files}}, '/static/core/js/jquery.dataTables.min.js';
     
     #will stash a list of genomes to "genome_list_inc" in context obj
-    $self->stash_inc_genomes_by_role($c);
+    $self->stash_genomes_by_role($c);
     
     push @{$c->stash->{add_js_end}}, '/static/page/js/formcheck.js'; 
     
@@ -252,43 +252,21 @@ sub fetchfile :Path('fetchfile'){
     }
 }
 
-=head2 stash_inc_genomes_by_role 
-
-Stash only included genomes for the authourised user. 
-Some genomes can be excluded from analysis.
+=head2 stash_genomes_by_role 
 
 =cut
 
-sub stash_inc_genomes_by_role {
+sub stash_genomes_by_role {
     
     my ($self, $c) = @_;
-    my @dbix_class_result_set_genome = $c->user->user_roles
-                                    ->search_related('role')
-                                    ->search_related('genome_roles')
-                                    ->search_related('genome');
-    my @genomes;
-    my $i = 1;
-    {
-        no warnings;
-        foreach my $genome ( sort { $b->sanger_id cmp $a->sanger_id } @dbix_class_result_set_genome ) {
-            
-            if ( $genome->analysis_status eq 'inc' ) {
-                my $sanger_id = $genome->sanger_id;
-                $sanger_id =~ s/#/_/g;
-                push @genomes, {  sanger_id => $sanger_id
-                                , counter   => $i++
-                                , strain_id => $genome->strain_id
-                                , region    => $genome->region
-                                , city      => $genome->city
-                                , hospital  => $genome->hospital  
-                               };
-            }
-        }
-    }
-    			    
-    $c->stash->{genome_list_inc} = \@genomes;
+    my @genomes_rs = sort { $b->sanger_id cmp $a->sanger_id } 
+                                       $c->user->user_roles
+                                       ->search_related('role')
+                                       ->search_related('genome_roles')
+                                       ->search_related('genome');
     
-    return 1;
+    $c->stash->{genome_list_inc} = \@genomes_rs;
+    return 1;   
 }
 
 sub inspect :Path('inspect'){
@@ -299,7 +277,7 @@ sub inspect :Path('inspect'){
     push @{$c->stash->{add_js_files}}, '/static/core/js/jquery.dataTables.min.js';
     
     #will stash a list of genomes to "genome_list_inc" in context obj
-    $self->stash_inc_genomes_by_role($c);
+    $self->stash_genomes_by_role($c);
     
     $c->stash( active_action => '/data' );
     $c->stash->{template} = 'inspect.tt2';

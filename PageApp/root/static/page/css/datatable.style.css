@@ -123,11 +123,11 @@ table.pretty tbody tr.odd td {
 	background: #C9D3DB;
 }
 
-/*
+
 #myTable tr:hover{
     background-color: rgb(87, 160, 184);
 }
-*/
+
 
 #myTable td:hover{
 	background-color: rgb(87, 160, 184);

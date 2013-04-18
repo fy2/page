@@ -18,9 +18,6 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 <p>Select a genome from the box below and then press "Launch Artemis" to start Artemis.</p>
 
 
-
-
-
 <div id="myDiv">
 
 	<!-- appending "/artemis.JNLP" to the URL in order to control the default filename when downloading a file via CGI -->
@@ -41,15 +38,24 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 			<tbody>
 			
 			[% FOREACH genome IN c.stash.genome_list_inc %]
-		        <tr title="[% genome.sanger_id %] [% genome.city %]<br>[% genome.sanger_id %]<br>[% genome.city %]" class="gradeA">
-				    
-				    <td>[% genome.strain_id %]</td> 
-				    <td>[% genome.region %]</td> 
-				    <td>[% genome.city %]</td> 
-				    <td>[% genome.sanger_id %]</td>
-					<td  style="text-align:center"> <input type="checkbox" name="check2" value="[% genome.sanger_id %]"> </td> 				    
-					
-				</tr>
+			
+				[% IF genome.analysis_status == 'inc' %] 
+			        <tr title="[% genome.sanger_id %] [% genome.city %]<br>[% genome.sanger_id %]<br>[% genome.city %]" class="gradeA">	    
+					    <td>[% genome.strain_id %]</td> 
+					    <td>[% genome.region %]</td> 
+					    <td>[% genome.city %]</td> 
+					    <td>[% genome.sanger_id %]</td>
+						<td  style="text-align:center"> <input type="checkbox" name="check2" value="[% genome.sanger_id %]"> </td> 				    
+					</tr>
+				[% ELSE %]
+			        <tr title="[% genome.sanger_id %] [% genome.city %]<br>[% genome.sanger_id %]<br>[% genome.city %]" class="gradeX">	    
+					    <td>[% genome.strain_id %]</td> 
+					    <td>[% genome.region %]</td> 
+					    <td>[% genome.city %]</td> 
+					    <td>[% genome.sanger_id %]</td>
+						<td></td> 				    
+					</tr>					
+				[% END %]
 			[% END %]
 			
 			</tbody> 

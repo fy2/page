@@ -21,9 +21,6 @@
 	
 	<link rel="stylesheet" type="text/css" href="/static/page/css/yahoo.reset.css">
 	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/general.css">
-
-
-	
 	<link rel="stylesheet" type="text/css" href="/static/core/css/pagesmith/two-col-lists.css">
 	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/page-frame.css">
 	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/width-960.css">
@@ -33,9 +30,10 @@
 	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/references.css">
 	<link rel="stylesheet" type="text/css" href="/static/page/css/page.css">		
 	
+	
+	<!-- the rest of this IF block is just dedicated to the Datatable, it .js and css! -->
 	<link rel="stylesheet" type="text/css" href="/static/page/css/datatable.style.css">
 	<link rel="stylesheet" type="text/css" href="/static/page/css/demotable.css">
-	
 	<link rel="stylesheet" type="text/css" href="/static/page/css/jquery.tooltip.css">		
 	<script type="text/javascript" language="javascript" src="/static/page/js/jquery.tooltip.js"></script>
 	
@@ -44,8 +42,7 @@
 		p, li, dd, dt, blockquote {
 	    line-height: 1.25em;
 	}
-  
-    
+
     /* keep the div that hold the table below login status */	
 	#myDiv {
     position: relative;
@@ -79,22 +76,15 @@
 			                     
          });
          
-         var oTable;
-         
+         var oTable;         
          $('#artemisform').submit( function() {
 			var sData = oTable.$('input').serialize();
 			alert( "The following data would have been submitted to the server: \n\n"+sData );
 			return false;
   		  } );
-     
-     
-		    
-         
+
     	  oTable = $('#myTable').dataTable();	
-    
      });
-    
-      
 	</script>
 
 	
@@ -146,8 +136,6 @@
     <div id="head">
       <a href="/"><img src="/static/page/gfx/page-logo.png" alt="Page Logo" ></a>
 
-
-      
       <div class="x">&nbsp;</div>
     </div>
 

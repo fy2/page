@@ -2,9 +2,11 @@
 	position: absolute;
 	display: none;
 	border: 1px solid #333;
-	/*background: #BDCDFF;*/
+	text-align: left;
+	font-size:10px;
+	
 	background: rgb(255, 255, 255);
-	padding: 5px 20px;
+	/*padding: 5px 20px;*/
 	color: #333;
 	
 	border-radius: 5px;
