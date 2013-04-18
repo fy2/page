@@ -200,13 +200,12 @@ table.display td.center {
 
 .sorting_desc_disabled {
 	background: rgb(87, 160, 184) url('sort_desc.png') no-repeat center right;
-
+}
 
 .sorting_disabled {
 	background: rgb(87, 160, 184) no-repeat center right;
 	
 }
- 
  
  
 table.display thead th:active,
@@ -511,8 +510,6 @@ tr.even.gradeU td.sorting_3 {
 /*
  * Row highlighting example
  */
- 
- /*
 .ex_highlight #example tbody tr.even:hover, #example tbody tr.even td.highlighted {
 	background-color: #ECFFB3;
 }
@@ -553,7 +550,6 @@ tr.even.gradeU td.sorting_3 {
 	background-color: #DBFF70;
 }
 
-*/
 
 /*
  * KeyTable
