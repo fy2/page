@@ -23,7 +23,7 @@
 	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/general.css">
 
 
-	<link rel="stylesheet" type="text/css" href="/static/page/css/datatable.style.css">
+	
 	<link rel="stylesheet" type="text/css" href="/static/core/css/pagesmith/two-col-lists.css">
 	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/page-frame.css">
 	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/width-960.css">
@@ -33,6 +33,11 @@
 	<link rel="stylesheet" type="text/css" href="/static/core/css/templates/references.css">
 	<link rel="stylesheet" type="text/css" href="/static/page/css/page.css">		
 	
+	<link rel="stylesheet" type="text/css" href="/static/page/css/datatable.style.css">
+	<link rel="stylesheet" type="text/css" href="/static/page/css/demotable.css">
+	
+	<link rel="stylesheet" type="text/css" href="/static/page/css/jquery.tooltip.css">		
+	<script type="text/javascript" language="javascript" src="/static/page/js/jquery.tooltip.js"></script>
 	
 	<style type="text/css">
 	/* keeps the menu structure in tact,  normally done via general.css */
@@ -51,11 +56,26 @@
 	
 	<script type="text/javascript" charset="utf-8">
     $(document).ready( 
-        function() { $('#myTable').dataTable( 
+        function() {
+        
+         $('#myTable tbody tr[title]').tooltip( {
+				"delay": 0,
+				"track": true,
+				"fade": 250
+		  } );  
+        
+         $('#myTable').dataTable( 
         {
         
             "sPaginationType": "full_numbers",
-                     
+			 "aoColumns": [
+			      { "bSortable": false },
+			      null,
+			      null,
+			      null,
+			      null
+			 ]
+			                     
          });
          
          var oTable;
@@ -66,6 +86,9 @@
 			return false;
   		  } );
      
+     
+		    
+         
     	  oTable = $('#myTable').dataTable();	
     
      });

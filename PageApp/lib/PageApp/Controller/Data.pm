@@ -44,7 +44,6 @@ sub artemis :Path('artemis') {
     
     
     #push @{$c->stash->{add_js_end}}, '/static/page/js/formcheck.js'; 
-    push @{$c->stash->{add_js_end}}, '/static/page/js/deselect_checkbox.js'; 
     
     $c->stash( active_action => '/data' );
     

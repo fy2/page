@@ -26,31 +26,28 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 	<!-- appending "/artemis.JNLP" to the URL in order to control the default filename when downloading a file via CGI -->
 	<form action="[% c.uri_for('/data/artemisjnlp') %]" method="post" name="artemisform" id="artemisform">
 	
-		<table id="myTable" border="0" cellpadding="0" cellspacing="0" class="pretty">
+		<table id="myTable" border="0" cellpadding="0" cellspacing="0" class="display">
 			<thead>
 				<tr> 
-					  
+					<th>Select</th>  
 				    <th>Strain_id</th> 
 				    <th>Region</th>
 				    <th>City</th>
 				    <th>Sanger_id</th>
-				    <th>Select</th>
+				    
 			
 				</tr> 
 			</thead>
 			<tbody>
 			
 			[% FOREACH genome IN c.stash.genome_list_inc %]
-		        <tr>
+		        <tr title="[% genome.sanger_id %]" class="gradeX">
 				    
-
+				    <td> <input type="checkbox" name="check2" value="[% genome.sanger_id %]"> </td> 				    
 				    <td>[% genome.strain_id %]</td> 
 				    <td>[% genome.region %]</td> 
 				    <td>[% genome.city %]</td> 
 				    <td>[% genome.sanger_id %]</td>
-				    <td><input type="checkbox" name="check2" value="[% genome.sanger_id %]"></td> 				    
-				    
-
 	
 				</tr>
 			[% END %]
