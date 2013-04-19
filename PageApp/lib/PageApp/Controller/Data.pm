@@ -116,14 +116,8 @@ sub act :Path('act'){
 sub actjnlp :Path('actjnlp'){
     my ( $self, $c ) = @_;
       
+    my @genome_selection = $c->request->param('checkbox');
 
-    my @genome_selection;
-    foreach my $param_name ( $c->request->param ) {
-        my $value = $c->request->param($param_name);
-        push @genome_selection, $value if ($value);
-    }
-    #use Data::Dumper;
-    #die Dumper @genome_selection;
     my $rearranged_list = rearrange_act_arguments(
     
                              $c,
