@@ -40,5 +40,5 @@
       <h3><a href="[% c.uri_for('/data/download') %]">Download Analysis</a></h3>
       <p class="affiliation">
         Download analysis results to your local machine
-      </p> Follow this link for instructions in order to get a local copy of your PAGe analysis data. 
+      </p> Follow these instructions in order to get a local copy of your PAGe analysis data. 
     </div>
