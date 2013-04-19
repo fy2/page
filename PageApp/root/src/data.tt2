@@ -7,6 +7,14 @@
     </p>
 
     <div class="thumb">
+      <a href="[% c.uri_for('/data/download') %]"><img src="/static/page/gfx/enter_on_key_board_bw.jpg" style="width:150px;height:105px" alt="[photo]" ></a>
+      <h3><a href="[% c.uri_for('/data/download') %]">Download Analysis</a></h3>
+      <p class="affiliation">
+        Download analysis results to your local machine
+      </p> Follow these instructions in order to get a local copy of your PAGe analysis data. 
+    </div>
+
+    <div class="thumb">
       <a href="[% c.uri_for('/data/artemis') %]"><img src="/static/page/gfx/artemis_230_bw.png" style="width:150px;height:105px" alt="[photo]" ></a>
       <h3><a href="[% c.uri_for('/data/artemis') %]">Genome Viewer</a></h3>
       <p class="affiliation">
@@ -23,6 +31,7 @@
         Use Artemis Comparison Tool (ACT)
       </p>ACT is a tool for displaying pairwise comparisons between two or more DNA sequences.
     </div>
+
     <div class="thumb">
       <a href="http://test1.mlst.net/page"><img src="/static/page/gfx/spatial_bw.png" style=
       "width:150px;height:105px" alt="[photo]" ></a>
@@ -35,10 +44,4 @@
       context along with other relevant data.
     </div>
 
-    <div class="thumb">
-      <a href="[% c.uri_for('/data/download') %]"><img src="/static/page/gfx/enter_on_key_board_bw.jpg" style="width:150px;height:105px" alt="[photo]" ></a>
-      <h3><a href="[% c.uri_for('/data/download') %]">Download Analysis</a></h3>
-      <p class="affiliation">
-        Download analysis results to your local machine
-      </p> Follow these instructions in order to get a local copy of your PAGe analysis data. 
-    </div>
+

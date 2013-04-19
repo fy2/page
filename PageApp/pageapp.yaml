@@ -38,6 +38,4 @@ data:
     #sort the names alphabetically and added a .crunch suffix to them, 
     #i.e. "file1.file2.crunch".
     dir_name_of_crunch: crunch
-    file_extension_of_crunch: .crunch
-    
-    
+    file_extension_of_crunch: .crunch.gz
