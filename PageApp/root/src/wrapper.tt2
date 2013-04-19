@@ -76,15 +76,43 @@
 			                     
          });
          
-         var oTable;         
-         $('#jnlpForm').submit( function() {
-			var sData = oTable.$('input').serialize();
-			alert( "The following data would have been submitted to the server: \n\n"+sData );
-			return false;
-  		  } );
+		var oTable; 
+			        
+		$('#artForm').submit( function() {
+				var msg = document.getElementById('msg_box');
+				msg.innerHTML='';
+				
+				var selectedData = oTable.$('input').serialize();
+				if ( selectedData.length == 0 ) {
+					msg.innerHTML='<div class="msg">You have not selected anything!</div>';
+		  			window.setTimeout(function(){msg.innerHTML='';},3000);
+		  			return false;
+				} 
+	
+				
+				return artemis_args_are_okay(selectedData);
 
-    	  oTable = $('#myTable').dataTable();	
+		} );
+		
+		$('#actForm').submit( function() {
+				var msg = document.getElementById('msg_box');
+				msg.innerHTML='';
+				
+				var selectedData = oTable.$('input').serialize();
+				if ( selectedData.length == 0 ) {
+					msg.innerHTML='<div class="msg">You have not selected anything!</div>';
+		  			window.setTimeout(function(){msg.innerHTML='';},3000);
+		  			return false;
+				}
+
+				return act_args_are_okay(selectedData);	
+		} );  		  
+  
+
+    	oTable = $('#myTable').dataTable();
+    		
      });
+     
 	</script>
 
 	

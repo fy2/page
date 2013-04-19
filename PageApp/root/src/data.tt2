@@ -27,20 +27,12 @@
       <a href="http://test1.mlst.net/page"><img src="/static/page/gfx/spatial_bw.png" style=
       "width:150px;height:105px" alt="[photo]" ></a>
      
-      <h3><a href="http://test1.mlst.net/page">Phylogeography</a></h3>
+      <h3><a href="http://test1.mlst.net/page">Phylogeography (BETA)</a></h3>
       
       <p class="affiliation">
         Visualise differences within the context of geographical location
       </p>Spatial Viewer has been developed by London Imperial College. It displays phylogenetic trees and variations between genomes in a geographical
       context along with other relevant data.
-    </div>
-
-    <div class="thumb">
-      <a href="[% c.uri_for('/data/inspect') %]"><img src="/static/page/gfx/colony_bw.png" style="width:150px;height:105px" alt="[photo]" ></a>
-      <h3><a href="[% c.uri_for('/data/inspect') %]">Inspect metadata</a></h3>
-      <p class="affiliation">
-        View your isolate metadata
-      </p>Meta data viewer provides quick access to your isolates' metadata and the analysis progress.
     </div>
 
     <div class="thumb">

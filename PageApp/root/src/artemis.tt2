@@ -21,7 +21,7 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 <div id="myDiv">
 
 	<!-- appending "/artemis.JNLP" to the URL in order to control the default filename when downloading a file via CGI -->
-	<form action="[% c.uri_for('/data/artemisjnlp') %]" method="post" name="jnlpForm" id="jnlpForm">
+	<form action="[% c.uri_for('/data/artemisjnlp') %]" method="post" name="artForm" id="artForm">
 	
 		<table id="myTable" border="0" cellpadding="0" cellspacing="0" class="display">
 			<thead>
@@ -65,7 +65,7 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 					    <td>[% genome.location_country %]</td> 
 					    <td>[% genome.body_source %]</td> 
 					    <td>[% genome.sanger_id %]</td>
-						<td  style="text-align:center"> <input type="checkbox" name="check2" value="[% genome.sanger_id %]"> </td> 				    
+						<td  style="text-align:center"> <input type="checkbox" name="checkbox" value="artform[% genome.sanger_id %]"> </td> 				    
 					</tr>
 				[% ELSE %]
 			        <tr title="
@@ -115,6 +115,6 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 <p>
   To run Artemis in this way you will need to have <strong>Java Web Start</strong> installed. Java Web Start is included in the Java Runtime Environment (JRE).
   If you do not have this installed, it may be downloaded from the
-  <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Web Start</a>
+  <a href="http://www.oracle.com/technetwork/java/javase/tech/index-jsp-136112.html">Java Web Start</a>
   website.
 </p>

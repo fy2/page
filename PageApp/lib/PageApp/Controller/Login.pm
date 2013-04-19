@@ -35,7 +35,7 @@ sub index :Path :Args(0) {
     my $username = $c->request->params->{username};
     my $password = $c->request->params->{password};
 
-    push @{$c->stash->{add_js_end}}, '/static/page/js/formcheck.js'; 
+    push @{$c->stash->{add_js_end}}, '/static/page/js/login_field_check.js'; 
 
     # If the username and password values were found in form
     if ($username && $password) {

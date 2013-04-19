@@ -42,9 +42,7 @@ sub artemis :Path('artemis') {
     #will stash a list of genomes to "genome_list_inc" in context obj
     $self->stash_genomes_by_role($c);
     
-    
-    #push @{$c->stash->{add_js_end}}, '/static/page/js/formcheck.js'; 
-    
+    push @{$c->stash->{add_js_end}}, '/static/page/js/artemis_act_checks.js';
     $c->stash( active_action => '/data' );
     
     $c->stash->{template} = 'artemis.tt2';
@@ -103,8 +101,8 @@ sub act :Path('act'){
     #will stash a list of genomes to "genome_list_inc" in context obj
     $self->stash_genomes_by_role($c);
     
-    push @{$c->stash->{add_js_end}}, '/static/page/js/formcheck.js'; 
-    
+
+    push @{$c->stash->{add_js_end}}, '/static/page/js/artemis_act_checks.js';
     $c->stash( active_action => '/data' );
     
     $c->stash->{template} = 'act.tt2';

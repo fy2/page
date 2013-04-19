@@ -20,7 +20,7 @@
 <div id="myDiv">
 
 <!-- appending "/act.JNLP" to the URL in order to control the default filename when downloading a file via CGI -->
-<form action="[% c.uri_for('/data/actjnlp') %]" method="post" name="jnlpForm" id="jnlpForm">
+<form action="[% c.uri_for('/data/actjnlp') %]" method="post" name="actForm" id="actForm">
  
 		<table id="myTable" border="0" cellpadding="0" cellspacing="0" class="display">
 			<thead>
@@ -43,7 +43,6 @@
 			        		   Analysis status:	   [% genome.analysis_status %] <br>
 			        		   Sanger ID: 		   [% genome.sanger_id %] <br>
 			        		   Strain ID: 		   [% genome.strain_id %] <br>
-			        		   
 			        		   Analysis comment:   [% genome.analysis_comment %] <br>
 			        		   Top_serotype:       [% genome.top_serotype %] <br>
 			        		   Mlst:			   [% genome.mlst %] <br>
@@ -64,7 +63,7 @@
 					    <td>[% genome.location_country %]</td> 
 					    <td>[% genome.body_source %]</td> 
 					    <td>[% genome.sanger_id %]</td>
-						<td  style="text-align:center"> <input type="checkbox" name="check2" value="[% genome.sanger_id %]"> </td> 				    
+						<td  style="text-align:center"> <input type="checkbox" name="checkbox" value="actform[% genome.sanger_id %]"> </td> 				    
 					</tr>
 				[% ELSE %]
 			        <tr title="
@@ -72,7 +71,6 @@
 			        		   Analysis status:	   [% genome.analysis_status %] <br>
 			        		   Sanger ID: 		   [% genome.sanger_id %] <br>
 			        		   Strain ID: 		   [% genome.strain_id %] <br>
-			        		   
 			        		   Analysis comment:   [% genome.analysis_comment %] <br>
 			        		   Top_serotype:       [% genome.top_serotype %] <br>
 			        		   Mlst:			   [% genome.mlst %] <br>
@@ -110,6 +108,6 @@
 <p>
   To run ACT in this way you will need to have <strong>Java Web Start</strong> installed. Java Web Start is included in the Java Runtime Environment (JRE).
   If you do not have this installed, it may be downloaded from the
-  <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Web Start</a>
+  <a href="http://www.oracle.com/technetwork/java/javase/tech/index-jsp-136112.html">Java Web Start</a>
   website.
 </p>  
