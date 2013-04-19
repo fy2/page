@@ -58,6 +58,7 @@ sub artemisjnlp :Path('artemisjnlp'){
       
     # Get the param argument for the selected genome and stash it so that 
     #artemis_jnlp.tt2 can access it and render a JNLP
+ 
     my $file_argument = 
                 join '/', (  
                            $c->config->{data}->{root}
@@ -69,7 +70,7 @@ sub artemisjnlp :Path('artemisjnlp'){
                          , $c->config->{data}->{dir_name_of_annotation}
                          
                            #field is defined as "genome1" in the artemis.tt2 template
-                         , $c->request->param('genome1') . $c->config->{data}->{file_extension_of_annotation}
+                         , $c->request->param('checkbox') . $c->config->{data}->{file_extension_of_annotation}
                          );
     
     # Non-alphanumeric char '#' in sanger lane ids are replaced with underscore.
@@ -143,8 +144,6 @@ sub actjnlp :Path('actjnlp'){
     
        
     $c->stash->{act_arguments} = $rearranged_list;
-    
-    
     
     $c->stash( active_action => '/data' );
         
@@ -265,21 +264,6 @@ sub stash_genomes_by_role {
     
     $c->stash->{genome_list_inc} = \@genomes_rs;
     return 1;   
-}
-
-sub inspect :Path('inspect'){
-    my ($self, $c) = @_;
-    
- 
-    push @{$c->stash->{add_js_files}}, '/static/core/js/jquery.js';
-    push @{$c->stash->{add_js_files}}, '/static/core/js/jquery.dataTables.min.js';
-    
-    #will stash a list of genomes to "genome_list_inc" in context obj
-    $self->stash_genomes_by_role($c);
-    
-    $c->stash( active_action => '/data' );
-    $c->stash->{template} = 'inspect.tt2';
-    
 }
 
 =head2 auto

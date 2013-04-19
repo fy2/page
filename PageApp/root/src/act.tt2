@@ -63,7 +63,7 @@
 					    <td>[% genome.location_country %]</td> 
 					    <td>[% genome.body_source %]</td> 
 					    <td>[% genome.sanger_id %]</td>
-						<td  style="text-align:center"> <input type="checkbox" name="checkbox" value="actform[% genome.sanger_id %]"> </td> 				    
+						<td  style="text-align:center"> <input type="checkbox" name="checkbox" value="[% genome.sanger_id %]"> </td> 				    
 					</tr>
 				[% ELSE %]
 			        <tr title="
