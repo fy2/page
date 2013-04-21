@@ -217,9 +217,14 @@ sub download :Path('download'){
 sub resources :Path('resources'){
     my ( $self, $c ) = @_;
     
-    $c->stash( active_action => '/data/resources' );
-    
-    $c->stash->{template} = 'resources.tt2';
+    if ($c->user->username eq 'guest') {
+        $c->stash( active_action => '/data/resources' );
+        $c->stash->{template} = 'resources_thin.tt2';
+    }
+    else {
+        $c->stash( active_action => '/data/resources' );
+        $c->stash->{template} = 'resources.tt2';
+    }
 }
 
 =head2 fetchfile
@@ -229,6 +234,11 @@ sub resources :Path('resources'){
 sub fetchfile :Path('fetchfile'){
     my ( $self, $c, $file_name ) = @_;
      
+    #dont fetch if 'guest' user asks for data
+    if ($c->user->username eq 'guest') {
+         $c->res->redirect($c->uri_for('/notfound'));
+    }
+    
     $c->stash( active_action => '/data/resources' );
      
     my ($file) = $c->model('DB::PageFile')->search({ name => $file_name });

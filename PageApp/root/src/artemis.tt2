@@ -29,7 +29,7 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 					 
 				    <th align="center">Strain_id</th> 
 				     <th align="center">Country</th>
-				    <th align="center">Source</th>
+				    <th align="center">Body source</th>
 				    <th align="center"> Sanger_id</th>
 				    <th style="text-align:center">Select</th> 
 			

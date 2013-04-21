@@ -1,0 +1,25 @@
+[%- # Provide a title to the wrapper.tt2 -%]
+[% META title = 'PAGe Resources' -%]
+
+<h2>Resources</h2>
+    
+    <p>
+    This section provides the current PAGe document and presentation templates, as well as poster presentations and other relevant data. 
+    </p>
+    
+    <h4>PAGe flyers</h4>
+    <ul>
+      <li> WTT8397 flyer (.pdf file), <a href="/static/page/assets/WTT8397_flyer_1.pdf">Link</a> </li>
+      <li> Sample data... </li>
+    </ul> 
+    
+    <h4>PAGe poster presentations</h4>
+    <ul>
+      <li> Simon Harris, ISPPD (.pdf file), <a href="/static/page/assets/ISPPD_Poster_small.pdf">Link</a> </li>
+      <li> Sample data... </li>
+    </ul>
+      
+    <h4>PAGe meeting reports</h4>
+    <ul>
+      <li> Sample data... </li>
+ </ul>
