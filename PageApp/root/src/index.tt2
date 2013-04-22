@@ -16,7 +16,7 @@ focused on genomic analysis of the pneumococcus across Africa. Its goals include
    
       <div class="image right">
       <img style="width:100px;height:71px" src="/static/page/gfx/fm_doctor_child.jpg" alt="[photo]"  >
-      <p style="font-size: 0.6em; margin: 0 padding: 0; text-align: center; width: 100px;" >Wellcome Library, London </p>
+      <p style="font-size: 0.6em; margin: 0 padding: 0; text-align: center; width: 100px;" >Source: Wellcome Library, London </p>
     </div>
 <p>
 The project is lead by Dr Dean Everett at the Malawi-Liverpool-Wellcome Trust Clinical Research Programme (MLW) in Malawi and includes primary partners in Niger, The Gambia, South Africa, UK and USA.    </p>
@@ -45,6 +45,16 @@ As a first project, the Page Consortium has focused on Streptococcus pneumoniae 
 
     <h3> Capacity Building</h3>
     <p>Four postgraduate students from consortium member countries have been funded to complete MSc bioinformatics training at the University of Manchester including project work at the Wellcome Trust Sanger Institute. </p>
+
+<table border="1">
+    <tr>
+        <td>
+            <img style="width:482px;height:321px" src="/static/images/PAGe_group_shot.jpeg" alt="[photo]">
+            <p style="font-size: 0.6em; margin: 0 padding: 0; text-align: left; width: 300px;">Source: Investigators meeting 2012, Malawi</p>
+        </td>
+    </tr>
+</table>
+
     <table border="1">
       <tr>
         <td>
@@ -64,3 +74,4 @@ As a first project, the Page Consortium has focused on Streptococcus pneumoniae 
         </td>
       </tr>
     </table>
+

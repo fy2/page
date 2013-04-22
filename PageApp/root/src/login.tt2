@@ -35,7 +35,11 @@
  [% ELSE %]
  	<div id="msg_box"></div>    
  [% END %]
-    
- <p><strong>Forgot your password?</strong><br>
+ 
+  <p><strong>Are you a guest?</strong><br>
+    We provide sample datasets for demonstration purposes. You can try our demo version with the username 'guest' and password 'guest'.
+ </p> 
+ 
+ <p><strong>Forgot your membership username/password?</strong><br>
     Please <a href="[% c.uri_for('/page/contact') %]">contact</a> your PAGe representative if you have lost or not received a password.  
  </p>
