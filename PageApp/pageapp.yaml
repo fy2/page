@@ -21,6 +21,8 @@ navigation:
 #as the role name. The subdirs of these have a sytematic name hierarchy
 #Currently, "annotation" and "crunch" sub dirs are available
 data:
+    #.gz files are served from this root path
+    # (web URL comes as prefix automaticall)
     root: /static/page/genomes
 
     #where do the embl files for artemis reside?

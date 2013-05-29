@@ -78,6 +78,7 @@ sub artemisjnlp :Path('artemisjnlp'){
     # Make sure that the files in the data dir (.embl etc have '_' instead of '#').
     $file_argument =~ s/#/_/g;
      
+    #this will prepend the web sites root URL
     $c->stash->{selected_genome} = $c->uri_for($file_argument); 
     
     $c->stash( active_action => '/data' );
@@ -176,15 +177,15 @@ sub rearrange_act_arguments{
         $genome =~ s/#/_/g;
         
         if ($is_first_genome) {
-
+            #this will prepend the web sites root URL
             push @jnlp_args, $c->uri_for( join '/', (  $data_root, $role, $embl_dir, $genome . $embl_file_extension) );
             $is_first_genome = 0;
 
         }
         else {
-            
+            #this will prepend the web sites root URL    
             push @jnlp_args, $c->uri_for( join '/', (  $data_root, $role, $dir_name_of_crunch, "$genome.$prev" . $crunch_file_extension) );
-
+            #this will prepend the web sites root URL
             push @jnlp_args, $c->uri_for( join '/', ( $data_root, $role, $embl_dir, $genome . $embl_file_extension) );
                
         }
