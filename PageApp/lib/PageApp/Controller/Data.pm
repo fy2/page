@@ -291,7 +291,7 @@ sub auto : Private {
     # If a user doesn't exist, force login
     if (!$c->user_exists) {
         # Dump a log message to the development server debug output
-        $c->log->debug('***Root::auto User not found, forwarding to /login');
+        # $c->log->debug('***Root::auto User not found, forwarding to /login');
         # Redirect the user to the login page
         $c->response->redirect($c->uri_for('/login'));
         # Return 0 to cancel 'post-auto' processing and prevent use of application
