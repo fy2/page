@@ -19,11 +19,8 @@ use Catalyst::Runtime 5.80;
 #                 into production, but it can be helpful during development
 
 use Catalyst qw/
-    -Debug
     ConfigLoader
     Static::Simple
-
-    StackTrace
     
     Authentication
     Authorization::Roles
@@ -51,9 +48,6 @@ __PACKAGE__->config(
     # Disable deprecated behavior needed by old applications
     disable_component_resolution_regex_fallback => 1,
     enable_catalyst_header => 1, # Send X-Catalyst header
-    static => {
-        logging => 1,
-    },
 );
 
 # Add root/src to the path, this is where we store the template 
@@ -69,10 +63,10 @@ __PACKAGE__->config(
 #ignore static serving of any file with the following extensions
 #if they are in somewhere in the 'root' app directory
 __PACKAGE__->config(
-        static => {
-            ignore_extensions => [ qw/pl sql txt db/ ],
-            ignore_dirs => [ qw/database/ ],
-        }
+    'Plugin::Statis::Simple' => {
+        ignore_extensions => [ qw/pl sql txt db/ ],
+        ignore_dirs => [ qw/database/ ],
+    }
 );
 
 # Configure SimpleDB Authentication
