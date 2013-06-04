@@ -11,6 +11,12 @@ function artemis_args_are_okay (selectedData) {
 		window.setTimeout(function(){msg.innerHTML='';},3000);
 		return false;
 	} 
+	if (sanger_id_array.length < 1) {
+
+		msg.innerHTML='<div class="msg">Please choose a single genome for Artemis.</div>';
+		window.setTimeout(function(){msg.innerHTML='';},3000);
+		return false;
+	} 
 	
 	return true;		
 }
