@@ -1,7 +1,7 @@
 #YAML like in old versions of Catalyst
 name: PageApp
 
-#navigation menu structure is defined here
+#Navigation menu structure is defined here
 #currently, we only support one-level (primary) menus
 navigation:
     primary:
@@ -16,28 +16,27 @@ navigation:
         - action: /page/contact
           title : CONTACT
 
-#this is where we store the datasets specific to each "role" in
-#role table. the user role directories must have the same name 
-#as the role name. The subdirs of these have a sytematic name hierarchy
+#This is where we store the datasets specific to each "role" in
+#role table. 
+#The user role directories must have the same name 
+#as the role name. The subdirs of these have a systematic name hierarchy.
 #Currently, "annotation" and "crunch" sub dirs are available
 data:
     #.gz files are served from this root path
-    # (web URL comes as prefix automaticall)
+    # (web URL will be added automatically by the 'Data.pm' controller)
     root: /static/page/genomes
 
-    #where do the embl files for artemis reside?
+    #Where do the embl files for artemis reside?
     dir_name_of_annotation: annotation
 
-    #This is just the suffix after the file name
-    #we assume files are named with sanger lane ID (e.g. "1234_5#6.embl") 
-    #and EMBL suffix  (e.g. "1234_5#6.embl")
+    #This is just the suffix after the file name.
+    #The file is gzipped to save bandwidth (e.g. "1234_5#6.embl.gz")
     file_extension_of_annotation: .embl.gz
     
     #Crunch file handling is similar to EMBL, but now we deal with file names,
     #made up of two parts (crunch is a pairwise comparison file for two organims).
-    #If we have two organism, and name them according to sanger lane is,
-    #e.g. "1234_5#6 and "6543_2#1". When generating crunch files we should always 
-    #sort the names alphabetically and added a .crunch suffix to them, 
-    #i.e. "file1.file2.crunch".
+    #When generating crunch files we should always sort the names alphabetically 
+    #and add a .crunch suffix to them, preferably gzip them to save bandwidth. 
+    #i.e. "organismA.organismB.crunch.gz".
     dir_name_of_crunch: crunch
     file_extension_of_crunch: .crunch.gz
