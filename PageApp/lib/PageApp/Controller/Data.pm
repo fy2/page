@@ -237,7 +237,7 @@ sub fetchfile :Path('fetchfile'){
      
     #dont fetch if 'guest' user asks for data
     if ($c->user->username eq 'guest') {
-         $c->res->redirect($c->uri_for('/notfound'));
+         $c->res->redirect('/notfound');
     }
     
     $c->stash( active_action => '/data/resources' );
@@ -247,7 +247,7 @@ sub fetchfile :Path('fetchfile'){
     
     if (!$file) {
         #forward to an error page, about non existing file
-        $c->res->redirect($c->uri_for('/notfound'));
+        $c->res->redirect('/notfound');
     } else {
         $c->res->content_type($file->content_type);
         $c->response->body($file->file_blob);
@@ -293,7 +293,7 @@ sub auto : Private {
         # Dump a log message to the development server debug output
         # $c->log->debug('***Root::auto User not found, forwarding to /login');
         # Redirect the user to the login page
-        $c->response->redirect($c->uri_for('/login'));
+        $c->response->redirect('/login');
         # Return 0 to cancel 'post-auto' processing and prevent use of application
         return 0;
     }

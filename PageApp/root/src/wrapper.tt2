@@ -12,7 +12,7 @@
 
 [% IF c.stash.add_js_files %]
 	[% FOREACH jsfile IN c.stash.add_js_files %]
-		<script type="text/javascript" src="[% c.uri_for(jsfile) %]"></script>
+		<script type="text/javascript" src="[% jsfile %]"></script>
 	[% END %]
 [% END %] 
 
@@ -169,10 +169,10 @@
 
   <div id="content">
       [% IF c.user_exists %]
-      	<div class="pageloginstatus"> <a href="[% c.uri_for('/logout') %]">[% c.session.active_user %] [Logout]</a>  </div>
+      	<div class="pageloginstatus"> <a href="/logout">[% c.session.active_user %] [Logout]</a>  </div>
       [% ELSE %]
       	[% IF template.title != 'PAGe Login' %]
-	      	<div class="pageloginstatus"> <a href="[% c.uri_for('/login') %]">[Login]</a>  </div>
+	      	<div class="pageloginstatus"> <a href="/login">[Login]</a>  </div>
       	[% END %]
       [% END %]
 
@@ -205,7 +205,7 @@
 </body>
 [% IF c.stash.add_js_end %]
 	[% FOREACH jsfile IN c.stash.add_js_end %]
-		<script type="text/javascript" src="[% c.uri_for(jsfile) %]"></script>
+		<script type="text/javascript" src="[% jsfile %]"></script>
 	[% END %]
 [% END %] 
 </html>

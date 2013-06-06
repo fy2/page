@@ -9,7 +9,7 @@
 <p>
 Artemis is a free genome browser and annotation tool that allows visualisation of sequence features, next generation data and the results of analyses within the context of the sequence, and also its six-frame translation.
 Artemis is written in Java, and is available for UNIX, Macintosh and Windows systems. It can read EMBL and GENBANK database entries or sequence in FASTA, indexed FASTA or raw format. Other sequence features can be in EMBL, GENBANK or GFF format.
- For more details on what Artemis can do for you, please refer to the Artemis manual here  <a href="[% c.uri_for('/static/page/assets/artemis.pdf') %]">PDF</a> 
+ For more details on what Artemis can do for you, please refer to the Artemis manual here  <a href="/static/page/assets/artemis.pdf">PDF</a> 
 </p>
 
 <p><strong>Launch Artemis directly from your web browser</strong></p>
@@ -21,7 +21,7 @@ Artemis is written in Java, and is available for UNIX, Macintosh and Windows sys
 <div id="myDiv">
 
 	<!-- appending "/artemis.JNLP" to the URL in order to control the default filename when downloading a file via CGI -->
-	<form action="[% c.uri_for('/data/artemisjnlp') %]" method="post" name="artForm" id="artForm">
+	<form action="/data/artemisjnlp" method="post" name="artForm" id="artForm">
 	
 		<table id="myTable" border="0" cellpadding="0" cellspacing="0" class="display">
 			<thead>

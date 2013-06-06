@@ -9,7 +9,7 @@
     
      <h4>PAGe Word and PowerPoint document templates</h4>
     <ul>
-      <li> WTT_letterhead and WTT_presentation templates (.zip archive), <a href="[% c.uri_for('/data/fetchfile/WTT_doc_and_ppt.zip') %]">Link</a> </li>
+      <li> WTT_letterhead and WTT_presentation templates (.zip archive), <a href="/data/fetchfile/WTT_doc_and_ppt.zip">Link</a> </li>
     </ul>
 
     <h4>PAGe logo images</h4>

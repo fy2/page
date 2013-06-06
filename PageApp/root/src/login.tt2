@@ -9,7 +9,7 @@
    Please use your PAGe access password to enter this section.  
  </p>
     
-  <form method="post" action="[% c.uri_for('/login') %]">
+  <form method="post" action="/login">
     <table id="logintable" border="1">
       <tr>
         <td class="pageloginlabel"><label>Username</label></td>
@@ -41,5 +41,5 @@
  </p> 
  
  <p><strong>Forgot your membership username/password?</strong><br>
-    Please <a href="[% c.uri_for('/page/contact') %]">contact</a> your PAGe representative if you have lost or not received a password.  
+    Please <a href="/page/contact">contact</a> your PAGe representative if you have lost or not received a password.  
  </p>
