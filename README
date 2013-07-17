@@ -15,8 +15,9 @@ A crontab job cleans up any old session data. Setup should be like this:
 
 
 #An example way to run this web app:
-First, start starman webserver, listen to port 8001
+First, start starman webserver, listen to port 8001:
 starman -I/www/www-dev/lib/ -I/www/perllib/lib/perl5 /www/www-dev/pageapp.psgi --pid /www/www-dev/log/starman.pid --port 8001 --error-log /www/www-dev/log/starman.error.log --access-log /www/www-dev/log/starman.access.log
 
+
 Second, start reverse-proxy webserver, in this case nginx which will listen to 8000 and serve static contents. Everything else will be forwarded to starman at port 8001:
-/www/nginx/local/nginx -p /www/nginx/local/ -c /www/nginx/local/nginx.conf
+/www/nginx/local/nginx -p /www/nginx/local/ -c /www/www-dev/nginx.conf
