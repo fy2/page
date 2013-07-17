@@ -42,4 +42,4 @@ data:
     file_extension_of_crunch: .crunch.gz
 
 #path to the database
-db: /www/www-dev/pageapp.db 
+db: /www/www-live/pageapp.db 
