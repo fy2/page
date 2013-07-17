@@ -1,1 +1,4 @@
 Run script/pageapp_server.pl to test the application.
+
+A crontab job cleans up any old session data. Setup should be like this:
+*/30 * * * * find /www/tmp/session/ -maxdepth 1 -type d -regex "/www/tmp/session/.+" -cmin +120 -exec rm -rf {} \;
