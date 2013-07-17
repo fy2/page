@@ -7,7 +7,7 @@ __PACKAGE__->config(
     schema_class => 'PageApp::Schema',
     
     connect_info => {
-        dsn => 'dbi:SQLite:pageapp.db',
+        dsn => 'dbi:SQLite:' . PageApp->config->{db},
         user => '',
         password => '',
         on_connect_do => q{PRAGMA foreign_keys = ON},

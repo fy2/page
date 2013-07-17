@@ -1,6 +1,22 @@
-Run script/pageapp_server.pl to test the application.
+Some notes
+###########
 
+#Easy server for testing: 
+Run script/pageapp_server.pl to test the application while in the application dir.
+
+
+#Cleaning session data:
 A crontab job cleans up any old session data. Setup should be like this:
 */30 * * * * find /www/tmp/session/ -maxdepth 1 -type d -regex "/www/tmp/session/.+" -cmin +120 -exec rm -rf {} \;
 
-.gitattributes makes sure that diffs between dev and master branches dont get merged for the file 'pageapp.psgi'
+
+#Git related
+.gitattributes makes sure that diffs between dev and master branches dont get merged for the file 'pageapp.yaml'
+
+
+#An example way to run this web app:
+First, start starman webserver, listen to port 8001
+starman -I/www/www-dev/lib/ -I/www/perllib/lib/perl5 /www/www-dev/pageapp.psgi --pid /www/www-dev/log/starman.pid --port 8001 --error-log /www/www-dev/log/starman.error.log --access-log /www/www-dev/log/starman.access.log
+
+Second, start reverse-proxy webserver, in this case nginx which will listen to 8000 and serve static contents. Everything else will be forwarded to starman at port 8001:
+/www/nginx/local/nginx -p /www/nginx/local/ -c /www/nginx/local/nginx.conf
