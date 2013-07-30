@@ -13,6 +13,8 @@ A crontab job cleans up any old session data. Setup should be like this:
 #Git related
 .gitattributes makes sure that diffs between dev and master branches dont get merged for the file 'pageapp.yaml'
 
+#LIVE setup related:
+Replace 172.17.200.84 with our public IP address in pageapp.psgi file.
 
 #An example way to run this web app:
 First, start starman webserver, listen to port 8001:
