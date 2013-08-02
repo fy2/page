@@ -3,17 +3,6 @@ package PageApp::Model::DB;
 use strict;
 use base 'Catalyst::Model::DBIC::Schema';
 
-__PACKAGE__->config(
-    schema_class => 'PageApp::Schema',
-    
-    connect_info => {
-        dsn => 'dbi:SQLite:' . PageApp->config->{db},
-        user => '',
-        password => '',
-        on_connect_do => q{PRAGMA foreign_keys = ON},
-    }
-);
-
 =head1 NAME
 
 PageApp::Model::DB - Catalyst DBIC Schema Model

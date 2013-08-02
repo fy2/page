@@ -16,10 +16,22 @@ navigation:
         - action: /page/contact
           title : CONTACT
 
-#This is where we store the datasets specific to each "role" in
-#role table. 
-#The user role directories must have the same name 
-#as the role name. The subdirs of these have a systematic name hierarchy.
+Model::DB:
+    schema_class: PageApp::Schema
+    traits: Caching
+    connect_info:
+        dsn: dbi:SQLite:/www/www-dev/pageapp.db
+        user:
+        password:
+        on_connect_do: PRAGMA foreign_keys = ON
+
+session:
+    storage: /www/tmp/session
+    expires: 7200
+
+#This is where we store the datasets specific to each DB "role". 
+#The user role directories must have the same name  as the role name. 
+#The subdirs of these have a systematic name hierarchy.
 #Currently, "annotation" and "crunch" sub dirs are available
 data:
     #.gz files are served from this root path
@@ -40,10 +52,3 @@ data:
     #i.e. "organismA.organismB.crunch.gz".
     dir_name_of_crunch: crunch
     file_extension_of_crunch: .crunch.gz
-
-#path to the database
-db: /www/www-dev/pageapp.db 
-
-session:
-    storage: /www/tmp/session
-    expires: 7200
