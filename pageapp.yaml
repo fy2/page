@@ -43,3 +43,7 @@ data:
 
 #path to the database
 db: /www/www-dev/pageapp.db 
+
+session:
+    storage: /www/tmp/session
+    expires: 7200

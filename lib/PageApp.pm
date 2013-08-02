@@ -80,13 +80,6 @@ __PACKAGE__->config(
     },
 );
 
-__PACKAGE__->config(
-    'Plugin::Session' => {
-        storage => '/www/tmp/session',
-        expires => 7200, #seconds (7200 == two hours)
-    },
-);
-
 # Set the default View. HTML matches the name of the TT view 
 # that we created for this PageApp (HTML.pm)
 __PACKAGE__->config(default_view => 'HTML');
