@@ -20,7 +20,7 @@
       <tr>
         <td class="pageloginlabel"><label>Password</label></td>
 
-        <td><input name="password" size="25" type="password" id="password" ></td>
+        <td><input name="password" size="25" type="password" id="password" autocomplete="off" ></td>
       </tr>
 
       <tr>

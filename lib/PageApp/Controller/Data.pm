@@ -80,13 +80,15 @@ sub artemisjnlp :Path('artemisjnlp'){
      
     #this will prepend the web sites root URL
     $c->stash->{selected_genome} = $c->uri_for($file_argument); 
+
+    $c->stash->{selected_genome} =~ s/https:/http:/; #just in case Catalyst tries to use https scheme
     
     $c->stash( active_action => '/data' );
-        
+
     $c->res->content_type('application/x-java-jnlp-file'); 
-   
+
     $c->stash->{template} = 'artemis_jnlp.tt2';
-    
+
     $c->forward( $c->view('JNLP') );
 }
 
@@ -178,17 +180,24 @@ sub rearrange_act_arguments{
         
         if ($is_first_genome) {
             #this will prepend the web sites root URL
-            push @jnlp_args, $c->uri_for( join '/', (  $data_root, $role, $embl_dir, $genome . $embl_file_extension) );
+            my $uri = $c->uri_for( join '/', (  $data_root, $role, $embl_dir, $genome . $embl_file_extension) );
+            $uri =~ s/https:/http:/; #just in case Catalyst tries to use https scheme
+            push @jnlp_args, $uri;
             $is_first_genome = 0;
 
         }
         else {
-            #this will prepend the web sites root URL    
-            push @jnlp_args, $c->uri_for( join '/', (  $data_root, $role, $dir_name_of_crunch, "$genome.$prev" . $crunch_file_extension) );
             #this will prepend the web sites root URL
-            push @jnlp_args, $c->uri_for( join '/', ( $data_root, $role, $embl_dir, $genome . $embl_file_extension) );
-               
+            my $uri = $c->uri_for( join '/', (  $data_root, $role, $dir_name_of_crunch, "$genome.$prev" . $crunch_file_extension) );
+            $uri =~ s/https:/http:/; #just in case Catalyst tries to use https scheme
+            push @jnlp_args, $uri;
+
+            #this will prepend the web sites root URL
+            $uri = $c->uri_for( join '/', ( $data_root, $role, $embl_dir, $genome . $embl_file_extension) );
+            $uri =~ s/https:/http:/; #just in case Catalyst tries to use https scheme
+            push @jnlp_args, $uri;
         }
+
         $prev = $genome;
     }
     
@@ -315,4 +324,4 @@ it under the same terms as Perl itself.
 
 __PACKAGE__->meta->make_immutable;
 
-1;
+

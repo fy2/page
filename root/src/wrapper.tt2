@@ -198,9 +198,17 @@
   </div>
  
      <div id="foot">
-      &copy; 2010-2013 Pneumococcal African Genomics Consortium
+      &copy; 2013 Pneumococcal African Genomics Consortium
     </div>
   </div>
+ 
+   <p id="inst">
+    <span>
+      <a href="/static/html/cookiespolicy.html">Cookies policy</a> | <a href="/static/html/legal.html">Terms &amp; Conditions</a>
+    </span>
+    This site is hosted by the <a href="http://www.sanger.ac.uk/">Wellcome Trust Sanger Institute</a>.
+  </p>
+ 
  
 </body>
 [% IF c.stash.add_js_end %]

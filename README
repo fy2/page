@@ -1,22 +1,28 @@
 Some notes
 ###########
 
-#Easy server for testing: 
-Run script/pageapp_server.pl to test the application while in the application dir.
+
+# Remember to do this when going live
+Replace 172.17.200.84 with our public IP address in pageapp.psgi file.
+
+# An example way to run this web app. We will serve static contents with nginx
+# and forward all other (catalyst)  requests to starman
+    #Step 1: start starman webserver, listen to port 8001:
+    /www/perllib/bin/starman -I/www/www-dev/lib/ -I/www/perllib/lib/perl5 /www/www-dev/pageapp.psgi --pid /www/www-dev/log/starman.pid --port 8001 --error-log /www/www-dev/log/starman.error.log --access-log /www/www-dev/log/starman.access.log --daemonize
+
+    #Step 2: Configure nginx:
+    You should add pageapp.nginx.conf to nginx 'sites-available' dir and symlink it in 'sites-enabled'. 
+    These dirs are usually located in ' /etc/nginx/' on ubuntu systems where nginx has been installed.
+
+    #Note that nginx expects ssl certificate and key here:
+    /www/ssl/server.crt
+    /www/ssl/server.key
+    
+    #Step 3: Start nginx as root (it needs to listen to port:80 and port:443. 
 
 
-#Cleaning session data:
-A crontab job cleans up any old session data. Setup should be like this:
+# Session data directory:
+The sessions are stored '/www/tmp/session'. This location is configurable via pageapp.yaml file.
+
+# A crontab should clean up any old session data:
 */30 * * * * find /www/tmp/session/ -maxdepth 1 -type d -regex "/www/tmp/session/.+" -cmin +120 -exec rm -rf {} \;
-
-
-#Git related
-.gitattributes makes sure that diffs between dev and master branches dont get merged for the file 'pageapp.yaml'
-
-
-#An example way to run this web app:
-First, start starman webserver, listen to port 8001
-starman -I/www/www-dev/lib/ -I/www/perllib/lib/perl5 /www/www-dev/pageapp.psgi --pid /www/www-dev/log/starman.pid --port 8001 --error-log /www/www-dev/log/starman.error.log --access-log /www/www-dev/log/starman.access.log
-
-Second, start reverse-proxy webserver, in this case nginx which will listen to 8000 and serve static contents. Everything else will be forwarded to starman at port 8001:
-/www/nginx/local/nginx -p /www/nginx/local/ -c /www/nginx/local/nginx.conf
