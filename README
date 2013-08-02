@@ -5,7 +5,7 @@ Some notes
 # An example way to run this web app. We will serve static contents with nginx
 # and forward all other (catalyst)  requests to starman
     #Step 1: start starman webserver, listen to port 8001:
-    /www/perllib/bin/starman -I/www/www-dev/lib/ -I/www/perllib/lib/perl5 /www/www-dev/pageapp.psgi --pid /www/www-dev/log/starman.pid --port 8001 --error-log /www/www-dev/log/starman.error.log --access-log /www/www-dev/log/starman.access.log --daemonize
+    /www/perllib/bin/starman -I/www/www-live/lib/ -I/www/perllib/lib/perl5 /www/www-live/pageapp.psgi --pid /www/www-live/log/starman.pid --port 8001 --error-log /www/www-live/log/starman.error.log --access-log /www/www-live/log/starman.access.log --daemonize
 
     #Step 2: Configure nginx:
     2a) Change localhost in pageapp.nginx.conf with the real server_name
