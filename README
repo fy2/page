@@ -1,25 +1,30 @@
 Some notes
 ###########
 
-#Easy server for testing: 
-Run script/pageapp_server.pl to test the application while in the application dir.
 
-
-#Cleaning session data:
-A crontab job cleans up any old session data. Setup should be like this:
-*/30 * * * * find /www/tmp/session/ -maxdepth 1 -type d -regex "/www/tmp/session/.+" -cmin +120 -exec rm -rf {} \;
-
-
-#Git related
-.gitattributes makes sure that diffs between dev and master branches dont get merged for the file 'pageapp.yaml'
-
-#LIVE setup related:
+#Remember to do this when going live
 Replace 172.17.200.84 with our public IP address in pageapp.psgi file.
 
 #An example way to run this web app:
-First, start starman webserver, listen to port 8001:
-starman -I/www/www-dev/lib/ -I/www/perllib/lib/perl5 /www/www-dev/pageapp.psgi --pid /www/www-dev/log/starman.pid --port 8001 --error-log /www/www-dev/log/starman.error.log --access-log /www/www-dev/log/starman.access.log
+    Step 1: start starman webserver, listen to port 8001:
+    /www/perllib/bin/starman -I/www/www-dev/lib/ -I/www/perllib/lib/perl5 /www/www-dev/pageapp.psgi --pid /www/www-dev/log/starman.pid --port 8001 --error-log /www/www-dev/log/starman.error.log --access-log /www/www-dev/log/starman.access.log --daemonize
+
+    Step 2: 
+    Add pageapp.nginx.conf to nginx 'sites-available' dir and symlink to it in 'sites-enables'. 
+
+    nginx expects the ssl certificate in:
+    /www/ssl/server.crt
+
+    nginx expects the ssl certificate key in:
+    /www/ssl/server.key
+    
+    Start nginx as root (it needs to listen to port:80 and port:443. 
+    
+    Note that nginx will serve all static contents. It will forward dynamic request to starman which is listening at port 8001
 
 
-Second, start reverse-proxy webserver, in this case nginx which will listen to 8000 and serve static contents. Everything else will be forwarded to starman at port 8001:
-/www/nginx/local/nginx -p /www/nginx/local/ -c /www/www-dev/nginx.conf
+#Session data directory:
+The sessions are stored '/www/tmp/session'. This location is configurable via pageapp.yaml file.
+
+#A crontab should clean up any old session data:
+*/30 * * * * find /www/tmp/session/ -maxdepth 1 -type d -regex "/www/tmp/session/.+" -cmin +120 -exec rm -rf {} \;
