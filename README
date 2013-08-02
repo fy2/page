@@ -2,29 +2,27 @@ Some notes
 ###########
 
 
-#Remember to do this when going live
+# Remember to do this when going live
 Replace 172.17.200.84 with our public IP address in pageapp.psgi file.
 
-#An example way to run this web app:
-    Step 1: start starman webserver, listen to port 8001:
+# An example way to run this web app. We will serve static contents with nginx
+# and forward all other (catalyst)  requests to starman
+    #Step 1: start starman webserver, listen to port 8001:
     /www/perllib/bin/starman -I/www/www-dev/lib/ -I/www/perllib/lib/perl5 /www/www-dev/pageapp.psgi --pid /www/www-dev/log/starman.pid --port 8001 --error-log /www/www-dev/log/starman.error.log --access-log /www/www-dev/log/starman.access.log --daemonize
 
-    Step 2: 
-    Add pageapp.nginx.conf to nginx 'sites-available' dir and symlink to it in 'sites-enables'. 
+    #Step 2: Configure nginx:
+    You should add pageapp.nginx.conf to nginx 'sites-available' dir and symlink it in 'sites-enabled'. 
+    These dirs are usually located in ' /etc/nginx/' on ubuntu systems where nginx has been installed.
 
-    nginx expects the ssl certificate in:
+    #Note that nginx expects ssl certificate and key here:
     /www/ssl/server.crt
-
-    nginx expects the ssl certificate key in:
     /www/ssl/server.key
     
-    Start nginx as root (it needs to listen to port:80 and port:443. 
-    
-    Note that nginx will serve all static contents. It will forward dynamic request to starman which is listening at port 8001
+    #Step 3: Start nginx as root (it needs to listen to port:80 and port:443. 
 
 
-#Session data directory:
+# Session data directory:
 The sessions are stored '/www/tmp/session'. This location is configurable via pageapp.yaml file.
 
-#A crontab should clean up any old session data:
+# A crontab should clean up any old session data:
 */30 * * * * find /www/tmp/session/ -maxdepth 1 -type d -regex "/www/tmp/session/.+" -cmin +120 -exec rm -rf {} \;
