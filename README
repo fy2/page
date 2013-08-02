@@ -1,14 +1,16 @@
 Some notes
 ###########
 
+
 # An example way to run this web app. We will serve static contents with nginx
 # and forward all other (catalyst)  requests to starman
     #Step 1: start starman webserver, listen to port 8001:
     /www/perllib/bin/starman -I/www/www-dev/lib/ -I/www/perllib/lib/perl5 /www/www-dev/pageapp.psgi --pid /www/www-dev/log/starman.pid --port 8001 --error-log /www/www-dev/log/starman.error.log --access-log /www/www-dev/log/starman.access.log --daemonize
 
     #Step 2: Configure nginx:
-    You should add pageapp.nginx.conf to nginx 'sites-available' dir and symlink it in 'sites-enabled'. 
-    These dirs are usually located in ' /etc/nginx/' on ubuntu systems where nginx has been installed.
+    2a) Change localhost in pageapp.nginx.conf with the real server_name
+    2b) You should add pageapp.nginx.conf to nginx 'sites-available' dir and symlink it in 'sites-enabled'. 
+        These dirs are usually located in ' /etc/nginx/' on ubuntu systems where nginx has been installed.
 
     #Note that nginx expects ssl certificate and key here:
     /www/ssl/server.crt
