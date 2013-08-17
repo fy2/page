@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+
+# Using the lsb functions to perform the operations.
+. /lib/lsb/init-functions
+# Process name ( For display )
+NAME="www-dev_daemon"
+APPNAME="www-dev"
+
+export APPDIR="/www/www-dev"
+# pid file for the daemon
+export PAGEPIDFILE="/www/tmp/www-dev/logs/pageapp.pid"
+export PAGELOGDIR="/www/tmp/www-dev/logs"
+export PAGEPSGIAPP="$APPDIR/pageapp.psgi"
+export PAGEPERLLIB="/www/perllib"
+export PAGEWORKERS=5
+export PAGEPORT=8000
+
+STARMAN=/www/www-dev/utilities/starman.sh
+
+
+# If the daemon is not there, then exit.
+test -x $DAEMON || exit 5
+
+if [ ! -d $APPDIR ]; then
+    echo "$APPDIR does not exist"
+    exit 1
+fi
+
+check_running() {
+    [ -s $PAGEPIDFILE ] && kill -0 $(cat $PAGEPIDFILE) >/dev/null 2>&1
+}
+
+_start() {
+
+  /sbin/start-stop-daemon --start --pidfile $PAGEPIDFILE \
+  --chdir $APPDIR --startas $STARMAN --user fy2 -v
+
+  echo ""
+  echo "Waiting for $APPNAME to start..."
+
+  for i in 1 2 3 4 ; do
+    sleep 1
+    if check_running ; then
+      echo "$APPNAME is now starting up"
+      return 0
+    fi
+  done
+
+  # sometimes it takes two tries.
+  echo "Failed. Trying again..."
+  /sbin/start-stop-daemon --start --pidfile $PAGEPIDFILE \
+  --chdir $APPDIR --startas $STARMAN --user fy2 -v
+
+  for i in 1 2 3 4 ; do
+    sleep 1
+    if check_running ; then
+      echo "$APPNAME is now starting up"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+start() {
+    log_daemon_msg "Starting $APPNAME" $STARMAN
+    echo ""
+
+    if check_running; then
+        log_progress_msg "already running"
+        log_end_msg 0
+        exit 0
+    fi
+
+    rm -f $PAGEPIDFILE 2>/dev/null
+
+    _start
+    log_end_msg $?
+    return $?
+}
+
+start
+
+exit $?
+
