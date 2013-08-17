@@ -3,58 +3,72 @@
 # Using the lsb functions to perform the operations.
 . /lib/lsb/init-functions
 # Process name ( For display )
-NAME="www-dev_daemon"
-APPNAME="www-dev"
-
-export APPDIR="/www/www-dev"
+NAME="page_dev_daemon"
+PAGE_DAEMON="/www/www-dev/utilities/start.sh"
+PAGE_STARMAN="/www/www-dev/utilities/starman.sh"
+PAGE_APPNAME="PageApp"
+export PAGE_APPDIR="/www/www-dev"
 # pid file for the daemon
-export PAGEPIDFILE="/www/tmp/www-dev/logs/pageapp.pid"
-export PAGELOGDIR="/www/tmp/www-dev/logs"
-export PAGEPSGIAPP="$APPDIR/pageapp.psgi"
-export PAGEPERLLIB="/www/perllib"
-export PAGEWORKERS=5
-export PAGEPORT=8000
+export PAGE_PIDFILE="/www/tmp/www-dev/logs/pageapp.pid"
+export PAGE_LOGDIR="/www/tmp/www-dev/logs"
+export PAGE_PSGIAPP="$PAGE_APPDIR/pageapp.psgi"
+export PAGE_PERLLIB="/www/perllib"
+export PAGE_WORKERS=5
+export PAGE_PORT=8000
 
-STARMAN=/www/www-dev/utilities/starman.sh
+STARMAN="/www/www-dev/utilities/start_starman.sh"
 
 
 # If the daemon is not there, then exit.
-test -x $DAEMON || exit 5
+#test -x $PAGE_DAEMON || exit 5
 
-if [ ! -d $APPDIR ]; then
-    echo "$APPDIR does not exist"
+# If the daemon is not there, then exit.
+#test -x $PAGE_STARMAN || exit 5
+
+if [ ! -d $PAGE_APPDIR ]; then
+    echo "$PAGE_APPDIR does not exist"
     exit 1
 fi
 
 check_running() {
-    [ -s $PAGEPIDFILE ] && kill -0 $(cat $PAGEPIDFILE) >/dev/null 2>&1
+
+  [ -s $PAGE_PIDFILE ] && kill -0 $(cat $PAGE_PIDFILE) >/dev/null 2>&1
+}
+
+check_compile() {
+
+  if ( cd $PAGE_APPDIR ; perl -Ilib -M$PAGE_APPNAME -ce1 ) ; then
+    return 1
+  else
+    return 0
+  fi
 }
 
 _start() {
 
-  /sbin/start-stop-daemon --start --pidfile $PAGEPIDFILE \
-  --chdir $APPDIR --startas $STARMAN --user fy2 -v
+  /sbin/start-stop-daemon --start --pidfile $PAGE_PIDFILE \
+  --chdir $PAGE_APPDIR --startas $STARMAN --user fy2 -v
 
   echo ""
-  echo "Waiting for $APPNAME to start..."
+  echo "Waiting for $PAGE_APPNAME to start..."
 
   for i in 1 2 3 4 ; do
     sleep 1
     if check_running ; then
-      echo "$APPNAME is now starting up"
+      echo "$PAGE_APPNAME is now starting up"
       return 0
     fi
   done
 
   # sometimes it takes two tries.
   echo "Failed. Trying again..."
-  /sbin/start-stop-daemon --start --pidfile $PAGEPIDFILE \
-  --chdir $APPDIR --startas $STARMAN --user fy2 -v
+  /sbin/start-stop-daemon --start --pidfile $PAGE_PIDFILE \
+  --chdir $PAGE_APPDIR --startas $STARMAN --user fy2 -v
 
   for i in 1 2 3 4 ; do
     sleep 1
     if check_running ; then
-      echo "$APPNAME is now starting up"
+      echo "$PAGE_APPNAME is now starting up"
       return 0
     fi
   done
@@ -63,20 +77,26 @@ _start() {
 }
 
 start() {
-    log_daemon_msg "Starting $APPNAME" $STARMAN
-    echo ""
+  log_daemon_msg "Starting $PAGE_APPNAME" $STARMAN
+  echo ""
 
-    if check_running; then
-        log_progress_msg "already running"
-        log_end_msg 0
-        exit 0
-    fi
+  if check_running; then
+    log_daemon_msg "Already running, won't do anything."
+    log_end_msg 0
+    exit 0
+  fi
 
-    rm -f $PAGEPIDFILE 2>/dev/null
+  if check_compile ; then
+    log_failure_msg "Error detected; not (re-)starting."
+    log_end_msg 1
+  exit 1
+  fi
 
-    _start
-    log_end_msg $?
-    return $?
+  rm -f $PAGE_PIDFILE 2>/dev/null
+
+  _start
+  log_end_msg $?
+  return $?
 }
 
 start
