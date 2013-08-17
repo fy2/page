@@ -26,7 +26,7 @@ Model::DB:
         on_connect_do: PRAGMA foreign_keys = ON
 
 session:
-    storage: /www/tmp/session
+    storage: /www/tmp/www-dev/session
     expires: 7200
 
 #This is where we store the datasets specific to each DB "role". 
