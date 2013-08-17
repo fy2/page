@@ -4,8 +4,6 @@
 . /lib/lsb/init-functions
 # Process name ( For display )
 NAME="page_dev_daemon"
-PAGE_DAEMON="/www/www-dev/utilities/start.sh"
-PAGE_STARMAN="/www/www-dev/utilities/starman.sh"
 PAGE_APPNAME="PageApp"
 export PAGE_APPDIR="/www/www-dev"
 # pid file for the daemon
@@ -99,7 +97,47 @@ start() {
   return $?
 }
 
-start
+stop() {
+    log_daemon_msg "Stopping $PAGE_APPNAME" $STARMAN
+    echo ""
+
+    /sbin/start-stop-daemon --stop --oknodo --pidfile $PAGE_PIDFILE
+    sleep 3
+    log_end_msg $?
+    return $?
+}
+
+restart() {
+    log_daemon_msg "Restarting $PAGE_APPNAME" $STARMAN
+    echo ""
+
+    if check_compile ; then
+        log_failure_msg "Error detected; not restarting."
+        log_end_msg 1
+        exit 1
+    fi
+
+    /sbin/start-stop-daemon --stop --oknodo --pidfile $PAGE_PIDFILE
+    _start
+    log_end_msg $?
+    return $?
+}
+
+# See how we were called.
+case "$1" in
+    start)
+        start
+    ;;
+    stop)
+        stop
+    ;;
+    restart|force-reload)
+        restart
+    ;;
+    *)
+        echo $"Usage: $0 {start|stop|restart}"
+        exit 1
+esac
 
 exit $?
 
