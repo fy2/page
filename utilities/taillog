@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+
+option_a_found=0
+while getopts ":a" opt; do
+  case $opt in
+    a)
+      option_a_found=1
+      echo "-a was triggered!" >&2
+      break
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      break
+      ;;
+  esac
+done
+
+if ((! option_a_found )) 
+then
+  tail -f /www/tmp/www-dev/logs/error.log
+else
+  tail -f /www/tmp/www-dev/logs/access.log
+fi
