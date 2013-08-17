@@ -6,7 +6,6 @@ while getopts ":a" opt; do
   case $opt in
     a)
       option_a_found=1
-      echo "-a was triggered!" >&2
       break
       ;;
     \?)
