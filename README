@@ -1,27 +1,15 @@
 Some notes
 ###########
 
+# An example way to run this web app
+    #cd into utilities directory and run the "start" script.
 
-# An example way to run this web app. We will serve static contents with nginx
-# and forward all other (catalyst)  requests to starman
-    #Step 1: start starman webserver, listen to port 8001:
-    /www/perllib/bin/starman -I/www/www-dev/lib/ -I/www/perllib/lib/perl5 /www/www-dev/pageapp.psgi --pid /www/www-dev/log/starman.pid --port 8001 --error-log /www/www-dev/log/starman.error.log --access-log /www/www-dev/log/starman.access.log --daemonize
+# "start" calls "pageapp_init.sh", which calls in turn "start_starman.sh".
 
-    #Step 2: Configure nginx:
-    2a) Change localhost in pageapp.nginx.conf with the real server_name
-    2b) You should add pageapp.nginx.conf to nginx 'sites-available' dir and symlink it in 'sites-enabled'. 
-        These dirs are usually located in ' /etc/nginx/' on ubuntu systems where nginx has been installed.
+# The web server will be listening to port 8000. To change, edit the "pageapp_init.sh".
 
-    #Note that nginx expects ssl certificate and key here:
-    /www/ssl/server.crt
-    /www/ssl/server.key
-    
-    #Step 3: Start nginx as root as it needs to listen to port:80 and port:443
-    Once started nginx will serve static contents. It will forward all others to port 8001.
-
-
-# Session data directory:
-The sessions are stored '/www/tmp/session'. This location is configurable via pageapp.yaml file.
+# Session data directory. This location is configurable via pageapp.yaml file.
+The sessions are stored here '/www/tmp/www-dev/session'.
 
 # A crontab should clean up any old session data:
-*/30 * * * * find /www/tmp/session/ -maxdepth 1 -type d -regex "/www/tmp/session/.+" -cmin +120 -exec rm -rf {} \;
+*/30 * * * * find /www/tmp/www-dev/session/ -maxdepth 1 -type d -regex "/www/tmp/www-dev/session/.+" -cmin +120 -exec rm -rf {} \;

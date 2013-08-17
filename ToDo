@@ -1,3 +1,9 @@
+-Find a way to stop Starman if it fails to start. Currently, it falls into an endless
+loop and creates large error files if it fails to compile/start.
+
+-Make sure to start a crontab to clean old session data. See README for the current crontab
+which is set MANUALLY.
+
 -Add a column to the role table to associate each role with a directory name
 this will make sure that role names are not exposed in the JNLP argument string
 
