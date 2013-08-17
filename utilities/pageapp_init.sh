@@ -1,9 +1,25 @@
 #!/usr/bin/env bash
 
+### BEGIN INIT INFO
+# Provides:          www-dev_daemon
+# Required-Start:    
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: This is the page www-dev daemon
+# Description:       This is the page www-dev daemon
+### END INIT INFO
+
 # Using the lsb functions to perform the operations.
 . /lib/lsb/init-functions
+
 # Process name ( For display )
-NAME="page_dev_daemon"
+NAME="www-dev_daemon"
+STARMAN="/www/www-dev/utilities/start_starman.sh"
+
+# If the daemon is not there, then exit.
+test -x $STARMAN || exit 5
+
 PAGE_APPNAME="PageApp"
 export PAGE_APPDIR="/www/www-dev"
 # pid file for the daemon
@@ -13,15 +29,6 @@ export PAGE_PSGIAPP="$PAGE_APPDIR/pageapp.psgi"
 export PAGE_PERLLIB="/www/perllib"
 export PAGE_WORKERS=5
 export PAGE_PORT=8000
-
-STARMAN="/www/www-dev/utilities/start_starman.sh"
-
-
-# If the daemon is not there, then exit.
-#test -x $PAGE_DAEMON || exit 5
-
-# If the daemon is not there, then exit.
-#test -x $PAGE_STARMAN || exit 5
 
 if [ ! -d $PAGE_APPDIR ]; then
     echo "$PAGE_APPDIR does not exist"
