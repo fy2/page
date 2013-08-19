@@ -1,10 +1,5 @@
--Find a way to stop Starman if it fails to start. Currently, it falls into an endless
-loop and creates large error files if it fails to compile/start.
-
 -Make sure to start a crontab to clean old session data. See README for the current crontab
 which is set MANUALLY.
-
--Make the links in jnlp such that it contains domain, i.e: www.pagegenome.org/(...)
 
 -We assume that each user can have a single role. If a user has multiple roles, 
 the current app will not work as expected (directory hierarchy is based on 
