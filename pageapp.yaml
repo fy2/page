@@ -18,7 +18,7 @@ navigation:
 
 Model::DB:
     schema_class: PageApp::Schema
-    traits: Caching
+#    traits: Caching
     connect_info:
         dsn: dbi:SQLite:/www/www-dev/pageapp.db
         user:
