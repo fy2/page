@@ -9,7 +9,7 @@ Some notes
 # The web server will be listening to port 8000. To change, edit the "pageapp_init.sh".
 
 # Session data directory. This location is configurable via pageapp.yaml file.
-The sessions are stored here '/www/tmp/www-dev/session'.
+The sessions (of www-dev) are stored here '/www/tmp/www-dev/session'.
 
-# A crontab should clean up any old session data:
+# A crontab should clean up any old (www-dev) session data:
 */30 * * * * find /www/tmp/www-dev/session/ -maxdepth 1 -type d -regex "/www/tmp/www-dev/session/.+" -cmin +120 -exec rm -rf {} \;

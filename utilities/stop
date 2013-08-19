@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-/www/www-dev/utilities/pageapp_init.sh stop
+THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+$THIS_DIR/pageapp_init.sh stop

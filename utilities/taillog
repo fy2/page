@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
 
+function where_am_i_run_from()
+{
+  local DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+  if [[ $DIR =~ www-dev ]]
+  then
+    echo "www-dev"
+  elif [[ $DIR =~ www-live ]]
+  then
+    echo "www-live"
+  else
+   echo "This script was supposed to be in '/www/www-(dev|live)/utilities/', but apparently it is not. Thus, I cannot figure out if I am www-dev or www-live!"
+   exit 1
+  fi
+}
+PAGE_DEPLOY=$(where_am_i_run_from) #return 'www-dev' or 'www-live'
 
 option_a_found=0
 while getopts ":a" opt; do
@@ -17,7 +33,7 @@ done
 
 if ((! option_a_found )) 
 then
-  tail -f /www/tmp/www-dev/logs/error.log
+  tail -f /www/tmp/$PAGE_DEPLOY/logs/error.log
 else
-  tail -f /www/tmp/www-dev/logs/access.log
+  tail -f /www/tmp/$PAGE_DEPLOY/logs/access.log
 fi

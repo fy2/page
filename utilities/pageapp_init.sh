@@ -13,22 +13,38 @@
 # Using the lsb functions to perform the operations.
 . /lib/lsb/init-functions
 
-# Process name ( For display )
-NAME="www-dev_daemon"
-STARMAN="/www/www-dev/utilities/start_starman.sh"
+function where_am_i_run_from()
+{
+  local DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# If the daemon is not there, then exit.
-test -x $STARMAN || exit 5
+  if [[ $DIR =~ www-dev ]]
+  then
+    echo "www-dev"
+  elif [[ $DIR =~ www-live ]]
+  then
+    echo "www-live"
+  else
+   echo "This script was supposed to be in '/www/www-(dev|live)/utilities/', but apparently it is not. Thus, I cannot figure out if I am www-dev or www-live!"
+   exit 1
+  fi
+}
 
-PAGE_APPNAME="PageApp"
-export PAGE_APPDIR="/www/www-dev"
-# pid file for the daemon
-export PAGE_PIDFILE="/www/tmp/www-dev/logs/pageapp.pid"
-export PAGE_LOGDIR="/www/tmp/www-dev/logs"
+export PAGE_DEPLOY=$(where_am_i_run_from) #return 'www-dev' or 'www-live'
+export NAME="page_daemon_$PAGE_DEPLOY"
+export PAGE_APPNAME="PageApp"
+export PAGE_UTILITIES="/www/$PAGE_DEPLOY/utilities/"
+export PAGE_APPDIR="/www/$PAGE_DEPLOY"
+export STARMAN="$PAGE_UTILITIES/start_starman.sh"
+export PAGE_PIDFILE="/www/tmp/$PAGE_DEPLOY/logs/pageapp.pid" # pid file for the daemon
+export PAGE_LOGDIR="/www/tmp/$PAGE_DEPLOY/logs"
 export PAGE_PSGIAPP="$PAGE_APPDIR/pageapp.psgi"
 export PAGE_PERLLIB="/www/perllib"
 export PAGE_WORKERS=5
 export PAGE_PORT=8000
+
+
+# If the daemon is not there, then exit.
+test -x $STARMAN || exit 5
 
 if [ ! -d $PAGE_APPDIR ]; then
     echo "$PAGE_APPDIR does not exist"
