@@ -36,7 +36,8 @@ session:
 data:
     #.gz files are served from this root path
     # (web URL will be added automatically by the 'Data.pm' controller)
-    root: /static/page/genomes
+    # replace '172.17.200.84' with the public IP in production version!
+    root: http://172.17.200.84/static/page/genomes
 
     #Where do the embl files for artemis reside?
     dir_name_of_annotation: annotation
