@@ -18,7 +18,7 @@ navigation:
 
 Model::DB:
     schema_class: PageApp::Schema
-    traits: Caching
+#    traits: Caching
     connect_info:
         dsn: dbi:SQLite:/www/www-live/pageapp.db
         user:
@@ -26,7 +26,7 @@ Model::DB:
         on_connect_do: PRAGMA foreign_keys = ON
 
 session:
-    storage: /www/tmp/www-dev/session
+    storage: /www/tmp/www-live/session
     expires: 7200
 
 #This is where we store the datasets specific to each DB "role". 
@@ -37,7 +37,7 @@ data:
     #.gz files are served from this root path
     # (web URL will be added automatically by the 'Data.pm' controller)
     # replace '172.17.200.84' with the public IP in production version!
-    root: http://172.17.200.84/static/page/genomes
+    root: http://www.pagegenomes.org/static/page/genomes
 
     #Where do the embl files for artemis reside?
     dir_name_of_annotation: annotation
