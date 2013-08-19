@@ -209,11 +209,13 @@
     This site is hosted by the <a href="http://www.sanger.ac.uk/">Wellcome Trust Sanger Institute</a>.
   </p>
  
+[% IF c.stash.add_js_end %]
+        [% FOREACH jsfile IN c.stash.add_js_end %]
+                <script type="text/javascript" src="[% jsfile %]"></script>
+        [% END %]
+[% END %]
+
+<script type="text/javascript" src="/zxtm/piwik2.js"></script>
  
 </body>
-[% IF c.stash.add_js_end %]
-	[% FOREACH jsfile IN c.stash.add_js_end %]
-		<script type="text/javascript" src="[% jsfile %]"></script>
-	[% END %]
-[% END %] 
 </html>
