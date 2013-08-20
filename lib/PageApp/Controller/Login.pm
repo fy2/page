@@ -46,9 +46,19 @@ sub index :Path :Args(0) {
             
             
             $c->session->{active_user} = $username;
-               
-            $c->response->redirect($c->uri_for(
-                $c->controller('Data')->action_for('index')));
+
+            my $redirect_link = $c->uri_for($c->controller('Data')->action_for('index'));
+            
+            #Catalyst automatically attaches the port number (8000) when
+            #creating a link with the "uri_for" method. You may not want this.
+            if (exists $c->config->{remove_port_number_from_links} 
+                and $c->config->{remove_port_number_from_links} eq 'yes')
+            {
+                my $port = $c->config->{port_i_am_running_on};
+                $redirect_link =~ s/:$port//;
+            }
+
+            $c->response->redirect($redirect_link);
             return;
         } else {
             # Set an error message
