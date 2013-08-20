@@ -29,6 +29,11 @@ session:
     storage: /www/tmp/www-live/session
     expires: 7200
 
+#Using this info internally to remove the port number from
+#URLs constructed by catalyst (its 'uri_for' appends port nr by default) 
+port_i_am_running_on: 8000
+remove_port_number_from_links: yes
+
 #This is where we store the datasets specific to each DB "role". 
 #The user role directories must have the same name  as the role name. 
 #The subdirs of these have a systematic name hierarchy.
@@ -36,7 +41,6 @@ session:
 data:
     #.gz files are served from this root path
     # (web URL will be added automatically by the 'Data.pm' controller)
-    # replace '172.17.200.84' with the public IP in production version!
     root: http://www.pagegenomes.org/static/page/genomes
 
     #Where do the embl files for artemis reside?
