@@ -40,7 +40,7 @@ export PAGE_LOGDIR="/www/tmp/$PAGE_DEPLOY/logs"
 export PAGE_PSGIAPP="$PAGE_APPDIR/pageapp.psgi"
 export PAGE_PERLLIB="/www/perllib"
 export PAGE_WORKERS=5
-export PAGE_PORT=8000
+export PAGE_PORT=8001
 
 
 # If the daemon is not there, then exit.
