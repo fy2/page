@@ -1,15 +1,14 @@
 Some notes
 ###########
 
-# An example way to run this web app
-    #cd into utilities directory and run the "start" script.
+# Lots of info about this web app at: 
+http://mediawiki.internal.sanger.ac.uk/index.php/PAGe_consortium_website_manual
 
-# "start" calls "pageapp_init.sh", which calls "start_starman.sh".
+# The web server listens to port 8000 or 8001 depending on www-live or www-dev code being run.
 
-# The web server will be listening to port 8000. To change, edit the "pageapp_init.sh".
+# The sessions are stored here /www/tmp/www-live/session or here /www/tmp/www-dev/session
+# depending on the pageapp.yaml settings
 
-# Session data directory. This location is configurable via pageapp.yaml file.
-The sessions (of www-live) are stored here '/www/tmp/www-live/session'.
-
-# A crontab such as the one below, can clean up any old (www-live) session data:
+# A crontab such as the one below should clean up session data. To delete session data
+# data older than 2h in www-live:
 */30 * * * * find /www/tmp/www-live/session/ -maxdepth 1 -type d -regex "/www/tmp/www-live/session/.+" -cmin +120 -exec rm -rf {} \;
