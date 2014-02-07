@@ -22,3 +22,5 @@ foreach my $user (@users) {
 
     $user->update; #commits
 }
+
+print "Encryption succeded\n";

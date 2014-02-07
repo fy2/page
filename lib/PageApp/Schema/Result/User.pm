@@ -78,6 +78,7 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_nullable => 1 },
 );
 __PACKAGE__->set_primary_key("id");
+__PACKAGE__->add_unique_constraint("username_unique", ["username"]);
 
 =head1 RELATIONS
 
@@ -97,8 +98,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07010 @ 2013-04-17 12:08:45
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rWj7hxyf+Z3weNKfWSUq0w
+# Created by DBIx::Class::Schema::Loader v0.07010 @ 2014-02-07 10:20:47
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sIowxjYLucWQtm+q01gPGA
 
 
 # Have the 'password' column use a SHA-1 hash and 20-byte salt
