@@ -84,6 +84,8 @@ __PACKAGE__->config(
 # that we created for this PageApp (HTML.pm)
 __PACKAGE__->config(default_view => 'HTML');
 
+__PACKAGE__->config(using_frontend_proxy => 1);
+
 # Start the application
 __PACKAGE__->setup();
 
