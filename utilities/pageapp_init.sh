@@ -54,8 +54,6 @@ then
     export PAGE_PORT=8000
 fi
 
-
-
 # If the daemon is not there, then exit.
 test -x $STARMAN || exit 5
 
