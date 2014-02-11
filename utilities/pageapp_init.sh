@@ -29,7 +29,9 @@ function where_am_i_run_from()
   fi
 }
 
-export PAGE_DEPLOY=$(where_am_i_run_from) #return 'www-dev' or 'www-live'
+
+
+export PAGE_DEPLOY=$(where_am_i_run_from) #returns 'www-dev' or 'www-live'
 export NAME="page_daemon_$PAGE_DEPLOY"
 export PAGE_APPNAME="PageApp"
 export PAGE_UTILITIES="/www/$PAGE_DEPLOY/utilities/"
@@ -40,7 +42,18 @@ export PAGE_LOGDIR="/www/tmp/$PAGE_DEPLOY/logs"
 export PAGE_PSGIAPP="$PAGE_APPDIR/pageapp.psgi"
 export PAGE_PERLLIB="/www/perllib"
 export PAGE_WORKERS=5
-export PAGE_PORT=8000
+
+# Sets the webserver's listening port
+# according to the application being started (dev/live)
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+if [[ $DIR =~ www-dev ]]
+then
+    export PAGE_PORT=8001
+elif [[ $DIR =~ www-live ]]
+then
+    export PAGE_PORT=8000
+fi
+
 
 
 # If the daemon is not there, then exit.
