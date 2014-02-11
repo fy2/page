@@ -58,20 +58,14 @@ sub artemisjnlp :Path('artemisjnlp'){
       
     # Get the param argument for the selected genome and stash it so that 
     #artemis_jnlp.tt2 can access it and render a JNLP
- 
-    my $file_argument = 
-                join '/', (  
-                           $c->config->{data}->{root}
-                           
-                           #This does not take into account that a user might have 
-                           #more than one role! (see the "ToDo" file in the main app dir)
-                         , $c->user->user_roles->search_related('role')->next->role
-                         
-                         , $c->config->{data}->{dir_name_of_annotation}
-                         
-                           #field is defined as "genome1" in the artemis.tt2 template
-                         , $c->request->param('checkbox') . $c->config->{data}->{file_extension_of_annotation}
-                         );
+    my $root_url = $c->uri_for('/static/page/genomes');
+    my $file_argument =  join '/', 
+                             (   $root_url
+                               , $c->user->user_roles->search_related('role')->next->role
+                               , $c->config->{data}->{dir_name_of_annotation}
+                               , $c->request->param('checkbox') . $c->config->{data}->{file_extension_of_annotation}
+                             );
+                 
     
     # Non-alphanumeric char '#' in sanger lane ids are replaced with underscore.
     # They cause problems in JNLP files' http links arguments.
@@ -80,15 +74,10 @@ sub artemisjnlp :Path('artemisjnlp'){
      
     #this will prepend the web sites root URL
     $c->stash->{selected_genome} = $file_argument; 
-
     $c->stash->{selected_genome} =~ s/https:/http:/; #just in case Catalyst tries to use https scheme
-    
     $c->stash( active_action => '/data' );
-
     $c->res->content_type('application/x-java-jnlp-file'); 
-
     $c->stash->{template} = 'artemis_jnlp.tt2';
-
     $c->forward( $c->view('JNLP') );
 }
 
@@ -120,34 +109,22 @@ sub actjnlp :Path('actjnlp'){
     my ( $self, $c ) = @_;
       
     my @genome_selection = $c->request->param('checkbox');
-
     my $rearranged_list = rearrange_act_arguments(
-    
                              $c,
-                                
                              \@genome_selection
-                            
-                            , $c->config->{data}->{root}
-                            
+                            , $c->uri_for('/static/page/genomes')
                               #wont make sense if user has more than one role. See "ToDo"file in main dir.                            
                             , $c->user->user_roles->search_related('role')->next->role
-                            
                             , $c->config->{data}->{dir_name_of_crunch}
                             , $c->config->{data}->{file_extension_of_crunch}
-                            
                             , $c->config->{data}->{dir_name_of_annotation}
                             , $c->config->{data}->{file_extension_of_annotation}
                           );
     
-       
     $c->stash->{act_arguments} = $rearranged_list;
-    
     $c->stash( active_action => '/data' );
-        
     $c->res->content_type('application/x-java-jnlp-file'); 
-   
     $c->stash->{template} = 'act_jnlp.tt2';
-    
     $c->forward( $c->view('JNLP') );
 }
 
@@ -216,7 +193,6 @@ sub download :Path('download'){
     my ( $self, $c ) = @_;
     
     $c->stash( active_action => '/data' );
-    
     $c->stash->{template} = 'download.tt2';
 }
 

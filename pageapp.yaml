@@ -34,9 +34,6 @@ session:
 #The subdirs of these have a systematic name hierarchy.
 #Currently, "annotation" and "crunch" sub dirs are available
 data:
-    #.gz files are served from this root path
-    # (web URL will be added automatically by the 'Data.pm' controller)
-    root: http://www.pagegenomes.org/static/page/genomes
 
     #Where do the embl files for artemis reside?
     dir_name_of_annotation: annotation
