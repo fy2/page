@@ -24,13 +24,7 @@ Catalyst Controller.
 #sub index :Path :Args(0) Does('RequireSSL') {
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
-    
-    #Depending on the second argument decide which of the 
-    #two menu items below to highlight:
-    #$c->stash( active_action => '/data/authenticate/resources' );
-    #$c->stash( active_action => '/data/authenticate/data' );
-    #die Dumper $go_to_action;
-    
+   
     # Get the username and password from form
     my $username = $c->request->params->{username};
     my $password = $c->request->params->{password};
@@ -43,23 +37,13 @@ sub index :Path :Args(0) {
         if ($c->authenticate({ username => $username,
                                password => $password  } )) {
             # If successful, then let them use the application
-            
-            
             $c->session->{active_user} = $username;
 
-            my $redirect_link = $c->uri_for($c->controller('Data')->action_for('index'));
-            
-            #Catalyst automatically attaches the port number (8000) when
-            #creating a link with the "uri_for" method. You may not want this.
-            if (exists $c->config->{remove_port_number_from_links} 
-                and $c->config->{remove_port_number_from_links} eq 'yes')
-            {
-                my $port = $c->config->{port_i_am_running_on};
-                $redirect_link =~ s/:$port//;
-            }
-
+            my $redirect_link = $c->uri_for($c->controller('Data')->action_for('index'));            
             $c->response->redirect($redirect_link);
+
             return;
+
         } else {
             # Set an error message
             $c->stash(error_msg => "Bad username or password.");
